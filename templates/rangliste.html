@@ -1,0 +1,204 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Rangliste
+{% endblock %}
+{% block header %}
+    Rangliste
+{% endblock %}
+{% block main %}
+
+<div class="pagination">
+    <ul class="pagination justify-content-center">
+        {% if prev_matchday %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('rangliste', matchday=prev_matchday) }}"><i class="fa-solid fa-caret-left"></i></a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#"><i class="fa-solid fa-caret-left"></i></a>
+            </li>
+        {% endif %}
+        <li class="page-item dropdown">
+            <a class="page-link" href="#" role="button" id="dropdownMatchday" data-bs-toggle="dropdown" aria-expanded="false"> {{ matches[0].formatted_matchday }}</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMatchday">
+                <!-- dropdown items -->
+                {% for matchday in matchdays_formatted %}
+                    <li><a class="dropdown-item" href="{{ url_for('rangliste', matchday=loop.index) }}">{{ matchday }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% if next_matchday %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('rangliste', matchday=next_matchday) }}"><i class="fa-solid fa-caret-right"></i></a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#"><i class="fa-solid fa-caret-right"></i></a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+<div class="text-center">
+    <div class="table-responsive">
+        <table class="table rounded-4 overflow-hidden">
+            <tbody>
+                <tr>
+                    <td colspan="2" style="text-align: right;padding-right: 20px;">
+                        <button id="prev-btn" type="button" class="btn btn-primary navigationButton">
+                            <i class="fa-solid fa-caret-left"></i>
+                        </button>
+                    </td>
+                    {% for match in matches %}
+                        <td name="match-column{{ loop.index }}"> 
+                            {{ match.matchDateTime.strftime('%d.%m.') }} <br>
+                            {{ match.time }} <br>
+                            {{ match.team1.shortName }} <br>
+                            {{ match.team2.shortName }}
+                        </td>
+                    {% endfor %}
+ 
+                    <td colspan="2" style="text-align: left; padding-left: 20px;">
+                        <button id="next-btn" type="button" class="btn btn-primary navigationButton">
+                            <i class="fa-solid fa-caret-right"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="bottom-border">
+                    <td colspan="2">Tipper</td>
+                    {% for match in matches %}
+                    <td name="match-column{{ loop.index }}">
+                        {% if match.team1_score is not none %}
+                            {% if match.is_underway %}
+                                <span style="color: red;">{{ match.team1_score }}:{{ match.team2_score }}</span>
+                            {% else %}
+                                {{ match.team1_score }}:{{ match.team2_score }}
+                            {% endif %}
+                        {% else %}
+                            -:-
+                        {% endif %}
+                    </td>
+                {% endfor %}
+                    <td>P</td>
+                    <td><strong>G</strong></td>
+                </tr>
+                {% for user in users %}
+                    <tr class="{% if user.id == user_id %}table-primary{% endif %}">
+                        <td>{{ loop.index }}.</td>
+                        <td style="text-align: left;">{{ user.username }}</td>
+                        {% for match in matches %}
+                            {% set prediction = user.predictions|selectattr("match_id", "equalto", match.id)|first %}
+                            <td name="match-column{{ loop.index }}">
+                                {% if prediction %}
+                                    {% if match.matchIsFinished or match.is_underway or user.id == user_id %}
+                                        <span class="{% if prediction.points == 0 %} prediction-wrong {% endif %}">
+                                            {{ prediction.team1_score }}:{{ prediction.team2_score }}
+                                        </span> 
+                                        {% if prediction.points > 0%}
+                                            <sub class="sub-correct">{{ prediction.points }}</sub>
+                                        {% endif %}
+                                    {% else %}
+                                        -:-
+                                    {% endif %}
+                                {% else %}
+                                    -:-
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                        {% if user.id in top_users %}
+                            <td style="color: rgb(22, 104, 255);">
+                        {% else %}
+                            <td>
+                        {% endif %}                 
+                        {{ user_points_matchday[user.id] }}
+                            </td>
+                        <td> {{ user.total_points }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="last-update" style="display: flex; justify-content: space-between;">
+        <p>Stand: {{ last_update }}</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Cache DOM elements
+        var tdElements = Array.from(document.querySelectorAll('td[name^="match-column"]'));
+        var prevBtn = document.getElementById('prev-btn');
+        var nextBtn = document.getElementById('next-btn');
+        
+        var screenWidth = window.innerWidth;
+        var column_to_display = {{ index_of_closest_in_time_match }};
+        var max_index = {{ no_matches }};
+        var no_columns_to_display = (max_index === 1) ? 1 : 2; // Adjust based on the number of matches
+
+        // Function to update table display based on column_to_display
+        function updateTableDisplay() {
+            if (no_columns_to_display === 2) {
+                if (column_to_display === 1) column_to_display = 2;
+
+                var startIndex = column_to_display - 1;
+                var endIndex = column_to_display;
+            } else {
+                var startIndex = column_to_display;
+                var endIndex = column_to_display;
+            }
+
+            console.log(startIndex);
+            console.log(endIndex);
+
+            tdElements.forEach(td => {
+                var tdIndex = parseInt(td.getAttribute('name').replace('match-column', ''), 10);
+                td.style.display = (tdIndex >= startIndex && tdIndex <= endIndex) ? 'table-cell' : 'none';
+            });
+
+            prevBtn.disabled = (startIndex <= 1);
+            nextBtn.disabled = (endIndex >= max_index);
+        }
+
+        // Function to handle screen size changes
+        function handleScreenSizeChange(e) {
+            if (e.matches) {
+                if (screenWidth < 360){
+                    no_columns_to_display = 1;
+                }
+                updateTableDisplay();
+                prevBtn.addEventListener('click', handlePrevClick);
+                nextBtn.addEventListener('click', handleNextClick);
+            } else {
+                tdElements.forEach(td => td.style.display = 'table-cell');
+                prevBtn.removeEventListener('click', handlePrevClick);
+                nextBtn.removeEventListener('click', handleNextClick);
+            }
+        }
+
+        // Event handler for previous button click
+        function handlePrevClick() {
+            if (column_to_display > 1) {
+                column_to_display--;
+                updateTableDisplay();
+            }
+        }
+
+        // Event handler for next button click
+        function handleNextClick() {
+            if (column_to_display < max_index) {
+                column_to_display++;
+                updateTableDisplay();
+            }
+        }
+
+        // Initialize matchMedia for screen width detection
+        var mediaQuery = window.matchMedia('(max-width: 768px)');
+        mediaQuery.addListener(handleScreenSizeChange);
+
+        // Initial check for screen size
+        handleScreenSizeChange(mediaQuery);
+    });
+</script>
+
+
+{% endblock %}

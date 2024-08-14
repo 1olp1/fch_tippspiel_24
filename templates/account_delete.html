@@ -1,0 +1,22 @@
+{% extends "account_layout.html" %}
+
+{% block card %}
+    <div class="list-group">
+        <a href="{{ url_for('account') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+            <i class="fa-solid fa-caret-left me-2"></i> Account löschen
+        </a>
+        <li class="list-group-item">
+            <p>Möchtest du deinen Account wirklich löschen, {{ session.username }}?</p>
+            <div class="form-check mb-4">
+                <form id="delete_accountForm" action="/account/delete" method="post">
+                <input class="form-check-input" type="checkbox" name="confirm_delete" value="yes" id="confirmDeleteCheckbox">
+                <label class="form-check-label" for="confirmDeleteCheckbox">
+                    Ja, ich bin mir sicher
+                </label>
+            </div>
+                <button type="submit" class="btn btn-danger">Account löschen</button>
+            </form>
+        </li>
+    </div>
+</div>
+{% endblock %}

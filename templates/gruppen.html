@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Gruppen
+{% endblock %}
+{% block header %}
+    Gruppen
+{% endblock %}
+{% block main %}
+<div class="text-center">
+    {% for group, teams in groups.items() %}
+        {% if loop.index % 2 == 1 %}
+            <div class="row mb-4 justify-content-center">
+        {% endif %}
+        
+        <div class="col-md-6">        
+            <h4 class="font-weight-bold">{{ group }}</h4>
+            
+            <!-- Desktop/Tablet View -->
+            <div class="table-responsive-md d-none d-md-block">
+                <table class="table rounded-4 overflow-hidden">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-md-1">Pl.</th>
+                            <th scope="col" class="text-end col-md-1"></th>
+                            <th scope="col" class="text-start col-md-4">Team</th>
+                            <th scope="col" class="col-md-1">Sp.</th>
+                            <th scope="col" class="col-md-1">S</th>
+                            <th scope="col" class="col-md-1">U</th>
+                            <th scope="col" class="col-md-1">N</th>
+                            <th scope="col" class="col-md-1">Tore</th>
+                            <th scope="col" class="col-md-1">Diff.</th>
+                            <th scope="col" class="col-md-1">Punkte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for team in teams %}
+                            <tr>
+                                <td style="font-weight: bold;">{{ loop.index }}</td>
+                                <td><img src="{{ team.teamIconPath }}" alt="{{ team.shortName }}-logo" class="team-logo"></td>
+                                <td class="text-start">{{ team.teamName }}</td>
+                                <td>{{ team.matches }}</td>
+                                <td>{{ team.won }}</td>
+                                <td>{{ team.draw }}</td>
+                                <td>{{ team.lost }}</td>
+                                <td>{{ team.goals }}:{{ team.opponentGoals }}</td>
+                                <td>{{ team.goalDiff }}</td>
+                                <td>{{ team.points }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Mobile View -->
+            <div class="table-responsive d-md-none">
+                <table class="table rounded-4 overflow-hidden">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-2">Pl.</th>
+                            <th scope="col" class="text-end col-1"></th>
+                            <th scope="col" class="text-start col-5">Team</th>
+                            <th scope="col" class="col-1">Sp.</th>
+                            <th scope="col" class="col-1">Diff.</th>
+                            <th scope="col" class="col-2">Pkte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for team in teams %}
+                            <tr>
+                                <td style="font-weight: bold;">{{ loop.index }}</td>
+                                <td><img src="{{ team.teamIconPath }}" alt="{{ team.shortName }}-logo" class="team-logo"></td>
+                                <td class="text-start">{{ team.teamName }}</td>
+                                <td>{{ team.matches }}</td>
+                                <td>{{ team.goalDiff }}</td>
+                                <td>{{ team.points }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        {% if loop.index % 2 == 0 or loop.last %}
+            </div>
+        {% endif %}
+        
+    {% endfor %}
+    
+    <div class="last-update">
+        <p>Stand: {{ last_update }}</p>
+    </div>
+</div>
+
+<style>
+    .bottom-border {
+        border-bottom: 2px solid rgb(145, 145, 145);
+    }
+    .team-logo {
+        width: 24px;
+        height: 24px;
+    }
+    .table-responsive-md {
+        margin-bottom: 1rem;
+    }
+    .table-responsive {
+        margin-bottom: 1rem;
+    }
+    .d-md-none {
+        display: none !important;
+    }
+    @media (max-width: 768px) {
+        .d-md-none {
+            display: block !important;
+        }
+        .d-none.d-md-block {
+            display: none !important;
+        }
+        .team-logo {
+            width: 18px;
+            height: 18px;
+        }
+    }
+</style>
+{% endblock %}

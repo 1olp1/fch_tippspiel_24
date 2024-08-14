@@ -1,0 +1,321 @@
+/* General Styling */
+body {
+    background-color: #e0e2eb;
+    font-family: 'Nunito', sans-serif;
+    color: #19303B; /* Default text color */
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    color: #19303B; /* Blue color */
+}
+
+/* Navbar Styling */
+nav .navbar-brand {
+    font-size: xx-large;
+    margin: 0 30px 0 20px;
+}
+
+nav .navbar-brand .blue {
+    color: #ffffff;
+}
+
+.navbar {
+    background-color: #20338a;
+    border-bottom: 8px solid rgb(22, 104, 255);
+}
+
+.navbar-nav .nav-link {
+    font-size: 18px;
+    margin-right: 0.5rem;
+    color: #ffffff;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #fff; /* White text for links */
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #c2c2c2; /* Custom hover color */
+}
+
+/* Table Styling */
+.table {
+    margin-bottom: 10px; /* Adds bottom margin between tables */
+    border-radius: 10px;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+.table-responsive-desktop,
+.table-responsive-mobile {
+    overflow-y: auto;
+}
+
+.table-responsive-desktop {
+    max-height: 620px; /* Adjust as needed */
+}
+
+.table-responsive-mobile {
+    max-height: 300px; /* Adjust as needed */
+}
+
+.table-bordered td, .table-bordered th {
+    border: 1px solid #455769;
+}
+
+.table th {
+    font-size: 17px; /* Font size for table headers */
+    font-weight: bold; /* Make table headers bold */
+    background-color: #ffffff; /* Background color for headers */
+    color: #19303B;
+    vertical-align: middle;
+}
+
+.table td {
+    font-size: 16px; /* Font size for table cells */
+    vertical-align: middle;
+    white-space: nowrap;
+    color: #19303B;
+}
+
+.table-date-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Prediction Colors */
+.prediction-wrong {
+    color: rgb(128, 128, 128);
+}
+
+.sub-correct {
+    color: rgb(22, 104, 255);
+}
+
+/* Special Columns */
+.custom-column-1 {
+    width: 2%; /* Width of column 1 */
+}
+
+/* Sticky Headers */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: #fff; /* Ensure background color for sticky effect */
+    border-bottom: 2px solid #19303B; /* Border at the bottom of header */
+}
+
+/* Logo Styling */
+.team-logo, .team-logo-small {
+    object-fit: cover;
+    border-radius: 50%; /* Rounded corners */
+    border: 1px solid #cfcece;
+}
+
+.team-logo {
+    width: 24px;
+    height: 24px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.team-logo-small {
+    width: 20px;
+    height: 20px;
+}
+
+/* Alignment Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Additional Classes */
+.score-input {
+    width: 43px; /* Adjust width as needed */
+    text-align: center; /* Center text within input */
+    display: inline-block; /* Ensures inputs stay on the same line */
+}
+
+.form-control.score-input {
+    width: 40px; /* Adjust width as needed */
+}
+
+.btn-container {
+    text-align: right;
+    margin-top: 10px; /* Adjust as needed */
+}
+
+.last-update {
+    font-size: 14px;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-content {
+    display: none;
+}
+
+.page-content.active {
+    display: block;
+}
+
+.team-name {
+    font-weight: bold; /* Make team names bold */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .table-responsive-desktop {
+        display: none; /* Hide desktop table on small screens */
+    }
+    .table-responsive-mobile {
+        display: block; /* Show mobile table on small screens */
+    }
+}
+
+@media (min-width: 768px) {
+    .table-responsive-desktop {
+        display: block; /* Show desktop table on large screens */
+    }
+    .table-responsive-mobile {
+        display: none; /* Hide mobile table on large screens */
+    }
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(22, 104, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Match Columns */
+.match-column {
+    display: none;
+}
+
+.match-column.visible {
+    display: table-cell;
+}
+
+.navigationButton {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .navigationButton {
+        display: inline-block; /* or display: block; */
+    }
+}
+
+/* Card Formatting */
+.card-body {
+    text-align: left; /* Ensure the card body text is left-aligned */
+    padding: 1.5rem; /* Adjust padding as needed */
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between; /* Distribute space between the text and the span */
+}
+
+.stats span {
+    text-align: right; /* Right-align text inside the span */
+    margin-left: auto; /* Push the span to the right */
+}
+
+.card-title {
+    color: rgb(22, 104, 255); /* Example text color */
+    font-size: 1.5rem; /* Example font size */
+}
+
+ul.list-unstyled {
+    padding: left 10px;
+}
+
+ul.list-unstyled li {
+    margin-bottom: 0.5rem; /* Adjust margin between list items */
+    list-style-type: none; /* Remove default list bullets */
+}
+
+ul.list-unstyled li:before {
+    content: "\2022"; /* Use bullet character as list item marker */
+    color: #0055a0; /* Example bullet color */
+    display: inline-table;
+    width: 1em;
+    margin-left: -0.5em; /* Adjust position for bullet */
+}
+
+/* List Group Item */
+.list-group-item {
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 0.25rem; /* Rounded corners for items */
+    padding: 0.75rem 1.25rem; /* Padding */
+    font-size: 1rem; /* Font size */
+    color: #333; /* Text color */
+}
+
+/* Active Item */
+.list-group-item-action.active {
+    background-color: #007bff; /* Highlight color for active items */
+    color: #fff; /* Text color for active items */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* List Group Item Hover */
+.list-group-item-action:hover {
+    background-color: #f8f9fa; /* Light background on hover */
+}
+
+/* Icon Styling */
+.list-group-item i {
+    color: #007bff;
+    margin-right: 0.5rem; /* Spacing between icon and text */
+}
+
+.logo-img {
+    width: 150px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+body {
+    display: flex;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.header h1 {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 1.5rem; /* Adjust font size as needed */
+}
+
+.flash-message {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+
+.toggle-sidebar-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1040;
+}
+

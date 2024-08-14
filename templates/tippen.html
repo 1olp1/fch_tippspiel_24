@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tippen
+{% endblock %}
+
+{% block header %}
+    Tippen
+{% endblock %}
+{% block main %}
+
+<div class="pagination">
+    <ul class="pagination">
+        {% if prev_matchday %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('tippen', matchday=prev_matchday) }}"><i class="fa-solid fa-caret-left"></i></a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#"><i class="fa-solid fa-caret-left"></i></a>
+            </li>
+        {% endif %}
+        <li class="page-item dropdown">
+            <a class="page-link" href="#" role="button" id="dropdownMatchday" data-bs-toggle="dropdown" aria-expanded="false"> {{ matches[0].formatted_matchday }}</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMatchday">
+                {% for matchday in matchdays_formatted %}
+                    <li><a class="dropdown-item" href="{{ url_for('tippen', matchday=loop.index) }}">{{ matchday }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% if next_matchday %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('tippen', matchday=next_matchday) }}"><i class="fa-solid fa-caret-right"></i></a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#"><i class="fa-solid fa-caret-right"></i></a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+
+<form id="tippenForm" action="/tippen" method="post">
+    <!-- Desktop/Tablet View -->
+    <div class="table-responsive-desktop">
+        <table class="table">
+            <tbody>
+                {% for match_date, matches in matches_by_date.items() %}
+                    <tr>
+                        <td colspan="6" class="table-date-header">
+                            {{ match_date }}
+                        </td>
+                    </tr>
+                    {% for match in matches %}
+                        <tr>
+                            <td class="text-center">{{ match.time }}</td>
+                            <td class="text-right">{{ match.team1.teamName }}</td>
+                            <td><img src="{{ match.team1.teamIconPath }}" alt="{{ match.team1.teamName }}-logo" class="team-logo"></td>
+                            <td class="text-center">
+                                <input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="desktop_team1Score_{{ match.id }}" name="team1Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team1_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
+                                <strong>:</strong>
+                                <input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="desktop_team2Score_{{ match.id }}" name="team2Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team2_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
+                            </td>
+                            <td><img src="{{ match.team2.teamIconPath }}" alt="{{ match.team2.teamName }}-logo" class="team-logo"></td>
+                            <td class="text-left">{{ match.team2.teamName }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Mobile View -->
+    <div class="table-responsive-mobile">
+        <table class="table">
+            <tbody>
+                {% for match_date, matches in matches_by_date.items() %}
+                    <tr>
+                        <td colspan="3" class="table-date-header">
+                            {{ match_date }}
+                        </td>
+                    </tr>
+                    {% for match in matches %}
+                        <tr>
+                            <td class="text-right"><br>{{ match.team1.teamName }}</td>
+                            <td class="text-center">
+                                {{ match.time }} <br><input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="mobile_team1Score_{{ match.id }}" name="team1Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team1_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
+                                <strong>:</strong>
+                                <input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="mobile_team2Score_{{ match.id }}" name="team2Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team2_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
+                            </td>
+                            <td class="text-left"><br>{{ match.team2.teamName }}</td>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div style="display: flex; justify-content: space-between;">
+        <p class="last-update">Stand: {{ last_update }}</p>
+        <button type="submit" class="btn btn-primary btn-container">Speichern</button>
+    </div>
+</form>
+
+</div>
+<script>
+    document.getElementById('tippenForm').addEventListener('submit', function(event) {
+        // Get the current screen width
+        var screenWidth = window.innerWidth;
+
+        // Get the desktop and mobile view divs
+        var desktopView = document.querySelector('.table-responsive-desktop');
+        var mobileView = document.querySelector('.table-responsive-mobile');
+
+        // Hide inputs that are not visible based on the screen width
+        if (screenWidth >= 768) {
+            // Hide mobile inputs for desktop view
+            mobileView.querySelectorAll('input').forEach(function(input) {
+                input.disabled = true;
+            });
+        } else {
+            // Hide desktop inputs for mobile view
+            desktopView.querySelectorAll('input').forEach(function(input) {
+                input.disabled = true;
+            });
+        }
+    });
+</script>
+
+{% endblock %}

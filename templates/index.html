@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+{% block header %}
+    Statistik
+{% endblock %}
+
+{% block main %}
+
+<div class="card rounded-4" style="width: 20rem;">
+  <div class="card-body">
+    <h4 class="card-title" style="text-align: center;"> Hallo {{ insights.username }}! </h4>
+    <div class="stats"> Deine Platzierung: <span>{{ insights.rank }}. von {{ insights.no_users }}</span></div>
+    <div class="stats"> Gesamtpunkte <span>{{ insights.total_points }}</span> </div>
+    <p></p>
+    <div class="stats">Getippte Spiele: <span>{{ insights.total_games_predicted }}</span></div>
+    <div class="stats">Ausgewertete Tipps: <span>{{ insights.predictions_rated }}</span></div>
+    <div class="stats">Verpasste Spiele: <span>{{ insights.missed_games }}</span></div>
+    <div class="stats">Punkte pro Tipp: <span>{{ insights.points_per_tip }}</span></div>
+    <p></p>
+    <div class="stats">Richtiges Ergebnis: <span>{{ insights.corr_result_p }}% ({{ insights.corr_result }}x)</span></div>
+    <div class="stats">Richtiges Torverhältnis: <span>{{ insights.corr_goal_diff_p }}% ({{ insights.corr_goal_diff }}x)</span></div>
+    <div class="stats">Richtige Tendenz: <span>{{ insights.corr_tendency_p }}% ({{ insights.corr_tendency }}x)</span></div>
+    <div class="stats">Falscher Tipp: <span>{{ insights.wrong_predictions_p }}% ({{ insights.wrong_predictions }}x)</span></div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-12 d-sm-none justify-content-between">
+    <a href="{{ url_for('tippen') }}" class="btn btn-primary mt-3 ml-sm-2" style="margin-right: 10px;">Tippen</a>
+    <a href="{{ url_for('rangliste') }}" class="btn btn-primary mt-3">Zur Rangliste</a>
+  </div>
+</div>
+
+
+{% endblock %}

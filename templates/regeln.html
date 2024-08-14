@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Regeln
+{% endblock %}
+{% block header %}
+    Regeln
+{% endblock %}
+{% block main %}
+
+<div class="card rounded-4" style="width: 20rem;">
+      <div class="card-body">
+        <h4 class="card-title">Tippabgabe</h4>
+        <ul class="list-unstyled">
+          <li>Getippt wird das genaue Ergebnis.</li>
+          <li>Bei KO-Spielen wird das Ergebnis nach Elfmeterschießen getippt.</li>
+          <li>Die Tippabgabe ist bis Spielanpfiff möglich.</li>
+          <li>Nach Anpfiff sind die Tipps der anderen Spieler sichtbar.</li>
+        </ul>
+        <h4 class="card-title">Punkteverteilung</h4>
+        <p class="card-text">
+          <span class="d-flex justify-content-between">
+            <span>Richtiges Ergebnis:</span>
+            <span>4 Punkte</span>
+          </span>
+          <span class="d-flex justify-content-between">
+            <span>Richtiges Torverhältnis:</span>
+            <span>3 Punkte</span>
+          </span>
+          <span class="d-flex justify-content-between">
+            <span>Richtige Tendenz:</span>
+            <span>2 Punkte</span>
+          </span>
+        </p>
+        <h4 class="card-title">Punktgleichheit</h4>
+        <p class="card-text">
+          Bei Punktgleichheit in der Rangliste erfolgt die Sortierung absteigend nach den folgenden Kriterien: <br>
+          1. Anzahl der richtigen Ergebnisse <br>
+          2. Anzahl der richtigen Torverhältnisse <br>
+          3. Anzahl der richtigen Tendenzen
+        </p>
+      </div>
+    </div>
+  </div>
+  
+
+{% endblock %}
