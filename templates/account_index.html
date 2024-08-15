@@ -6,21 +6,21 @@
     <h5 class="card-title text-center mb-4">Accountverwaltung</h5>
         <p class="text-center">Noch nicht vollständig implementiert...</p>
         <div class="list-group">
-            <a href="{{ url_for('delete_account') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                <span>
-                    <i class="fa-solid fa-trash-alt me-2"></i> Account löschen
-                </span>
-                <i class="fa-solid fa-caret-right"></i>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <a href="{{ url_for('change_password') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                 <span>
                     <i class="fa-solid fa-key me-2"></i> Passwort ändern
                 </span>
                 <i class="fa-solid fa-caret-right"></i>
             </a>
-            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <a href="{{ url_for('change_username') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                 <span>
                     <i class="fa-solid fa-user-edit me-2"></i> Benutzername ändern
+                </span>
+                <i class="fa-solid fa-caret-right"></i>
+            </a>
+            <a href="{{ url_for('delete_account') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <span>
+                    <i class="fa-solid fa-trash-alt me-2"></i> Account löschen
                 </span>
                 <i class="fa-solid fa-caret-right"></i>
             </a>

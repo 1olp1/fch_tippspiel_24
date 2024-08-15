@@ -315,7 +315,7 @@ def login():
 
                 # Check if user exists and password is correct
                 if not user or not check_password_hash(user.hash, password):
-                    flash("Ungültiger Benutzername und/oder Passwort", 'error')
+                    flash("Benutzername/Passwort falsch", 'error')
                     return redirect("/login")
 
                 # Remember which user has logged in
@@ -339,6 +339,7 @@ def login():
     
 
 @app.route("/logout")
+@login_required
 def logout():
     """Log user out"""
 
@@ -353,16 +354,16 @@ def logout():
 
 
 @app.route("/account", methods=["GET", "POST"])
+@login_required
 def account():  
     return render_template("account_index.html")
 
 
 @app.route("/account/delete", methods=["GET", "POST"])
+@login_required
 def delete_account():
     if request.method == "POST":
-        print("Hallo im in account delete post")
         confirm_delete = request.form.get('confirm_delete')
-        print("Confirm delte ist: ", confirm_delete)
         if confirm_delete == 'yes':
             try:
                 with get_db_session() as db_session:
@@ -383,20 +384,101 @@ def delete_account():
         return render_template("account_delete.html")
 
 
-@app.route("/account/change_password", methods=["POST"])
+@app.route("/account/change_password", methods=["GET", "POST"])
+@login_required
 def change_password():
-    new_password = request.form.get('new_password')
-    # Add logic to change the password
-    flash('Password changed successfully.', 'success')
-    return redirect(url_for('account'))
+    try:
+        with get_db_session() as db_session:
+            # User reached route via POST (as by submitting a form via POST)
+            if request.method == "POST":
+                current_password = request.form.get("current_password")
+                new_password = request.form.get("password")
+                password_confirmation = request.form.get("password_confirmation")
+
+                # Ensure inputs are not empty
+                if not current_password or not new_password or not password_confirmation:
+                    flash("Feld(er) leer", "error")
+                    return redirect("/account/change_password")
+
+                # Query database for username
+                user = db_session.query(User).filter_by(username=session["username"]).first()
+
+                # Check if user exists and password is correct
+                if not user or not check_password_hash(user.hash, current_password):
+                    flash("Ungültiges Passwort", 'error')
+                    return redirect("/account/change_password")
+                
+                if new_password != password_confirmation:
+                    flash("Passwörter stimmen nicht überein", 'error')
+                    return redirect("/account/change_password")
+
+                # Hash the password
+                hashed_pw = generate_password_hash(new_password)
+
+                # Update the user's password in the database
+                user.hash = hashed_pw
+                db_session.commit()
+
+                flash('Passwort erfolgreich geändert.', 'success')
+                return redirect("/account")
+
+            # User reached route via GET (as by clicking a link or via redirect)
+            else:
+                return render_template("account_change_pw.html")
+            
+    except OperationalError as e:
+        app.logger.error(f"Database connection error: {e}")
+        return "Database connection error, please try again later.", 500
 
 
-@app.route("/account/change_username", methods=["POST"])
+@app.route("/account/change_username", methods=["GET", "POST"])
 def change_username():
-    new_username = request.form.get('new_username')
-    # Add logic to change the username
-    flash('Username changed successfully.', 'success')
-    return redirect(url_for('account'))
+    try:
+        with get_db_session() as db_session:
+            # User reached route via POST (as by submitting a form via POST)
+            if request.method == "POST":
+                new_username = request.form.get("new_username")
+                password_confirmation = request.form.get("password_confirmation")
+
+                # Ensure inputs are not empty
+                if not new_username or not password_confirmation:
+                    flash("Feld(er) leer", "error")
+                    return redirect("/account/change_username")
+
+                # Query database for username
+                user = db_session.query(User).filter_by(username=session["username"]).first()
+
+                # Check if user exists and password is correct
+                if not user or not check_password_hash(user.hash, password_confirmation):
+                    flash("Ungültiges Passwort", 'error')
+                    return redirect("/account/change_username")
+                
+                # Prevent username from being the same as current username
+                if new_username == session["username"]:
+                    flash("Benutzername ungültig", 'error')
+                    return redirect("/account/change_username")
+                
+                # Check if username already exists
+                existing_user = db_session.query(User).filter_by(username=new_username).first()
+                if existing_user:
+                    flash("Benutzername bereits vergeben", 'error')
+                    return redirect("/account/change_username")
+
+                # Update the user's username in the database
+                user.username = new_username
+                db_session.commit()
+                session["username"] = new_username
+
+                flash('Benutzernamen erfolgreich geändert.', 'success')
+                return redirect("/account")
+
+            # User reached route via GET (as by clicking a link or via redirect)
+            else:
+                return render_template("account_change_username.html")
+                
+    except OperationalError as e:
+        app.logger.error(f"Database connection error: {e}")
+        return "Database connection error, please try again later.", 500
 
 
 @app.route("/register", methods=["GET", "POST"])
