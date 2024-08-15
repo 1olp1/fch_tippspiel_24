@@ -108,7 +108,7 @@ class Team(Base):
     shortName = Column(String(255))
     teamIconUrl = Column(String(255))
     teamIconPath = Column(String(255))
-    teamGroupName = Column(String, default='None')
+    teamGroupName = Column(String(255), default='None')
     points = Column(Integer, default=0)
     opponentGoals = Column(Integer, default=0)
     goals = Column(Integer, default=0)

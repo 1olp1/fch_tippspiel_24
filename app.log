@@ -1,0 +1,905 @@
+2024-08-16 01:04:15,976 - WARNING -  * Debugger is active!
+2024-08-16 01:04:15,978 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:04:36,535 - INFO - 127.0.0.1 - - [16/Aug/2024 01:04:36] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-08-16 01:04:36,545 - INFO - 127.0.0.1 - - [16/Aug/2024 01:04:36] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-16 01:04:36,611 - INFO - 127.0.0.1 - - [16/Aug/2024 01:04:36] "GET /login HTTP/1.1" 200 -
+2024-08-16 01:04:36,662 - INFO - 127.0.0.1 - - [16/Aug/2024 01:04:36] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:04:38,899 - INFO - Downloading image for team 1. FC Heidenheim 1846 from https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/1._FC_Heidenheim_1846.svg/830px-1._FC_Heidenheim_1846.svg.png
+2024-08-16 01:04:39,062 - INFO - Image saved for team 1. FC Heidenheim 1846 at ./static/bl1/2024/team-logos/Heidenheim.png
+2024-08-16 01:04:39,092 - INFO - Image resized for team 1. FC Heidenheim 1846
+2024-08-16 01:04:39,092 - INFO - Downloading image for team 1. FC Union Berlin from https://assets.dfb.de/uploads/000/018/232/small_union-Berlin.jpg
+2024-08-16 01:04:39,209 - INFO - Image saved for team 1. FC Union Berlin at ./static/bl1/2024/team-logos/Union Berlin.jpg
+2024-08-16 01:04:39,216 - INFO - Image resized for team 1. FC Union Berlin
+2024-08-16 01:04:39,216 - INFO - Downloading image for team 1. FSV Mainz 05 from https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Logo_Mainz_05.svg/1200px-Logo_Mainz_05.svg.png
+2024-08-16 01:04:39,378 - INFO - Image saved for team 1. FSV Mainz 05 at ./static/bl1/2024/team-logos/Mainz.png
+2024-08-16 01:04:39,405 - INFO - Image resized for team 1. FSV Mainz 05
+2024-08-16 01:04:39,406 - INFO - Downloading image for team Bayer Leverkusen from https://upload.wikimedia.org/wikipedia/de/thumb/f/f7/Bayer_Leverkusen_Logo.svg/1200px-Bayer_Leverkusen_Logo.svg.png
+2024-08-16 01:04:39,576 - INFO - Image saved for team Bayer Leverkusen at ./static/bl1/2024/team-logos/Leverkusen.png
+2024-08-16 01:04:39,599 - INFO - Image resized for team Bayer Leverkusen
+2024-08-16 01:04:39,599 - INFO - Downloading image for team Borussia Dortmund from https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/560px-Borussia_Dortmund_logo.svg.png
+2024-08-16 01:04:39,725 - INFO - Image saved for team Borussia Dortmund at ./static/bl1/2024/team-logos/BVB.png
+2024-08-16 01:04:39,733 - INFO - Image resized for team Borussia Dortmund
+2024-08-16 01:04:39,733 - INFO - Downloading image for team Borussia Mönchengladbach from https://i.imgur.com/KSIk0Eu.png
+2024-08-16 01:04:39,835 - ERROR - Failed to download or process image for team Borussia Mönchengladbach at index 5. Error: 429 Client Error: Unknown Error for url: https://i.imgur.com/KSIk0Eu.png
+2024-08-16 01:04:39,835 - INFO - Downloading image for team Eintracht Frankfurt from https://i.imgur.com/X8NFkOb.png
+2024-08-16 01:04:39,925 - ERROR - Failed to download or process image for team Eintracht Frankfurt at index 6. Error: 429 Client Error: Unknown Error for url: https://i.imgur.com/X8NFkOb.png
+2024-08-16 01:04:39,926 - INFO - Downloading image for team FC Augsburg from https://i.imgur.com/sdE62e2.png
+2024-08-16 01:04:40,015 - ERROR - Failed to download or process image for team FC Augsburg at index 7. Error: 429 Client Error: Unknown Error for url: https://i.imgur.com/sdE62e2.png
+2024-08-16 01:04:40,015 - INFO - Downloading image for team FC Bayern München from https://i.imgur.com/jJEsJrj.png
+2024-08-16 01:04:40,104 - ERROR - Failed to download or process image for team FC Bayern München at index 8. Error: 429 Client Error: Unknown Error for url: https://i.imgur.com/jJEsJrj.png
+2024-08-16 01:04:40,105 - INFO - Downloading image for team FC St. Pauli from https://upload.wikimedia.org/wikipedia/de/b/b3/Fc_st_pauli_logo.svg
+2024-08-16 01:04:40,203 - INFO - Image saved for team FC St. Pauli at ./static/bl1/2024/team-logos/St. Pauli.svg
+2024-08-16 01:04:40,203 - INFO - Image resized for team FC St. Pauli
+2024-08-16 01:04:40,203 - INFO - Downloading image for team Holstein Kiel from https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Holstein_Kiel_Logo.svg/300px-Holstein_Kiel_Logo.svg.png
+2024-08-16 01:04:40,342 - INFO - Image saved for team Holstein Kiel at ./static/bl1/2024/team-logos/Kiel.png
+2024-08-16 01:04:40,347 - INFO - Image resized for team Holstein Kiel
+2024-08-16 01:04:40,347 - INFO - Downloading image for team RB Leipzig from https://i.imgur.com/Rpwsjz1.png
+2024-08-16 01:04:40,440 - ERROR - Failed to download or process image for team RB Leipzig at index 11. Error: 429 Client Error: Unknown Error for url: https://i.imgur.com/Rpwsjz1.png
+2024-08-16 01:04:40,440 - INFO - Downloading image for team SC Freiburg from https://i.imgur.com/r3mvi0h.png
+2024-08-16 01:04:40,530 - ERROR - Failed to download or process image for team SC Freiburg at index 12. Error: 429 Client Error: Unknown Error for url: https://i.imgur.com/r3mvi0h.png
+2024-08-16 01:04:40,530 - INFO - Downloading image for team TSG 1899 Hoffenheim from https://i.imgur.com/gF0PfEl.png
+2024-08-16 01:04:40,620 - ERROR - Failed to download or process image for team TSG 1899 Hoffenheim at index 13. Error: 429 Client Error: Unknown Error for url: https://i.imgur.com/gF0PfEl.png
+2024-08-16 01:04:40,620 - INFO - Downloading image for team VfB Stuttgart from https://i.imgur.com/v0tkpNx.png
+2024-08-16 01:04:40,711 - ERROR - Failed to download or process image for team VfB Stuttgart at index 14. Error: 429 Client Error: Unknown Error for url: https://i.imgur.com/v0tkpNx.png
+2024-08-16 01:04:40,712 - INFO - Downloading image for team VfL Bochum from https://i.imgur.com/5jy3Gfr.png
+2024-08-16 01:04:40,801 - ERROR - Failed to download or process image for team VfL Bochum at index 15. Error: 429 Client Error: Unknown Error for url: https://i.imgur.com/5jy3Gfr.png
+2024-08-16 01:04:40,801 - INFO - Downloading image for team VfL Wolfsburg from https://i.imgur.com/ucqKV4B.png
+2024-08-16 01:04:40,892 - ERROR - Failed to download or process image for team VfL Wolfsburg at index 16. Error: 429 Client Error: Unknown Error for url: https://i.imgur.com/ucqKV4B.png
+2024-08-16 01:04:40,892 - INFO - Downloading image for team Werder Bremen from https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/SV-Werder-Bremen-Logo.svg/681px-SV-Werder-Bremen-Logo.svg.png
+2024-08-16 01:04:41,014 - INFO - Image saved for team Werder Bremen at ./static/bl1/2024/team-logos/Bremen.png
+2024-08-16 01:04:41,028 - INFO - Image resized for team Werder Bremen
+2024-08-16 01:04:41,764 - INFO - 127.0.0.1 - - [16/Aug/2024 01:04:41] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-16 01:04:41,817 - INFO - 127.0.0.1 - - [16/Aug/2024 01:04:41] "GET / HTTP/1.1" 200 -
+2024-08-16 01:04:41,862 - INFO - 127.0.0.1 - - [16/Aug/2024 01:04:41] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:11:31,155 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:11:31,828 - WARNING -  * Debugger is active!
+2024-08-16 01:11:31,835 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:11:38,630 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:11:39,044 - WARNING -  * Debugger is active!
+2024-08-16 01:11:39,046 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:12:18,075 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:18] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-08-16 01:12:18,084 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:18] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-16 01:12:18,147 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:18] "GET /login HTTP/1.1" 200 -
+2024-08-16 01:12:18,198 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:18] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:12:20,616 - INFO - Downloading image for team 1. FC Heidenheim 1846 from https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/1._FC_Heidenheim_1846.svg/830px-1._FC_Heidenheim_1846.svg.png
+2024-08-16 01:12:20,775 - INFO - Image saved for team 1. FC Heidenheim 1846 at ./static/bl1/2024/team-logos/Heidenheim.png
+2024-08-16 01:12:20,805 - INFO - Image resized for team 1. FC Heidenheim 1846
+2024-08-16 01:12:20,805 - INFO - Downloading image for team 1. FC Union Berlin from https://assets.dfb.de/uploads/000/018/232/small_union-Berlin.jpg
+2024-08-16 01:12:20,913 - INFO - Image saved for team 1. FC Union Berlin at ./static/bl1/2024/team-logos/Union Berlin.jpg
+2024-08-16 01:12:20,917 - INFO - Image resized for team 1. FC Union Berlin
+2024-08-16 01:12:20,917 - INFO - Downloading image for team 1. FSV Mainz 05 from https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Logo_Mainz_05.svg/1200px-Logo_Mainz_05.svg.png
+2024-08-16 01:12:21,077 - INFO - Image saved for team 1. FSV Mainz 05 at ./static/bl1/2024/team-logos/Mainz.png
+2024-08-16 01:12:21,105 - INFO - Image resized for team 1. FSV Mainz 05
+2024-08-16 01:12:21,105 - INFO - Downloading image for team Bayer Leverkusen from https://upload.wikimedia.org/wikipedia/de/thumb/f/f7/Bayer_Leverkusen_Logo.svg/1200px-Bayer_Leverkusen_Logo.svg.png
+2024-08-16 01:12:21,278 - INFO - Image saved for team Bayer Leverkusen at ./static/bl1/2024/team-logos/Leverkusen.png
+2024-08-16 01:12:21,301 - INFO - Image resized for team Bayer Leverkusen
+2024-08-16 01:12:21,301 - INFO - Downloading image for team Borussia Dortmund from https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/560px-Borussia_Dortmund_logo.svg.png
+2024-08-16 01:12:21,429 - INFO - Image saved for team Borussia Dortmund at ./static/bl1/2024/team-logos/BVB.png
+2024-08-16 01:12:21,438 - INFO - Image resized for team Borussia Dortmund
+2024-08-16 01:12:21,438 - INFO - Downloading image for team Borussia Mönchengladbach from https://i.imgur.com/KSIk0Eu.png
+2024-08-16 01:12:21,562 - INFO - Image saved for team Borussia Mönchengladbach at ./static/bl1/2024/team-logos/Gladbach.png
+2024-08-16 01:12:21,582 - INFO - Image resized for team Borussia Mönchengladbach
+2024-08-16 01:12:21,582 - INFO - Downloading image for team Eintracht Frankfurt from https://i.imgur.com/X8NFkOb.png
+2024-08-16 01:12:21,717 - INFO - Image saved for team Eintracht Frankfurt at ./static/bl1/2024/team-logos/Frankfurt.png
+2024-08-16 01:12:21,740 - INFO - Image resized for team Eintracht Frankfurt
+2024-08-16 01:12:21,740 - INFO - Downloading image for team FC Augsburg from https://i.imgur.com/sdE62e2.png
+2024-08-16 01:12:21,868 - INFO - Image saved for team FC Augsburg at ./static/bl1/2024/team-logos/Augsburg.png
+2024-08-16 01:12:21,894 - INFO - Image resized for team FC Augsburg
+2024-08-16 01:12:21,894 - INFO - Downloading image for team FC Bayern München from https://i.imgur.com/jJEsJrj.png
+2024-08-16 01:12:22,021 - INFO - Image saved for team FC Bayern München at ./static/bl1/2024/team-logos/Bayern.png
+2024-08-16 01:12:22,042 - INFO - Image resized for team FC Bayern München
+2024-08-16 01:12:22,042 - INFO - Downloading image for team FC St. Pauli from https://upload.wikimedia.org/wikipedia/de/b/b3/Fc_st_pauli_logo.svg
+2024-08-16 01:12:22,139 - INFO - Image saved for team FC St. Pauli at ./static/bl1/2024/team-logos/St. Pauli.svg
+2024-08-16 01:12:22,139 - INFO - Image resized for team FC St. Pauli
+2024-08-16 01:12:22,139 - INFO - Downloading image for team Holstein Kiel from https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Holstein_Kiel_Logo.svg/300px-Holstein_Kiel_Logo.svg.png
+2024-08-16 01:12:22,277 - INFO - Image saved for team Holstein Kiel at ./static/bl1/2024/team-logos/Kiel.png
+2024-08-16 01:12:22,282 - INFO - Image resized for team Holstein Kiel
+2024-08-16 01:12:22,282 - INFO - Downloading image for team RB Leipzig from https://i.imgur.com/Rpwsjz1.png
+2024-08-16 01:12:22,400 - INFO - Image saved for team RB Leipzig at ./static/bl1/2024/team-logos/Leipzig.png
+2024-08-16 01:12:22,422 - INFO - Image resized for team RB Leipzig
+2024-08-16 01:12:22,422 - INFO - Downloading image for team SC Freiburg from https://i.imgur.com/r3mvi0h.png
+2024-08-16 01:12:22,538 - INFO - Image saved for team SC Freiburg at ./static/bl1/2024/team-logos/Freiburg.png
+2024-08-16 01:12:22,558 - INFO - Image resized for team SC Freiburg
+2024-08-16 01:12:22,558 - INFO - Downloading image for team TSG 1899 Hoffenheim from https://i.imgur.com/gF0PfEl.png
+2024-08-16 01:12:22,689 - INFO - Image saved for team TSG 1899 Hoffenheim at ./static/bl1/2024/team-logos/Hoffenheim.png
+2024-08-16 01:12:22,714 - INFO - Image resized for team TSG 1899 Hoffenheim
+2024-08-16 01:12:22,714 - INFO - Downloading image for team VfB Stuttgart from https://i.imgur.com/v0tkpNx.png
+2024-08-16 01:12:22,846 - INFO - Image saved for team VfB Stuttgart at ./static/bl1/2024/team-logos/Stuttgart.png
+2024-08-16 01:12:22,871 - INFO - Image resized for team VfB Stuttgart
+2024-08-16 01:12:22,871 - INFO - Downloading image for team VfL Bochum from https://i.imgur.com/5jy3Gfr.png
+2024-08-16 01:12:22,996 - INFO - Image saved for team VfL Bochum at ./static/bl1/2024/team-logos/Bochum.png
+2024-08-16 01:12:23,021 - INFO - Image resized for team VfL Bochum
+2024-08-16 01:12:23,021 - INFO - Downloading image for team VfL Wolfsburg from https://i.imgur.com/ucqKV4B.png
+2024-08-16 01:12:23,134 - INFO - Image saved for team VfL Wolfsburg at ./static/bl1/2024/team-logos/Wolfsburg.png
+2024-08-16 01:12:23,159 - INFO - Image resized for team VfL Wolfsburg
+2024-08-16 01:12:23,160 - INFO - Downloading image for team Werder Bremen from https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/SV-Werder-Bremen-Logo.svg/681px-SV-Werder-Bremen-Logo.svg.png
+2024-08-16 01:12:23,283 - INFO - Image saved for team Werder Bremen at ./static/bl1/2024/team-logos/Bremen.png
+2024-08-16 01:12:23,298 - INFO - Image resized for team Werder Bremen
+2024-08-16 01:12:24,042 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:24] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-16 01:12:24,097 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:24] "GET / HTTP/1.1" 200 -
+2024-08-16 01:12:24,145 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:24] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:12:26,030 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:12:26,074 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:12:26,090 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,091 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,094 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,095 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,096 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,102 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,109 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,112 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,116 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,123 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,124 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:12:26,127 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,134 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,138 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,146 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:12:26,146 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,147 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:26,148 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:26] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,031 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /tippen?matchday=2 HTTP/1.1" 200 -
+2024-08-16 01:12:43,065 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:12:43,080 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,084 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,089 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,090 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,093 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,094 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,105 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,110 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,111 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,118 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,123 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,129 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:12:43,136 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:12:43,138 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,140 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,145 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,146 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:43,147 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:43] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,198 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /tippen?matchday=1 HTTP/1.1" 200 -
+2024-08-16 01:12:44,230 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:12:44,248 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,249 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,250 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,251 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,252 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,255 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,271 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,275 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,276 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,277 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:12:44,281 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,283 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,301 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:12:44,303 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,304 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,305 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,306 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:12:44,306 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:44] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,495 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /tippen?matchday=2 HTTP/1.1" 200 -
+2024-08-16 01:12:45,538 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:12:45,550 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,559 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,562 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,564 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,566 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,567 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,582 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,585 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,591 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,592 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,594 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,598 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,607 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:12:45,613 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,615 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,616 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:12:45,618 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:12:45,619 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:45] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,110 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /tippen?matchday=1 HTTP/1.1" 200 -
+2024-08-16 01:12:49,152 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:12:49,165 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,171 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,174 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,174 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,177 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,188 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,190 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,196 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,198 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,203 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,205 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,219 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,222 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:12:49,226 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,227 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,227 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,232 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:12:49,235 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:12:49,253 - INFO - 127.0.0.1 - - [16/Aug/2024 01:12:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-08-16 01:13:06,729 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:06] "GET /regeln HTTP/1.1" 200 -
+2024-08-16 01:13:06,760 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:06] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:13:07,906 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:07] "GET /account HTTP/1.1" 200 -
+2024-08-16 01:13:07,932 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:07] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:13:08,867 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:08] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:13:08,890 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:08] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:13:12,262 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:12] "GET /rangliste/overview HTTP/1.1" 200 -
+2024-08-16 01:13:12,288 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:12] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:13:13,638 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:13:13,671 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:13:13,686 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:13:13,692 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,693 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,694 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,697 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,701 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,717 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,717 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,718 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,719 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,720 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,731 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,740 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:13:13,743 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,744 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,744 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,745 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:13:13,752 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:13] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:13:16,178 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:16] "GET / HTTP/1.1" 200 -
+2024-08-16 01:13:16,204 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:16] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:13:17,682 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:13:17,716 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:13:17,732 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,736 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,739 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,740 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,741 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,747 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,756 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,759 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,765 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,768 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,777 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,778 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,778 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,783 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,788 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:13:17,794 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,794 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:13:17,795 - INFO - 127.0.0.1 - - [16/Aug/2024 01:13:17] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:15:17,291 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:17] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:15:17,334 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:17] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:15:18,240 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:15:18,280 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:15:18,297 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,300 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,303 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,304 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,306 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,306 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,326 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,328 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,330 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,331 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:15:18,335 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,336 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,349 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:15:18,350 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,352 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,361 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,363 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:15:18,363 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:18] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,178 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:15:27,218 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:15:27,236 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,238 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,243 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,244 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,246 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,254 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,266 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,270 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,273 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,273 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,276 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,279 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,295 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,298 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,301 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,302 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:15:27,303 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:15:27,303 - INFO - 127.0.0.1 - - [16/Aug/2024 01:15:27] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:18:02,674 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:02] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:18:02,716 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:02] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:05,580 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:05] "GET /rangliste/overview HTTP/1.1" 200 -
+2024-08-16 01:18:05,611 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:05] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:06,645 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:06] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:18:06,670 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:06] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:08,175 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:08] "GET /account HTTP/1.1" 200 -
+2024-08-16 01:18:08,204 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:08] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:08,948 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:08] "GET /account/change_password HTTP/1.1" 200 -
+2024-08-16 01:18:08,982 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:08] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:10,633 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:10] "GET /account HTTP/1.1" 200 -
+2024-08-16 01:18:10,663 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:10] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:11,470 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:11] "GET /account/change_username HTTP/1.1" 200 -
+2024-08-16 01:18:11,502 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:11] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:14,769 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:14] "GET /account HTTP/1.1" 200 -
+2024-08-16 01:18:14,796 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:14] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:16,048 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:16] "GET /account/delete HTTP/1.1" 200 -
+2024-08-16 01:18:16,076 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:16] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:15,709 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:15] "GET /account HTTP/1.1" 200 -
+2024-08-16 01:18:15,736 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:15] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:16,616 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:16] "GET /account/change_password HTTP/1.1" 200 -
+2024-08-16 01:18:16,650 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:16] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:17,207 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:17] "GET /account HTTP/1.1" 200 -
+2024-08-16 01:18:17,234 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:17] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:17,789 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:17] "GET /account/delete HTTP/1.1" 200 -
+2024-08-16 01:18:17,816 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:17] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:46,080 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:46] "GET /account/delete HTTP/1.1" 200 -
+2024-08-16 01:18:46,104 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:46] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:47,919 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:47] "GET /account HTTP/1.1" 200 -
+2024-08-16 01:18:47,948 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:47] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:48,545 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:48] "GET /account/change_password HTTP/1.1" 200 -
+2024-08-16 01:18:48,580 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:48] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:49,606 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:49] "GET /account HTTP/1.1" 200 -
+2024-08-16 01:18:49,634 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:49] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:50,340 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:50] "GET /account/change_username HTTP/1.1" 200 -
+2024-08-16 01:18:50,372 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:50] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:51,616 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:51] "GET /account HTTP/1.1" 200 -
+2024-08-16 01:18:51,641 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:51] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:52,368 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:52] "GET /account/change_password HTTP/1.1" 200 -
+2024-08-16 01:18:52,401 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:52] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:53,654 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:53] "GET /account HTTP/1.1" 200 -
+2024-08-16 01:18:53,682 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:53] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:18:57,938 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:57] "GET / HTTP/1.1" 200 -
+2024-08-16 01:18:57,961 - INFO - 127.0.0.1 - - [16/Aug/2024 01:18:57] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:08,361 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:08] "GET /account HTTP/1.1" 200 -
+2024-08-16 01:19:08,387 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:08] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:35,339 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:19:35,373 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:35,389 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,393 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,394 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,399 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,400 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,410 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,411 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,422 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,422 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,424 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,428 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,432 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,446 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:19:35,447 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,450 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,453 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,454 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:19:35,454 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:35] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:19:38,052 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:38] "GET / HTTP/1.1" 200 -
+2024-08-16 01:19:38,080 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:38] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:39,474 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:19:39,511 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:39,525 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,528 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,529 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,534 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,536 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,542 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,546 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,554 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,555 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,558 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,568 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,569 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,571 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:19:39,575 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,576 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,586 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:19:39,587 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:19:39,587 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:39] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:41,259 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:41] "GET / HTTP/1.1" 200 -
+2024-08-16 01:19:41,284 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:41] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:44,399 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:19:44,431 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:44,440 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:19:44,449 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,452 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,456 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,457 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,461 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,463 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,470 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,473 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,483 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,486 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,491 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,492 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,493 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:19:44,502 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,505 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,507 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:19:44,508 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:44] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:19:46,823 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:46] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:19:46,851 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:46] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:48,222 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:19:48,255 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:48,272 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,274 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,275 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,276 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,279 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,281 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,294 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,302 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,303 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,304 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,307 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,308 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:19:48,319 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,324 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,329 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,330 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:19:48,330 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:19:48,331 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:48] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:49,856 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:49] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:19:49,879 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:49] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:52,738 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:19:52,772 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:52,789 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,790 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,793 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,795 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,796 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,801 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,813 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,815 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,818 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,824 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:19:52,827 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,832 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,837 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:19:52,842 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,845 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,848 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,849 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:52,850 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:52] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:19:54,322 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:54] "GET / HTTP/1.1" 200 -
+2024-08-16 01:19:54,347 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:54] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:55,076 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:19:55,107 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:19:55,119 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,123 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,127 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,128 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,138 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,139 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,145 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,148 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,151 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,157 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,164 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,169 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,171 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,173 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:19:55,176 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,178 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:19:55,184 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:19:55,185 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:55] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:19:58,050 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:58] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:19:58,079 - INFO - 127.0.0.1 - - [16/Aug/2024 01:19:58] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:20:05,990 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:05] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:20:06,022 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:20:06,039 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,041 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,042 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,043 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,046 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,053 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,062 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,064 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,067 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,068 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,070 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,085 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:20:06,086 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,089 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,092 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,094 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:20:06,098 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:20:06,100 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:06] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:14,333 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:14] "GET / HTTP/1.1" 200 -
+2024-08-16 01:20:14,360 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:14] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:20:17,903 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:20:17,935 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:20:17,947 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:20:17,955 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:20:17,956 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:20:17,958 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:20:17,962 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:20:17,963 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:20:17,965 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:20:17,978 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:20:17,984 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:17,985 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:20:17,987 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:17,992 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:20:17,994 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:17] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:20:18,001 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:18] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:20:18,006 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:18] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:20:18,009 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:18] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:20:18,009 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:18] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:20:18,012 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:18] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:19,571 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:19] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:20:19,598 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:19] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:20:22,044 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:20:22,097 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:20:22,118 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:20:22,118 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,118 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,119 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,119 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,119 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,131 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,144 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,147 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,148 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,150 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,152 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,157 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:20:22,168 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,170 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,172 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,174 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:22,177 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:22] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:20:23,818 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:23] "GET / HTTP/1.1" 200 -
+2024-08-16 01:20:23,842 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:23] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:20:38,426 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:38] "GET /regeln HTTP/1.1" 200 -
+2024-08-16 01:20:38,451 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:38] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:20:55,464 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:55] "GET / HTTP/1.1" 200 -
+2024-08-16 01:20:55,488 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:55] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:20:57,150 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:20:57,184 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:20:57,198 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,204 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,205 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,208 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,210 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,213 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,223 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,228 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,230 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,238 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,244 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,246 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,252 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,256 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:20:57,260 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,264 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,264 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:20:57,266 - INFO - 127.0.0.1 - - [16/Aug/2024 01:20:57] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:21:00,888 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:00] "GET / HTTP/1.1" 200 -
+2024-08-16 01:21:00,912 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:00] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:21:02,915 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:02] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:21:02,946 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:02] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:21:02,954 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:02] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:21:02,960 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:02] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:21:02,972 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:02] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:21:02,973 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:02] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:21:02,973 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:02] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:21:02,974 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:02] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:21:02,978 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:02] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:21:02,982 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:02] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:21:02,994 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:02] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:21:03,002 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:03] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:21:03,004 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:03] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:21:03,007 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:03] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:21:03,009 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:03] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:21:03,010 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:03] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:21:03,022 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:03] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:21:03,022 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:03] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:21:03,023 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:03] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:21:03,024 - INFO - 127.0.0.1 - - [16/Aug/2024 01:21:03] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:23:28,734 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:23:29,336 - WARNING -  * Debugger is active!
+2024-08-16 01:23:29,342 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:23:55,461 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:23:55,871 - WARNING -  * Debugger is active!
+2024-08-16 01:23:55,872 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:23:57,885 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:23:57,053 - WARNING -  * Debugger is active!
+2024-08-16 01:23:57,055 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:24:19,160 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:24:19,560 - WARNING -  * Debugger is active!
+2024-08-16 01:24:19,562 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:24:24,634 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:24:25,022 - WARNING -  * Debugger is active!
+2024-08-16 01:24:25,024 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:24:32,923 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:24:33,316 - WARNING -  * Debugger is active!
+2024-08-16 01:24:33,318 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:24:36,335 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:24:36,727 - WARNING -  * Debugger is active!
+2024-08-16 01:24:36,728 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:24:44,787 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:24:45,179 - WARNING -  * Debugger is active!
+2024-08-16 01:24:45,181 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:24:55,316 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:24:55,708 - WARNING -  * Debugger is active!
+2024-08-16 01:24:55,710 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:25:24,154 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:24] "GET / HTTP/1.1" 200 -
+2024-08-16 01:25:24,187 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:24] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:25:25,226 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:25:25,258 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:25:25,273 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,275 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,281 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,282 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,283 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,290 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,296 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,304 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,304 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,307 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,316 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,320 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:25:25,322 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,325 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,331 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:25:25,335 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,336 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:25:25,337 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:25] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:25:28,555 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:28] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:25:28,577 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:28] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:25:29,686 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:29] "GET /rangliste/overview HTTP/1.1" 200 -
+2024-08-16 01:25:29,710 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:29] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:25:30,856 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:25:30,878 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:25:30,735 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:25:30,764 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:25:30,775 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,784 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,786 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,787 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,790 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,791 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,803 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,808 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,813 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,817 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:25:30,819 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,822 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,830 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,832 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:25:30,835 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,842 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,842 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:25:30,843 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:30] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:25:32,234 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:32] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-08-16 01:25:32,241 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:32] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-16 01:25:32,251 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:32] "GET /login HTTP/1.1" 200 -
+2024-08-16 01:25:32,279 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:32] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:25:36,122 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:36] "GET /regeln HTTP/1.1" 200 -
+2024-08-16 01:25:36,150 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:36] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:25:38,290 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:38] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-16 01:25:38,296 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:38] "GET /login HTTP/1.1" 200 -
+2024-08-16 01:25:38,329 - INFO - 127.0.0.1 - - [16/Aug/2024 01:25:38] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:26:30,405 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:30] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2024-08-16 01:26:30,434 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:30] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-08-16 01:26:30,434 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:30] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-08-16 01:26:30,445 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:30] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-08-16 01:26:44,970 - INFO -  * Detected change in '/home/olp/projects/fch_tippspiel_24_25/helpers.py', reloading
+2024-08-16 01:26:45,653 - WARNING -  * Debugger is active!
+2024-08-16 01:26:45,660 - INFO -  * Debugger PIN: 224-045-079
+2024-08-16 01:26:51,229 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:51] "GET /login HTTP/1.1" 200 -
+2024-08-16 01:26:51,267 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:51] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:26:53,470 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:53] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-16 01:26:53,522 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:53] "GET / HTTP/1.1" 200 -
+2024-08-16 01:26:53,546 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:53] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:26:58,791 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:26:58,820 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:26:58,839 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,841 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,842 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,842 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,843 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,846 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,862 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,863 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,864 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,869 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,874 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,882 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,884 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:26:58,889 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,893 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,896 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:26:58,897 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:26:58,899 - INFO - 127.0.0.1 - - [16/Aug/2024 01:26:58] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:27:00,835 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:00] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:27:00,857 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:00] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:27:02,125 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:02] "GET /rangliste/overview HTTP/1.1" 200 -
+2024-08-16 01:27:02,147 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:02] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:27:03,410 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:27:03,440 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:27:03,457 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,458 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,459 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,460 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,460 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,463 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,479 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,484 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,486 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,489 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,492 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,495 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:27:03,504 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,512 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,513 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,513 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,514 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:27:03,518 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:03] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:27:54,017 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:27:54,051 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:27:54,068 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,073 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,076 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,077 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,081 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,087 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,098 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,098 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,100 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,103 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,107 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,122 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,124 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:27:54,131 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,132 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,132 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,135 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:27:54,139 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:27:54,157 - INFO - 127.0.0.1 - - [16/Aug/2024 01:27:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-08-16 01:28:11,282 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:28:11,310 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:28:11,326 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,330 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,344 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,344 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,345 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,350 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,357 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,357 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,369 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,373 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,378 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,379 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,381 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,396 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:28:11,398 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:28:11,399 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,404 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:28:11,405 - INFO - 127.0.0.1 - - [16/Aug/2024 01:28:11] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,740 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:30:19,775 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:30:19,795 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,799 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,799 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,802 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,804 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,805 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,814 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,827 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,829 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:30:19,835 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,836 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,837 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,839 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:30:19,846 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,853 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,855 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,858 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,858 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:30:19,973 - INFO - 127.0.0.1 - - [16/Aug/2024 01:30:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-08-16 01:31:16,937 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:16] "GET /tippen?matchday=2 HTTP/1.1" 200 -
+2024-08-16 01:31:16,974 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:16] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:31:16,990 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:16] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:31:16,993 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:16] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:31:16,994 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:16] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,000 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,002 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,003 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,018 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,019 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,023 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,025 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,031 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,034 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:31:17,047 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:31:17,049 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,053 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,055 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,055 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,056 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:31:17,068 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-08-16 01:31:24,753 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /tippen?matchday=1 HTTP/1.1" 200 -
+2024-08-16 01:31:24,784 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:31:24,797 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,799 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,809 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,812 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,814 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,816 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,821 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,826 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,833 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,836 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,838 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,841 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,853 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,854 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,857 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:31:24,861 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:31:24,862 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:31:24,862 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:24] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:31:28,317 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:28] "GET / HTTP/1.1" 200 -
+2024-08-16 01:31:28,341 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:28] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:31:28,371 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-08-16 01:31:29,289 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:29] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-08-16 01:31:29,295 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:29] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-16 01:31:29,306 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:29] "GET /login HTTP/1.1" 200 -
+2024-08-16 01:31:29,332 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:29] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:31:31,504 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:31] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-16 01:31:31,554 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:31] "GET / HTTP/1.1" 200 -
+2024-08-16 01:31:31,581 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:31] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:31:54,862 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:31:54,892 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:31:54,905 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,912 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,915 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,916 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,918 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,923 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,929 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,940 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,940 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,944 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,946 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,951 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,952 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:31:54,965 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,966 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,967 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:31:54,971 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:31:54,975 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:54] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:55,792 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:55] "GET /rangliste HTTP/1.1" 200 -
+2024-08-16 01:31:55,817 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:55] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:31:57,352 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:57] "GET / HTTP/1.1" 200 -
+2024-08-16 01:31:57,375 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:57] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:31:57,402 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-08-16 01:31:58,308 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /tippen HTTP/1.1" 200 -
+2024-08-16 01:31:58,338 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-16 01:31:58,352 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Leverkusen.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,358 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Gladbach.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,363 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Bochum.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,364 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Leipzig.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,367 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Frankfurt.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,370 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/BVB.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,373 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Kiel.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,381 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Freiburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,388 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Augsburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,389 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Stuttgart.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,396 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Bremen.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,399 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Mainz.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,401 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/St.%20Pauli.svg HTTP/1.1" 200 -
+2024-08-16 01:31:58,403 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Bayern.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,413 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Wolfsburg.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,413 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Union%20Berlin.jpg HTTP/1.1" 200 -
+2024-08-16 01:31:58,415 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Hoffenheim.png HTTP/1.1" 200 -
+2024-08-16 01:31:58,416 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:58] "GET /static/bl1/2024/team-logos/Heidenheim.png HTTP/1.1" 200 -
+2024-08-16 01:31:59,400 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:59] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-08-16 01:31:59,406 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:59] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-16 01:31:59,416 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:59] "GET /login HTTP/1.1" 200 -
+2024-08-16 01:31:59,444 - INFO - 127.0.0.1 - - [16/Aug/2024 01:31:59] "GET /static/styles.css HTTP/1.1" 200 -

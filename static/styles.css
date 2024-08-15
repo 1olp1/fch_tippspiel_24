@@ -108,9 +108,10 @@ nav .navbar-brand .blue {
 
 /* Logo Styling */
 .team-logo, .team-logo-small {
-    object-fit: cover;
+    object-fit: contain;
+    /*object-fit: cover; for rounded logos
     border-radius: 50%; /* Rounded corners */
-    border: 1px solid #cfcece;
+    /*border: 1px solid #cfcece;*/
 }
 
 .team-logo {

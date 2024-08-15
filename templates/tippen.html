@@ -82,13 +82,13 @@
                     </tr>
                     {% for match in matches %}
                         <tr>
-                            <td class="text-right"><br>{{ match.team1.teamName }}</td>
+                            <td class="text-right"><br>{{ match.team1.shortName }}</td>
                             <td class="text-center">
                                 {{ match.time }} <br><input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="mobile_team1Score_{{ match.id }}" name="team1Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team1_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
                                 <strong>:</strong>
                                 <input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="mobile_team2Score_{{ match.id }}" name="team2Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team2_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
                             </td>
-                            <td class="text-left"><br>{{ match.team2.teamName }}</td>
+                            <td class="text-left"><br>{{ match.team2.shortName }}</td>
                     {% endfor %}
                 {% endfor %}
             </tbody>

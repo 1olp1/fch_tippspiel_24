@@ -11,9 +11,16 @@ from datetime import datetime, timedelta
 from models import User, Match, Team, Prediction
 from collections import defaultdict
 from config import app
-# Prepare API requests
-league = "em"      # bl1 for 1. Bundesliga
-league_id = 4708
+import logging
+
+logging.basicConfig(
+    filename='app.log',  # Log file name
+    filemode='a',        # Append mode; use 'w' for overwrite mode
+    level=logging.INFO,  # Log level
+    format='%(asctime)s - %(levelname)s - %(message)s'  # Log format
+)# Prepare API requests
+league = "bl1"      # bl1 for 1. Bundesliga
+league_id = 4741
 season = "2024"     # 2023 for 2023/2024 season
 
 # Tournament info
@@ -116,7 +123,7 @@ def insert_teams_to_db(db_session):
             db_session.add(dummy_team)
 
             # Download and resize team icon images
-            print("Downloading and resizing team icon images")
+            print("Downloading and resizing team icon images...")
             download_and_resize_logos(teams)
             
             db_session.query(Team).update({Team.lastUpdateTime: get_current_datetime_str()})
@@ -165,7 +172,7 @@ def insert_or_update_matches_to_db(db_session):
                 team2_score=team2_score,
                 matchDateTime=match["matchDateTime"],
                 matchIsFinished=match["matchIsFinished"],
-                location=match["location"]["locationCity"],
+                #location=match["location"]["locationCity"],        # only worked for euro2024
                 lastUpdateDateTime=match["lastUpdateDateTime"]
             )
             
@@ -376,33 +383,35 @@ def update_match_score_for_live_scores(db_session, match_API):
 
 
 def download_and_resize_logos(teams):
-    # Make path for team logos if it does not already exist for the league and season
     os.makedirs(img_folder, exist_ok=True)
 
-    # If folder empty, download images
-    if not os.listdir(img_folder):      
-        for team in teams:
+    if not os.listdir(img_folder):
+        for _, team in enumerate(teams):
             try:
-                img_url = team['teamIconUrl']
+                img_url = team.get('teamIconUrl')
+                if not img_url:
+                    continue
+
                 response = requests.get(
                     img_url,
                     cookies={"session": str(uuid.uuid4())},
-                    headers={"Accept": "*/*", "User-Agent": "python-requests"},
-                )
+                    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36",
+                             "Referer": "https://www.google.com/",
+                             "Accept-Language": "en-US,en;q=0.9",
+                             "Cache-Control": "no-cache",
+                             "Upgrade-Insecure-Requests": "1",},
+                )       ### Header from chatGPT to mimic a real computer
                 response.raise_for_status()
 
-                # Create image paths
                 img_file_path = make_image_filepath(team)
 
-                # Save images
                 with open(img_file_path, 'wb') as f:
                     f.write(response.content)
-                
-                # Lower resolution
+
                 resize_image(img_file_path)
 
-            except (KeyError, IndexError, requests.RequestException, ValueError):
-                return None
+            except (KeyError, IndexError, requests.RequestException, ValueError) as e:
+                continue
 
 
 def get_insights(db_session):
@@ -605,8 +614,15 @@ def update_match_in_db(matchdata_API, match_db, db_session):
 def update_matches_and_scores(db_session):
     print("Updating matches and user scores...")
 
-    insert_or_update_matches_to_db(db_session)
-    update_user_scores(db_session)
+    try:
+        #insert_teams_to_db(db_session)
+        insert_or_update_matches_to_db(db_session)
+        update_user_scores(db_session)
+    
+    except:
+        insert_teams_to_db(db_session)
+        insert_or_update_matches_to_db(db_session)
+        update_user_scores(db_session)
 
     print("Matches and user scores updated.")
 

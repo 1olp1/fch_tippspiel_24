@@ -6,7 +6,7 @@
             <i class="fa-solid fa-caret-left me-2"></i> Account löschen
         </a>
         <li class="list-group-item">
-            <p>Möchtest du deinen Account wirklich löschen, {{ session.username }}?</p>
+            <p>Möchtest du deinen Account wirklich löschen, <strong>{{ session.username }}</strong>?</p>
             <div class="form-check mb-4">
                 <form id="delete_accountForm" action="/account/delete" method="post">
                 <input class="form-check-input" type="checkbox" name="confirm_delete" value="yes" id="confirmDeleteCheckbox">
