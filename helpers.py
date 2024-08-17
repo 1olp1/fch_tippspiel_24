@@ -10,14 +10,14 @@ from PIL import Image
 from datetime import datetime, timedelta
 from models import User, Match, Team, Prediction
 from collections import defaultdict
-import logging
+#import logging
 
-logging.basicConfig(
-    filename='app.log',  # Log file name
-    filemode='a',        # Append mode; use 'w' for overwrite mode
-    level=logging.INFO,  # Log level
-    format='%(asctime)s - %(levelname)s - %(message)s'  # Log format
-)
+#logging.basicConfig(
+#    filename='app.log',  # Log file name
+#    filemode='a',        # Append mode; use 'w' for overwrite mode
+#    level=logging.INFO,  # Log level
+#    format='%(asctime)s - %(levelname)s - %(message)s'  # Log format
+#)
 
 # Prepare API requests
 leagueShortcut_list = ["bl1", "dfb"] # bl1 for bundesliga 1
@@ -416,10 +416,10 @@ def download_and_resize_logos(teams, img_folder):
             try:
                 img_url = team.get('teamIconUrl')
                 if not img_url:
-                    logging.error(f"No image URL found for team at index {index}: {team}")
+                    #logging.error(f"No image URL found for team at index {index}: {team}")
                     continue
                     
-                logging.info(f"Downloading image for team {team['teamName']} from {img_url}")
+                #logging.info(f"Downloading image for team {team['teamName']} from {img_url}")
 
                 response = requests.get(
                     img_url,
@@ -437,12 +437,12 @@ def download_and_resize_logos(teams, img_folder):
                 with open(img_file_path, 'wb') as f:
                     f.write(response.content)
 
-                logging.info(f"Image saved for team {team['teamName']} at {img_file_path}")
+                #logging.info(f"Image saved for team {team['teamName']} at {img_file_path}")
 
                 resize_image(img_file_path)
-                logging.info(f"Image resized for team {team['teamName']}")
+                #logging.info(f"Image resized for team {team['teamName']}")
             except (KeyError, IndexError, requests.RequestException, ValueError) as e:
-                logging.error(f"Failed to download or process image for team {team['teamName']} at index {index}. Error: {e}")                
+                #logging.error(f"Failed to download or process image for team {team['teamName']} at index {index}. Error: {e}")                
                 continue
 
 

@@ -9296,3 +9296,9 @@
 2024-08-17 03:49:36,405 - INFO - 127.0.0.1 - - [17/Aug/2024 03:49:36] "[32mGET / HTTP/1.1[0m" 302 -
 2024-08-17 03:49:36,413 - INFO - 127.0.0.1 - - [17/Aug/2024 03:49:36] "GET /login HTTP/1.1" 200 -
 2024-08-17 03:49:36,446 - INFO - 127.0.0.1 - - [17/Aug/2024 03:49:36] "GET /static/styles.css HTTP/1.1" 200 -
+2024-08-17 04:00:20,531 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-17 04:00:20,531 - INFO - [33mPress CTRL+C to quit[0m
+2024-08-17 04:00:20,532 - INFO -  * Restarting with stat
+2024-08-17 04:00:21,014 - WARNING -  * Debugger is active!
+2024-08-17 04:00:21,021 - INFO -  * Debugger PIN: 743-649-607
