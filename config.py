@@ -16,41 +16,26 @@ app.config["SESSION_FILE_THRESHOLD"] = 100  # Limits the number of session files
 app.config["DEBUG"] = True
 Session(app)
 
-default_db_name = os.getenv("DB_DATABASE_FCH2024")
-print("DEFAULT DB NAME: ", default_db_name)
+# SQLAlchemy database URI
+SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}'.format(
+    username=os.getenv('DB_USERNAME'),
+    password=os.getenv('DB_PASSWORD'),
+    hostname=os.getenv('DB_HOSTNAME'),
+    databasename=os.getenv('DB_DATABASE_FCH2024')
+)
 
-def get_db_session(db_name=None):
-    # SQLAlchemy database URI
-    SQLALCHEMY_DATABASE_URI = get_sqlalchemy_database_uri(db_name)
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# Create SQLAlchemy engine and session
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URI,
+    poolclass=QueuePool,
+    pool_recycle=280,  # Recycle connections after 280 seconds
+    pool_pre_ping=True  # Enable connection testing
+)
+SessionFactory = sessionmaker(bind=engine)
+session_db = scoped_session(SessionFactory)
 
-    # Create SQLAlchemy engine and session
-    engine = create_engine(
-        SQLALCHEMY_DATABASE_URI,
-        poolclass=QueuePool,
-        pool_recycle=280,  # Recycle connections after 280 seconds
-        pool_pre_ping=True  # Enable connection testing
-    )
-    SessionFactory = sessionmaker(bind=engine)
-    session_db = scoped_session(SessionFactory)
+def get_db_session():
     return session_db()
-
-
-# Centralized function to get the SQLAlchemy database URI
-def get_sqlalchemy_database_uri(db_name=None):
-    # Set default database name if no db_name is specified
-    if db_name is None:
-        db_name = default_db_name
-
-    # Here are the database names of the archives
-    elif db_name.lower() == "euro2024":
-        db_name = os.getenv('DB_DATABASE_EURO2024')
-    return 'mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}'.format(
-        username=os.getenv('DB_USERNAME'),
-        password=os.getenv('DB_PASSWORD'),
-        hostname=os.getenv('DB_HOSTNAME'),
-        databasename=db_name
-    )
-

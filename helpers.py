@@ -647,7 +647,7 @@ def update_matches_and_scores(db_session):
     print("Updating matches and user scores...")
 
     for leagueShortcut in leagueShortcut_list:
-        insert_teams_to_db(db_session, leagueShortcut)
+        #insert_teams_to_db(db_session, leagueShortcut)
         insert_or_update_matches_to_db(db_session, leagueShortcut)
 
     update_user_scores(db_session)
