@@ -5,7 +5,7 @@ from sqlalchemy import func, desc
 from sqlalchemy.orm import joinedload
 from sqlalchemy.exc import OperationalError
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import login_required, get_league_table, get_valid_matches, convert_iso_datetime_to_human_readable, get_insights, group_matches_by_date, process_predictions, find_closest_in_time_match_db_matchday, update_live_matches_and_scores, find_closest_in_time_kickoff_match_db, update_matches_and_scores, find_matchday_to_display_tippen, delete_user_and_predictions
+from helpers import login_required, get_league_table, get_valid_matches, convert_iso_datetime_to_human_readable, get_insights, group_matches_by_date, process_predictions, find_closest_in_time_match_by_matchday, update_live_matches_and_scores, find_closest_in_time_match, update_matches_and_scores, find_matchday_to_display_tippen, delete_user_and_predictions, get_filtered_matches_by_date, get_game_rounds, get_current_game_round, get_filtered_predictions_by_date, find_closest_in_time_match_from_selection
 from models import User, Prediction, Match
 from config import app, get_db_session
 
@@ -19,31 +19,30 @@ def after_request(response):
     return response
 
 
+@app.route("/archive", methods=["GET"])
+@login_required
+def archive():
+    return render_template("apology.html")
+
 @app.route("/rangliste/overview", methods=["GET", "POST"])
 @login_required
 def rangliste_overview():
     start_time = time.time()
     try:
         with get_db_session() as db_session:
-            # Fetch all matches
-            matches = db_session.query(Match).all()
+            game_rounds_list = get_game_rounds()
 
             # Determine matchday_to_display based on session or default to closest matchday
             if request.method == "GET":
-                closest_in_time_kickoff_match = find_closest_in_time_kickoff_match_db(db_session)
-                matchday_to_display = int(request.args.get('matchday', closest_in_time_kickoff_match.matchday))
-                session['matchday_to_display'] = matchday_to_display
+                game_round_to_display = int(request.args.get('matchday', get_current_game_round()))
+                session['matchday_to_display'] = game_round_to_display
             else:
-                matchday_to_display = session.get('matchday_to_display')
-        
-            # Get list of matchdays and formatted matchdays for display
-            matchdays_data = sorted(set((match.matchday, match.formatted_matchday) for match in matches))
-            matchdays, matchdays_formatted = zip(*matchdays_data)
-            
+                game_round_to_display = session.get('matchday_to_display')
+                    
             # Determine next and previous matchdays
-            current_index = matchdays.index(matchday_to_display) if matchday_to_display in matchdays else 0
-            next_matchday = matchdays[current_index + 1] if current_index + 1 < len(matchdays) else None
-            prev_matchday = matchdays[current_index - 1] if current_index > 0 else None
+            current_matchday = game_round_to_display
+            next_matchday = game_round_to_display + 1 if current_matchday + 1 <= len(game_rounds_list) else None
+            prev_matchday = game_round_to_display - 1 if current_matchday > 0 else None
 
             # Get last update time for display
             last_update = db_session.query(func.max(Match.evaluation_Date)).scalar()
@@ -63,8 +62,8 @@ def rangliste_overview():
             ).all()
 
             # Fetch matches and predictions for the current matchday
-            filtered_matches = db_session.query(Match).filter_by(matchday=matchday_to_display).all()
-            filtered_predictions = db_session.query(Prediction).filter_by(matchday=matchday_to_display).all()
+            filtered_matches = get_filtered_matches_by_date(db_session, game_round_to_display - 1)
+            filtered_predictions = get_filtered_predictions_by_date(db_session, game_round_to_display - 1)
 
             # Calculate user points for the matchday
             user_points_matchday = {user.id: 0 for user in users}
@@ -75,7 +74,7 @@ def rangliste_overview():
             top_users = [user_id for user_id, points in user_points_matchday.items() if points == max_points and max_points != 0]
 
             match_ids = [match.id for match in filtered_matches]
-            index_of_closest_in_time_match = match_ids.index(find_closest_in_time_match_db_matchday(db_session, matchday_to_display).id) + 1 # +1 because loop index in jinja starts at 1
+            index_of_closest_in_time_match = match_ids.index(find_closest_in_time_match_from_selection(filtered_matches).id) + 1 # +1 because loop index in jinja starts at 1
             no_filtered_matches = len(match_ids)
 
             end_time = time.time()
@@ -83,12 +82,12 @@ def rangliste_overview():
             print("Match to display: ", index_of_closest_in_time_match)
             print(f"Elapsed time for Rangliste: {elapsed_time:.4f} seconds")
                         
-            return render_template("rangliste_overview.html",
+            return render_template("apology.html",
                                 matches=filtered_matches,
                                 prev_matchday=prev_matchday,
                                 next_matchday=next_matchday,
-                                matchday_to_display=matchday_to_display,
-                                matchdays_formatted=matchdays_formatted,
+                                current_matchday=current_matchday,
+                                matchdays=[1,2,3,4,5],
                                 users=users,
                                 user_id=session["user_id"],
                                 last_update=last_update,
@@ -109,25 +108,19 @@ def rangliste():
     start_time = time.time()
     try:
         with get_db_session() as db_session:
-            # Fetch all matches
-            matches = db_session.query(Match).all()
+            game_rounds_list = get_game_rounds()
 
             # Determine matchday_to_display based on session or default to closest matchday
             if request.method == "GET":
-                closest_in_time_kickoff_match = find_closest_in_time_kickoff_match_db(db_session)
-                matchday_to_display = int(request.args.get('matchday', closest_in_time_kickoff_match.matchday))
-                session['matchday_to_display'] = matchday_to_display
+                game_round_to_display = int(request.args.get('matchday', get_current_game_round()))
+                session['matchday_to_display'] = game_round_to_display
             else:
-                matchday_to_display = session.get('matchday_to_display')
-        
-            # Get list of matchdays and formatted matchdays for display
-            matchdays_data = sorted(set((match.matchday, match.formatted_matchday) for match in matches))
-            matchdays, matchdays_formatted = zip(*matchdays_data)
-            
+                game_round_to_display = session.get('matchday_to_display')
+                    
             # Determine next and previous matchdays
-            current_index = matchdays.index(matchday_to_display) if matchday_to_display in matchdays else 0
-            next_matchday = matchdays[current_index + 1] if current_index + 1 < len(matchdays) else None
-            prev_matchday = matchdays[current_index - 1] if current_index > 0 else None
+            current_matchday = game_round_to_display
+            next_matchday = game_round_to_display + 1 if current_matchday + 1 <= len(game_rounds_list) else None
+            prev_matchday = game_round_to_display - 1 if current_matchday > 0 else None
 
             # Get last update time for display
             last_update = db_session.query(func.max(Match.evaluation_Date)).scalar()
@@ -147,8 +140,8 @@ def rangliste():
             ).all()
 
             # Fetch matches and predictions for the current matchday
-            filtered_matches = db_session.query(Match).filter_by(matchday=matchday_to_display).all()
-            filtered_predictions = db_session.query(Prediction).filter_by(matchday=matchday_to_display).all()
+            filtered_matches = get_filtered_matches_by_date(db_session, game_round_to_display - 1)
+            filtered_predictions = get_filtered_predictions_by_date(db_session, game_round_to_display - 1)
 
             # Calculate user points for the matchday
             user_points_matchday = {user.id: 0 for user in users}
@@ -159,7 +152,7 @@ def rangliste():
             top_users = [user_id for user_id, points in user_points_matchday.items() if points == max_points and max_points != 0]
 
             match_ids = [match.id for match in filtered_matches]
-            index_of_closest_in_time_match = match_ids.index(find_closest_in_time_match_db_matchday(db_session, matchday_to_display).id) + 1 # +1 because loop index in jinja starts at 1
+            index_of_closest_in_time_match = match_ids.index(find_closest_in_time_match_from_selection(filtered_matches).id) + 1 # +1 because loop index in jinja starts at 1
             no_filtered_matches = len(match_ids)
 
             end_time = time.time()
@@ -171,8 +164,8 @@ def rangliste():
                                 matches=filtered_matches,
                                 prev_matchday=prev_matchday,
                                 next_matchday=next_matchday,
-                                matchday_to_display=matchday_to_display,
-                                matchdays_formatted=matchdays_formatted,
+                                current_matchday=current_matchday,
+                                matchdays=[1,2,3,4,5],
                                 users=users,
                                 user_id=session["user_id"],
                                 last_update=last_update,
@@ -198,27 +191,31 @@ def tippen():
             # Filter valid matches for predictions
             valid_matches = get_valid_matches(matches)
 
+            game_rounds_list = get_game_rounds()
+
             # Determine matchday_to_display based on session or default to next_matchday
             if request.method == "GET":
-                match_to_display = int(request.args.get('matchday', find_matchday_to_display_tippen(db_session)))
-                session['matchday_to_display'] = match_to_display
+                game_round_to_display = int(request.args.get('matchday', get_current_game_round()))
+                session['matchday_to_display'] = game_round_to_display
             else:
-                match_to_display = session.get('matchday_to_display')
+                game_round_to_display = session.get('matchday_to_display')
+
+            print(game_round_to_display)
 
             # Filter matches by matchday parameter or default to closest matchday
-            filtered_matches = [match for match in matches if match.matchday == match_to_display]
+            #filtered_matches = [match for match in matches if match.matchday == match_to_display] # needed for pagination
+            filtered_matches = get_filtered_matches_by_date(db_session, game_round_to_display - 1)
 
             # Group matches by date
-            filtered_matches_by_date = group_matches_by_date(filtered_matches)
+            #filtered_matches_by_date = group_matches_by_date(filtered_matches)  # Only needed if multiple games are on one day
             
             # Get list of matchdays and formatted matchdays for display
-            matchdays_data = sorted(set((match.matchday, match.formatted_matchday) for match in matches))
-            matchdays, matchdays_formatted = zip(*matchdays_data)
+            #matchday
 
             # Determine next and previous matchdays
-            current_index = matchdays.index(match_to_display) if match_to_display in matchdays else 0
-            next_matchday = matchdays[current_index + 1] if current_index + 1 < len(matchdays) else None
-            prev_matchday = matchdays[current_index - 1] if current_index > 0 else None
+            current_matchday = game_round_to_display
+            next_matchday = game_round_to_display + 1 if current_matchday + 1 <= len(game_rounds_list) else None
+            prev_matchday = game_round_to_display - 1 if current_matchday > 0 else None
 
             if request.method == "POST":
                 process_predictions(valid_matches, session, db_session, request)
@@ -233,9 +230,9 @@ def tippen():
             if last_update:
                 last_update = convert_iso_datetime_to_human_readable(last_update)
 
-            return render_template('tippen.html', matches=filtered_matches, matchdays=matchdays, matchdays_formatted=matchdays_formatted,
+            return render_template('tippen.html', matches=filtered_matches, matchdays=[1,2,3,4,5], current_matchday=current_matchday,
                                 next_matchday=next_matchday, prev_matchday=prev_matchday, last_update=last_update,
-                                predictions=predictions, valid_matches=valid_matches, matches_by_date=filtered_matches_by_date)
+                                predictions=predictions, valid_matches=valid_matches, matches_by_date=None)
         
     except OperationalError as e:
         app.logger.error(f"Database connection error: {e}")

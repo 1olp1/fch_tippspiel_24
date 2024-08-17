@@ -4,11 +4,13 @@
     Regeln
 {% endblock %}
 {% block header %}
-    Regeln
+<a href="{{ url_for('regeln') }}" class="header-link text-white text-decoration-none">
+  Regeln
+</a>
 {% endblock %}
 {% block main %}
 
-<div class="card rounded-4" style="width: 20rem;">
+<div class="card" style="width: 20rem;">
       <div class="card-body">
         <h4 class="card-title">Tippabgabe</h4>
         <ul class="list-unstyled">

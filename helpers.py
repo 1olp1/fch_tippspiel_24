@@ -10,7 +10,6 @@ from PIL import Image
 from datetime import datetime, timedelta
 from models import User, Match, Team, Prediction
 from collections import defaultdict
-from config import app
 import logging
 
 logging.basicConfig(
@@ -18,22 +17,22 @@ logging.basicConfig(
     filemode='a',        # Append mode; use 'w' for overwrite mode
     level=logging.INFO,  # Log level
     format='%(asctime)s - %(levelname)s - %(message)s'  # Log format
-)# Prepare API requests
-league = "bl1"      # bl1 for 1. Bundesliga
-league_id = 4741
-season = "2024"     # 2023 for 2023/2024 season
+)
+
+# Prepare API requests
+leagueShortcut_list = ["bl1", "dfb"] # bl1 for bundesliga 1
+
+leagueSeason = "2024"     # 2023 for 2023/2024 season
+teamFilterString = "Heidenheim"
+
 
 # Tournament info
-games_group_stage = 3
+# games_group_stage = 3 # Euro2024
 
 # urls for openliga queries
-url_matchdata = f"https://api.openligadb.de/getmatchdata/{league}/{season}"
-url_table = f"https://api.openligadb.de/getbltable/{league}/{season}"
-url_teams = f"https://api.openligadb.de/getavailableteams/{league}/{season}"
+#url_matchdata = f"https://api.openligadb.de/getmatchdata/{leagueShortcut}/{season}" # Only for all teams
+#url_table = f"https://api.openligadb.de/getbltable/{leagueShortcut}/{leagueSeason}"
 
-# Folder paths
-local_folder_path = os.path.join(".", "static", league, season)
-img_folder =  os.path.join(local_folder_path, "team-logos")
 
 # Dummy team info
 dummy_team_id = 5251
@@ -74,8 +73,8 @@ def login_required(f):
     return decorated_function
 
 
-def make_image_filepath(team):
-    img_file_name = team['shortName'] + os.path.splitext(team['teamIconUrl'])[1]
+def make_image_filepath(team, img_folder):
+    img_file_name = team['teamName'] + os.path.splitext(team['teamIconUrl'])[1]
     img_file_path = os.path.join(img_folder, img_file_name)
 
     return img_file_path
@@ -96,41 +95,66 @@ def get_league_table(db_session):
     return db_session.query(Team).order_by(Team.teamRank.asc()).all()
 
 
-def insert_teams_to_db(db_session):
+def insert_teams_to_db(db_session, leagueShortcut):
     print("Inserting teams to db")
     try:
-        teams = get_openliga_json(url_teams)
+        # Folder paths
+        local_folder_path = os.path.join(".", "static", leagueShortcut, leagueSeason)
+        img_folder = os.path.join(local_folder_path, "team-logos")
+        teams = get_openliga_json(get_available_teams_url(leagueShortcut))
+
         if teams:
-            for team in teams:
-                team = Team(
-                    id = team["teamId"],
-                    teamName = team["teamName"],
-                    shortName = team["shortName"],
-                    teamIconUrl = team["teamIconUrl"],
-                    teamIconPath = make_image_filepath(team),
-                    teamGroupName = team["teamGroupName"]
+            for team_data in teams:
+                #print(f"inserting or updating team {team_data["teamName"]}")
+                # Check if the team already exists in the database
+                existing_team = db_session.query(Team).filter_by(id=team_data["teamId"]).first()
+                
+                if existing_team:
+                    # Update the existing team record
+                    existing_team.teamName = team_data["teamName"]
+                    existing_team.shortName = team_data["shortName"]
+                    existing_team.teamIconUrl = team_data["teamIconUrl"]
+                    existing_team.teamIconPath = make_image_filepath(team_data, img_folder)
+                    existing_team.teamGroupName = team_data["teamGroupName"]
+                else:
+                    # Add new team if it doesn't exist
+                    new_team = Team(
+                        id=team_data["teamId"],
+                        teamName=team_data["teamName"],
+                        shortName=team_data["shortName"],
+                        teamIconUrl=team_data["teamIconUrl"],
+                        teamIconPath=make_image_filepath(team_data, img_folder),
+                        teamGroupName=team_data["teamGroupName"]
+                    )
+                    db_session.add(new_team)
+
+            # Insert or update the dummy team
+            dummy_team = db_session.query(Team).filter_by(id=dummy_team_id).first()
+            
+            if not dummy_team:
+                # Add dummy team if it doesn't exist
+                dummy_team = Team(
+                    id=dummy_team_id,
+                    teamName='-',
+                    shortName='-',
+                    teamIconPath=os.path.join(img_folder, "dummy-teamlogo.png")
                 )
-                db_session.add(team)
-
-            # Insert dummy team for open matchups after the group stage where teams are yet undetermined
-            dummy_team = Team(
-                id = dummy_team_id,
-                teamName = '-',
-                shortName = '-',
-                teamIconPath = os.path.join(img_folder,"dummy-teamlogo.png")
-            )
-
-            db_session.add(dummy_team)
+                db_session.add(dummy_team)
 
             # Download and resize team icon images
             print("Downloading and resizing team icon images...")
-            download_and_resize_logos(teams)
+            download_and_resize_logos(teams, img_folder)
             
+            # Update the last update time for all teams
             db_session.query(Team).update({Team.lastUpdateTime: get_current_datetime_str()})
+
+        # Commit the changes to the database
         db_session.commit()
+
     except Exception as e:
-            print(f"Updating inserting teams failed: {e}")
-               
+        print(f"Updating or inserting teams failed: {e}")
+        db_session.rollback()  # Rollback in case of error
+
 
 def update_league_table(db_session):
     table = get_openliga_json(url_table)
@@ -155,9 +179,9 @@ def update_league_table(db_session):
         db_session.commit()
 
 
-def insert_or_update_matches_to_db(db_session):
+def insert_or_update_matches_to_db(db_session, leagueShortcut):
     # Query openliga API with link from above
-    matchdata = get_openliga_json(url_matchdata)
+    matchdata = get_openliga_json(get_matchdata_team_url(leagueShortcut))
 
     if matchdata:
         for match in matchdata:           
@@ -173,7 +197,9 @@ def insert_or_update_matches_to_db(db_session):
                 matchDateTime=match["matchDateTime"],
                 matchIsFinished=match["matchIsFinished"],
                 #location=match["location"]["locationCity"],        # only worked for euro2024
-                lastUpdateDateTime=match["lastUpdateDateTime"]
+                lastUpdateDateTime=match["lastUpdateDateTime"],
+                leagueShortcut=leagueShortcut,
+                groupName=match["group"]["groupName"]
             )
             
             db_session.merge(match_entry)  # Use merge to insert or update
@@ -316,7 +342,7 @@ def process_predictions(valid_matches, session, db_session, request):
         # Determine winner based on scores
         winner = 1 if team1_score > team2_score else 2 if team1_score < team2_score else 0
 
-        if winner == 0 and match.matchday > games_group_stage:
+        if winner == 0 and match.leagueShortcut in ["dfb"]:
             error_message = "Kein Unentschieden bei KO-Spielen möglich"
             continue
 
@@ -382,15 +408,18 @@ def update_match_score_for_live_scores(db_session, match_API):
     db_session.commit()
 
 
-def download_and_resize_logos(teams):
+def download_and_resize_logos(teams, img_folder):
     os.makedirs(img_folder, exist_ok=True)
 
     if not os.listdir(img_folder):
-        for _, team in enumerate(teams):
+        for index, team in enumerate(teams):
             try:
                 img_url = team.get('teamIconUrl')
                 if not img_url:
+                    logging.error(f"No image URL found for team at index {index}: {team}")
                     continue
+                    
+                logging.info(f"Downloading image for team {team['teamName']} from {img_url}")
 
                 response = requests.get(
                     img_url,
@@ -403,14 +432,17 @@ def download_and_resize_logos(teams):
                 )       ### Header from chatGPT to mimic a real computer
                 response.raise_for_status()
 
-                img_file_path = make_image_filepath(team)
+                img_file_path = make_image_filepath(team, img_folder)
 
                 with open(img_file_path, 'wb') as f:
                     f.write(response.content)
 
-                resize_image(img_file_path)
+                logging.info(f"Image saved for team {team['teamName']} at {img_file_path}")
 
+                resize_image(img_file_path)
+                logging.info(f"Image resized for team {team['teamName']}")
             except (KeyError, IndexError, requests.RequestException, ValueError) as e:
+                logging.error(f"Failed to download or process image for team {team['teamName']} at index {index}. Error: {e}")                
                 continue
 
 
@@ -504,7 +536,7 @@ def is_update_needed_league_table(db_session):
 
     # Get current matchday from API and DB
     current_matchday_API = get_current_matchday_openliga()
-    current_match_db = find_closest_in_time_kickoff_match_db(db_session)
+    current_match_db = find_closest_in_time_match(db_session)
 
     current_matchday_db = current_match_db.matchday if current_match_db else None
 
@@ -535,7 +567,7 @@ def is_update_needed_matches(db_session):
     ''' Deprecated incomplete function. Actually faster to just update. Maybe useful with big datasets.'''
     # Get current matchday from API and DB
     current_matchday_API = get_current_matchday_openliga()
-    current_match_db = find_closest_in_time_kickoff_match_db(db_session)
+    current_match_db = find_closest_in_time_match(db_session)
     current_matchday_db = current_match_db.matchday if current_match_db else None
 
     # Print to enable debugging for comparison of matchdays
@@ -614,16 +646,12 @@ def update_match_in_db(matchdata_API, match_db, db_session):
 def update_matches_and_scores(db_session):
     print("Updating matches and user scores...")
 
-    try:
-        #insert_teams_to_db(db_session)
-        insert_or_update_matches_to_db(db_session)
-        update_user_scores(db_session)
-    
-    except:
-        insert_teams_to_db(db_session)
-        insert_or_update_matches_to_db(db_session)
-        update_user_scores(db_session)
+    for leagueShortcut in leagueShortcut_list:
+        insert_teams_to_db(db_session, leagueShortcut)
+        insert_or_update_matches_to_db(db_session, leagueShortcut)
 
+    update_user_scores(db_session)
+    
     print("Matches and user scores updated.")
 
 
@@ -657,7 +685,7 @@ def get_matchdata_openliga(id):
 
 def get_last_online_change(matchday):
     # Make url to get last online change
-    url = f"https://api.openligadb.de/getlastchangedate/{league}/{season}/{matchday}"
+    url = f"https://api.openligadb.de/getlastchangedate/{leagueShortcut}/{leagueSeason}/{matchday}"
 
     # Query API and convert to correct format
     # (to ensure that the datetime module works correctly)
@@ -667,7 +695,7 @@ def get_last_online_change(matchday):
 
 def get_current_matchday_openliga():
     # Openliga DB API
-    url = f"https://api.openligadb.de/getcurrentgroup/{league}"
+    url = f"https://api.openligadb.de/getcurrentgroup/{leagueShortcut}"
 
     # Query API
     current_matchday = get_openliga_json(url)
@@ -758,8 +786,8 @@ def normalize_datetime(input_dt):
     return dt_without_microseconds
 
 
-def find_closest_in_time_kickoff_match_db(db_session):
-    # Query to find the match closest in time, adding 140 minutes to matchDateTime
+def find_closest_in_time_match(db_session):
+    # Query to find the match closest in time
     current_time = datetime.now()
     # Query with help from chatgpt
     query = db_session.query(Match).options(
@@ -770,6 +798,22 @@ def find_closest_in_time_kickoff_match_db(db_session):
     ).first()
 
     return query
+
+
+def find_closest_in_time_match_from_selection(matches):
+    current_datetime = datetime.now()
+
+    # Ensure matches is not empty
+    if not matches:
+        return None
+
+    # Find the match with the minimum time difference from current_datetime
+    closest_match = min(
+        matches,
+        key=lambda match: abs((match.matchDateTime - current_datetime).total_seconds())
+    )
+
+    return closest_match
 
 
 def find_live_matches(db_session):
@@ -784,10 +828,10 @@ def find_live_matches(db_session):
 
 
 def find_closest_in_time_matchday_db(db_session):
-    return find_closest_in_time_kickoff_match_db(db_session).matchday
+    return find_closest_in_time_match(db_session).matchday
 
 
-def find_closest_in_time_match_db_matchday(db_session, matchday):
+def find_closest_in_time_match_by_matchday(db_session, matchday):
     # Get current match from db based on which match is closest in time
     current_datetime = datetime.now()
     # Add 140 minutes to current_datetime
@@ -871,3 +915,80 @@ def group_matches_by_date(matches):
     return matches_by_date
 
 
+def get_matchdata_team_url(leagueShortcut):
+    return f"https://api.openligadb.de/getmatchdata/{leagueShortcut}/{leagueSeason}/{teamFilterString}"
+
+
+def get_available_teams_url(leagueShortcut):
+    return f"https://api.openligadb.de/getavailableteams/{leagueShortcut}/{leagueSeason}"
+
+
+def get_filtered_matches_by_date(db_session, index):
+    round_list = get_game_rounds()
+
+    if index < 0 or index >= len(round_list):           # Chatgpt
+        raise IndexError("Invalid index for game rounds.")
+    
+    start_date, end_date = round_list[index]
+
+    # Adjust the end_date to include the entire last day
+    end_date = end_date + timedelta(days=1)
+    
+    # Query to filter matches between the start_date and end_date
+    matches = db_session.query(Match).filter(
+        and_(
+            Match.matchDateTime >= start_date,
+            Match.matchDateTime < end_date
+        )
+    ).all()
+
+    return matches
+
+
+def get_filtered_predictions_by_date(db_session, index):
+    # made by chatgpt based on get_filtered_matches_by_date
+    round_list = get_game_rounds()
+
+    if index < 0 or index >= len(round_list):
+        raise IndexError("Invalid index for game rounds.")
+    
+    start_date, end_date = round_list[index]
+
+    # Adjust the end_date to include the entire last day
+    end_date = end_date + timedelta(days=1)
+
+    predictions = db_session.query(Prediction).select_from(Prediction).join(
+        Match, Prediction.match_id == Match.id
+    ).filter(
+        and_(
+            Match.matchDateTime >= start_date,
+            Match.matchDateTime < end_date
+        )
+    ).all()
+
+    return predictions
+
+
+def get_current_game_round():
+    current_time = get_current_datetime_as_object()
+    
+    round_list = get_game_rounds()
+
+    for index, round in enumerate(round_list):
+        start_time, end_time = round
+
+        if start_time <= current_time <= end_time:
+            return index + 1
+        
+     # If no round is found, handle the case
+    return None
+        
+
+def get_game_rounds():
+    return [
+        (datetime(2024, 8, 1), datetime(2024, 9, 30)),
+        (datetime(2024, 10, 1), datetime(2024, 11, 30)),
+        (datetime(2024, 12, 1), datetime(2025, 1, 31)),
+        (datetime(2025, 2, 1), datetime(2025, 3, 31)),
+        (datetime(2025, 4, 1), datetime(2025, 5, 31))
+    ]

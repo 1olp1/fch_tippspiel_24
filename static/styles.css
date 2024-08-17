@@ -1,7 +1,8 @@
 /* General Styling */
 body {
-    background-color: #e0e2eb;
-    font-family: 'Nunito', sans-serif;
+    background-color: #ccced9;
+    /*font-family: 'Nunito', sans-serif;*/
+    font-family: 'Fira Sans', sans-serif;
     color: #19303B; /* Default text color */
 }
 
@@ -42,9 +43,10 @@ nav .navbar-brand .blue {
 /* Table Styling */
 .table {
     margin-bottom: 10px; /* Adds bottom margin between tables */
-    border-radius: 10px;
+    border-radius: 5px;
     border-spacing: 0;
     overflow: hidden;
+    width: 100%;
 }
 
 .table-responsive-desktop,
@@ -107,7 +109,7 @@ nav .navbar-brand .blue {
 }
 
 /* Logo Styling */
-.team-logo, .team-logo-small {
+.team-logo, .team-logo-small .team-logo-big{
     object-fit: contain;
     /*object-fit: cover; for rounded logos
     border-radius: 50%; /* Rounded corners */
@@ -115,15 +117,26 @@ nav .navbar-brand .blue {
 }
 
 .team-logo {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+.team-logo-big {
+    width: 50px; /* Set a consistent width */
+    height: 50px; /* Set a consistent height */
+    vertical-align: middle; /* Align vertically in the middle of the cell */
+    margin: 0 auto; /* Center horizontally */
+    display: block; /* Ensure it's treated as a block-level element */
+    object-fit: contain;
 }
 
 .team-logo-small {
     width: 20px;
     height: 20px;
+    object-fit: contain;
+
 }
 
 /* Alignment Classes */
@@ -211,10 +224,12 @@ nav .navbar-brand .blue {
     display: table-cell;
 }
 
+/* Hide the button by default */
 .navigationButton {
     display: none;
 }
 
+/* Show the button when screen width is below 768px */
 @media (max-width: 768px) {
     .navigationButton {
         display: inline-block; /* or display: block; */
@@ -292,14 +307,6 @@ ul.list-unstyled li:before {
     height: auto; /* Maintain aspect ratio */
 }
 
-body {
-    display: flex;
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-}
-
-
 .header h1 {
     margin: 0;
     margin-left: 10px;
@@ -312,11 +319,4 @@ body {
 }
 
 
-
-.toggle-sidebar-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1040;
-}
 

@@ -4,12 +4,14 @@
     Rangliste
 {% endblock %}
 {% block header %}
-    Rangliste
+    <a href="{{ url_for('rangliste') }}" class="header-link text-black text-decoration-none">
+        Rangliste
+    </a>
 {% endblock %}
 {% block main %}
 
 <div class="pagination">
-    <ul class="pagination justify-content-center">
+    <ul class="pagination">
         {% if prev_matchday %}
             <li class="page-item">
                 <a class="page-link" href="{{ url_for('rangliste', matchday=prev_matchday) }}"><i class="fa-solid fa-caret-left"></i></a>
@@ -20,10 +22,9 @@
             </li>
         {% endif %}
         <li class="page-item dropdown">
-            <a class="page-link" href="#" role="button" id="dropdownMatchday" data-bs-toggle="dropdown" aria-expanded="false"> {{ matches[0].formatted_matchday }}</a>
+            <a class="page-link" href="#" role="button" id="dropdownMatchday" data-bs-toggle="dropdown" aria-expanded="false"> {{ current_matchday }}</a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMatchday">
-                <!-- dropdown items -->
-                {% for matchday in matchdays_formatted %}
+                {% for matchday in matchdays %}
                     <li><a class="dropdown-item" href="{{ url_for('rangliste', matchday=loop.index) }}">{{ matchday }}</a></li>
                 {% endfor %}
             </ul>
@@ -39,6 +40,7 @@
         {% endif %}
     </ul>
 </div>
+
 <div class="text-center">
     <div class="table-responsive">
         <table class="table rounded-4 overflow-hidden">
@@ -49,7 +51,17 @@
                             <i class="fa-solid fa-caret-left"></i>
                         </button>
                     </td>
-                
+                    {% for match in matches %}
+                        <td name="match-column{{ loop.index }}"> 
+                            {{ match.matchDateTime.strftime('%d.%m.') }} <br>
+                            {{ match.time }} <br>
+                            {% if match.team1.shortName == 'Heidenheim' %}
+                                <span>H </span><img src="{{  match.team2.teamIconPath  }}" alt="{{  match.team2_shortName  }}-logo" class="team-logo-small">
+                            {% else %}
+                                <span>A </span><img src="{{  match.team1.teamIconPath  }}" alt="{{  match.team1_shortName  }}-logo" class="team-logo-small">
+                            {% endif %}
+                        </td>
+                    {% endfor %}
  
                     <td colspan="2" style="text-align: left; padding-left: 20px;">
                         <button id="next-btn" type="button" class="btn btn-primary navigationButton">
@@ -58,7 +70,7 @@
                     </td>
                 </tr>
                 <tr class="bottom-border">
-                    <td colspan="2">Tipper</td>
+                    <td colspan="2"></td>
                     {% for match in matches %}
                     <td name="match-column{{ loop.index }}">
                         {% if match.team1_score is not none %}
@@ -90,11 +102,7 @@
                                         {% if prediction.points > 0%}
                                             <sub class="sub-correct">{{ prediction.points }}</sub>
                                         {% endif %}
-                                    {% else %}
-                                        -:-
                                     {% endif %}
-                                {% else %}
-                                    -:-
                                 {% endif %}
                             </td>
                         {% endfor %}

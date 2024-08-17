@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block header %}
+<a href="" class="header-link text-white text-decoration-none">
     Tippen
+  </a>
 {% endblock %}
 {% block main %}
 
@@ -21,9 +23,9 @@
             </li>
         {% endif %}
         <li class="page-item dropdown">
-            <a class="page-link" href="#" role="button" id="dropdownMatchday" data-bs-toggle="dropdown" aria-expanded="false"> {{ matches[0].formatted_matchday }}</a>
+            <a class="page-link" href="#" role="button" id="dropdownMatchday" data-bs-toggle="dropdown" aria-expanded="false"> {{ current_matchday }}</a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMatchday">
-                {% for matchday in matchdays_formatted %}
+                {% for matchday in matchdays %}
                     <li><a class="dropdown-item" href="{{ url_for('tippen', matchday=loop.index) }}">{{ matchday }}</a></li>
                 {% endfor %}
             </ul>
@@ -45,15 +47,14 @@
     <div class="table-responsive-desktop">
         <table class="table">
             <tbody>
-                {% for match_date, matches in matches_by_date.items() %}
-                    <tr>
-                        <td colspan="6" class="table-date-header">
-                            {{ match_date }}
+                {% for match in matches %}
+                <tr>
+                        <td colspan="5" class="table-date-header">
+                            {{ match.formatted_matchDateTime }} <br>
+                            <span style="font-weight: normal;">{{ match.groupName }} {{ match.formatted_leagueShortcut }}</span>
                         </td>
                     </tr>
-                    {% for match in matches %}
                         <tr>
-                            <td class="text-center">{{ match.time }}</td>
                             <td class="text-right">{{ match.team1.teamName }}</td>
                             <td><img src="{{ match.team1.teamIconPath }}" alt="{{ match.team1.teamName }}-logo" class="team-logo"></td>
                             <td class="text-center">
@@ -64,7 +65,6 @@
                             <td><img src="{{ match.team2.teamIconPath }}" alt="{{ match.team2.teamName }}-logo" class="team-logo"></td>
                             <td class="text-left">{{ match.team2.teamName }}</td>
                         </tr>
-                    {% endfor %}
                 {% endfor %}
             </tbody>
         </table>
@@ -74,22 +74,24 @@
     <div class="table-responsive-mobile">
         <table class="table">
             <tbody>
-                {% for match_date, matches in matches_by_date.items() %}
-                    <tr>
+                {% for match in matches %}                    <tr>
                         <td colspan="3" class="table-date-header">
-                            {{ match_date }}
+                            {{ match.formatted_matchDateTime }} <br>
+                            <span style="font-weight: normal;">{{ match.groupName }} {{ match.formatted_leagueShortcut }}</span>
                         </td>
                     </tr>
-                    {% for match in matches %}
                         <tr>
-                            <td class="text-right"><br>{{ match.team1.shortName }}</td>
                             <td class="text-center">
-                                {{ match.time }} <br><input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="mobile_team1Score_{{ match.id }}" name="team1Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team1_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
+                                <img src="{{ match.team1.teamIconPath }}" alt="{{ match.team1.teamName }}-logo" class="team-logo-big">
+                            </td>
+                            <td class="text-center">
+                                <input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="mobile_team1Score_{{ match.id }}" name="team1Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team1_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
                                 <strong>:</strong>
                                 <input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="mobile_team2Score_{{ match.id }}" name="team2Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team2_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
                             </td>
-                            <td class="text-left"><br>{{ match.team2.shortName }}</td>
-                    {% endfor %}
+                            <td class="text-center">
+                                <img src="{{ match.team2.teamIconPath }}" alt="{{ match.team2.teamName }}-logo" class="team-logo-big">
+                            </td>
                 {% endfor %}
             </tbody>
         </table>

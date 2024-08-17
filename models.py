@@ -32,10 +32,20 @@ class Match(Base):
     lastUpdateDateTime = Column(DateTime)
     predictions_evaluated = Column(Integer, default=0)
     evaluation_Date = Column(DateTime)
+    leagueShortcut = Column(String(255))
+    groupName = Column(String(255))
 
     # Define explicit relationship names
     team1 = relationship("Team", foreign_keys=[team1_id], backref="matches_as_team1")
     team2 = relationship("Team", foreign_keys=[team2_id], backref="matches_as_team2")
+
+    @property
+    def formatted_leagueShortcut(self):
+        leagueShortcut = self.leagueShortcut
+        if leagueShortcut == "dfb":
+            return "DFB-Pokal"
+        elif leagueShortcut == "bl1":
+            return "BL"
 
     @property
     def formatted_matchDate(self):

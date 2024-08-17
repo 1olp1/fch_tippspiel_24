@@ -4,12 +4,14 @@
     Home
 {% endblock %}
 {% block header %}
-    Statistik
+    <a href="/" class="header-link text-white text-decoration-none">
+      Statistik
+    </a>
 {% endblock %}
 
 {% block main %}
 
-<div class="card rounded-4" style="width: 20rem;">
+<div class="card" style="width: 20rem;">
   <div class="card-body">
     <h4 class="card-title" style="text-align: center;"> Hallo {{ insights.username }}! </h4>
     <div class="stats"> Deine Platzierung: <span>{{ insights.rank }}. von {{ insights.no_users }}</span></div>
