@@ -5,16 +5,18 @@
 {% endblock %}
 
 {% block header %}
-    Log In
+<a href="" class="header-link text-white text-decoration-none">
+    Log in
+</a>
 {% endblock %}
 
 {% block main %}
 <form action="/login" method="post">
     <div class="mb-3">
-        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Benutzername" type="text">
+        <input autocomplete="off" autofocus class="form-control w-auto" name="username" placeholder="Benutzername" type="text">
     </div>
     <div class="mb-3">
-        <input class="form-control mx-auto w-auto" name="password" placeholder="Passwort" type="password">
+        <input class="form-control w-auto" name="password" placeholder="Passwort" type="password">
     </div>
     <button class="btn btn-primary" type="submit">Log In</button>
     <a href="/register" class="btn btn-primary" style="margin-left: 1rem">Registrieren</a>
