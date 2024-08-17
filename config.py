@@ -17,6 +17,7 @@ app.config["DEBUG"] = True
 Session(app)
 
 default_db_name = os.getenv("DB_DATABASE_FCH2024")
+print("DEFAULT DB NAME: ", default_db_name)
 
 def get_db_session(db_name=None):
     # SQLAlchemy database URI
