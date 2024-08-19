@@ -58,10 +58,6 @@ nav .navbar-brand .blue {
     max-height: 620px; /* Adjust as needed */
 }
 
-.table-responsive-mobile {
-    max-height: 300px; /* Adjust as needed */
-}
-
 .table-bordered td, .table-bordered th {
     border: 1px solid #455769;
 }

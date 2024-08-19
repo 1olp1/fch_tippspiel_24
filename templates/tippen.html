@@ -71,7 +71,7 @@
     </div>
 
     <!-- Mobile View -->
-    <div class="table-responsive-mobile">
+    <div id="mobileTableContainer" class="table-responsive-mobile" style="overflow-y: auto; max-height: ;">
         <table class="table">
             <tbody>
                 {% for match in matches %}                    <tr>
@@ -106,7 +106,7 @@
 </div>
 <script>
     document.getElementById('tippenForm').addEventListener('submit', function(event) {
-        // Get the current screen width
+        // Get the current screen
         var screenWidth = window.innerWidth;
 
         // Get the desktop and mobile view divs
@@ -120,12 +120,25 @@
                 input.disabled = true;
             });
         } else {
+            
             // Hide desktop inputs for mobile view
             desktopView.querySelectorAll('input').forEach(function(input) {
                 input.disabled = true;
             });
         }
     });
+
+    function adjustTableHeight() {
+            var screenHeight = window.innerHeight;
+            var desiredHeight = screenHeight - 220;
+
+            var mobileTableContainer = document.getElementById('mobileTableContainer');
+            mobileTableContainer.style.maxHeight = desiredHeight + 'px';
+            }
+
+    adjustTableHeight();
+
+    window.addEventListener('resize', adjustTableHeight);
 </script>
 
 {% endblock %}
