@@ -664,6 +664,10 @@ def update_live_matches_and_scores(db_session):
     game_updated = False
 
     for match in live_matches:
+        # Don't try to update manually added games (indicated by negative match id's)
+        print(match.id)
+        if match.id < 0:
+            continue
         match_data = get_matchdata_openliga(match.id)
         if match_data:
             update_match_score_for_live_scores(db_session, match_data)

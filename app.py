@@ -65,6 +65,9 @@ def rangliste_overview():
             filtered_matches = get_filtered_matches_by_date(db_session, game_round_to_display - 1)
             filtered_predictions = get_filtered_predictions_by_date(db_session, game_round_to_display - 1)
 
+            for match in filtered_matches:
+                print(match.id)
+
             # Calculate user points for the matchday
             user_points_matchday = {user.id: 0 for user in users}
             for prediction in filtered_predictions:
@@ -462,6 +465,10 @@ def change_username():
                 if existing_user:
                     flash("Benutzername bereits vergeben", 'error')
                     return redirect("/account/change_username")
+                
+                if len(new_username) > 15:
+                    flash("Benutzername ist zu lang", 'error')
+                    return redirect("/account/change_username")
 
                 # Update the user's username in the database
                 user.username = new_username
@@ -489,8 +496,6 @@ def register():
                 password = request.form.get("password")
                 password_repetition = request.form.get("confirmation")
                 access_code = request.form.get("accesscode")
-                print("eingegebener access_code")
-                print("gespeichert access_code: ", os.getenv("ACCESSCODE_TIPPSPIEL"))
 
                 if not username:
                     flash("Kein Benutzername angegeben", 'error')
@@ -509,6 +514,10 @@ def register():
                 # Check if passwords are entered and if they match
                 if not password or not password_repetition or password != password_repetition:
                     flash("Passwörter fehlen oder stimmen nicht überein", 'error')
+                    return redirect("/register")
+                
+                if len(username) > 15:
+                    flash("Benutzername ist zu lang", 'error')
                     return redirect("/register")
 
                 # Hash the password
