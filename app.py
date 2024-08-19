@@ -65,9 +65,6 @@ def rangliste_overview():
             filtered_matches = get_filtered_matches_by_date(db_session, game_round_to_display - 1)
             filtered_predictions = get_filtered_predictions_by_date(db_session, game_round_to_display - 1)
 
-            for match in filtered_matches:
-                print(match.id)
-
             # Calculate user points for the matchday
             user_points_matchday = {user.id: 0 for user in users}
             for prediction in filtered_predictions:
@@ -414,8 +411,6 @@ def change_password():
 
                 # Hash the password
                 hashed_pw = generate_password_hash(new_password)
-
-                print(hashed_pw)
 
                 # Update the user's password in the database
                 user.hash = hashed_pw

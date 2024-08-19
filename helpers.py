@@ -197,7 +197,7 @@ def insert_or_update_matches_to_db(db_session, leagueShortcut):
                 team2_score=team2_score,
                 matchDateTime=match["matchDateTime"],
                 matchIsFinished=match["matchIsFinished"],
-                #location=match["location"]["locationCity"],        # only worked for euro2024
+                #location=match["location"]["locationCity"],        # does not work for smaller matches
                 lastUpdateDateTime=match["lastUpdateDateTime"],
                 leagueShortcut=leagueShortcut,
                 groupName=match["group"]["groupName"]
@@ -529,6 +529,7 @@ def get_insights(db_session):
 
 
 def is_update_needed_league_table(db_session):
+    """ Deprecated """
     # Check if teams table is empty and insert teams if needed
     if not db_session.query(Team).first():
         print("Teams table is empty, inserting teams first...")
@@ -565,7 +566,7 @@ def is_update_needed_league_table(db_session):
 
 
 def is_update_needed_matches(db_session):
-    ''' Deprecated incomplete function. Actually faster to just update. Maybe useful with big datasets.'''
+    """ Deprecated incomplete function. Actually faster to just update. Maybe useful with big datasets."""
     # Get current matchday from API and DB
     current_matchday_API = get_current_matchday_openliga()
     current_match_db = find_closest_in_time_match(db_session)
@@ -587,7 +588,7 @@ def is_update_needed_matches(db_session):
 
 
 def check_if_update_needed_for_current_matchday(db_session, current_matchday_API):
-
+    """ Deprecated """
     # Get last update times
     lastUpdateTime_openliga = normalize_datetime(get_last_online_change(current_matchday_API))
     last_updated_match = get_most_recently_updated_match_by_matchday(db_session, current_matchday_API)
@@ -617,7 +618,7 @@ def update_match_if_needed(db_session, unfinished_match):
 
 
 def update_match_in_db(matchdata_API, match_db, db_session):
-    """ Deprecated function, needs updating for use """
+    """ Deprecated """
     print("Updating match: ", matchdata_API["matchID"])
 
     # Prepare update dictionary
@@ -648,7 +649,7 @@ def update_matches_and_scores(db_session):
     print("Updating matches and user scores...")
 
     for leagueShortcut in leagueShortcut_list:
-        insert_teams_to_db(db_session, leagueShortcut)
+        #insert_teams_to_db(db_session, leagueShortcut)
         insert_or_update_matches_to_db(db_session, leagueShortcut)
 
     update_user_scores(db_session)
@@ -661,11 +662,9 @@ def update_live_matches_and_scores(db_session):
     print("Updating live matches and user scores...")
 
     live_matches = find_live_matches(db_session)
-    game_updated = False
 
     for match in live_matches:
         # Don't try to update manually added games (indicated by negative match id's)
-        print(match.id)
         if match.id < 0:
             continue
         match_data = get_matchdata_openliga(match.id)
@@ -673,10 +672,8 @@ def update_live_matches_and_scores(db_session):
             update_match_score_for_live_scores(db_session, match_data)
             if match_data["matchIsFinished"] == 1:
                 update_matches_and_scores(db_session)       # In order to also update other matchups that may depend
-            game_updated = True                             # on the live match that has ended, like in a tournament
+                                                            # on the live match that has ended, like in a tournament
                                                             # TODO add routine for league table
-    if game_updated:
-        update_user_scores(db_session)
     print("Updating live matches and user scores finished.")
 
 
