@@ -412,6 +412,8 @@ def change_password():
                 # Hash the password
                 hashed_pw = generate_password_hash(new_password)
 
+                print(hashed_pw)
+
                 # Update the user's password in the database
                 user.hash = hashed_pw
                 db_session.commit()

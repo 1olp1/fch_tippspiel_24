@@ -10,6 +10,7 @@ from PIL import Image
 from datetime import datetime, timedelta
 from models import User, Match, Team, Prediction
 from collections import defaultdict
+import json
 #import logging
 
 #logging.basicConfig(
@@ -647,7 +648,7 @@ def update_matches_and_scores(db_session):
     print("Updating matches and user scores...")
 
     for leagueShortcut in leagueShortcut_list:
-        #insert_teams_to_db(db_session, leagueShortcut)
+        insert_teams_to_db(db_session, leagueShortcut)
         insert_or_update_matches_to_db(db_session, leagueShortcut)
 
     update_user_scores(db_session)
@@ -940,7 +941,7 @@ def get_filtered_matches_by_date(db_session, index):
             Match.matchDateTime >= start_date,
             Match.matchDateTime < end_date
         )
-    ).all()
+    ).order_by(Match.matchDateTime).all()
 
     return matches
 

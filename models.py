@@ -46,6 +46,8 @@ class Match(Base):
             return "DFB-Pokal"
         elif leagueShortcut == "bl1":
             return "BL"
+        elif leagueShortcut == "uefaconf2024_quali":
+            return "Conf.-Leauge-Quali"
 
     @property
     def formatted_matchDate(self):
