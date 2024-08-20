@@ -83,7 +83,7 @@ As of August 24, the update mechanism functions on demand and triggers under the
 An update occurs when the data retrieved from the API differs from the data stored in the MySQL database. In such cases, the local data is updated to reflect the changes.
 
 ### Logging in
-When logging in, the server checks for new match updates via the API.If updates are found, the user scores are also updated accordingly.
+When logging in, the server checks for new match updates via the API. If updates are found, the user scores are also updated accordingly.
 
 ### "Rangliste" route
 When accessing the "rangliste" page, the server verifies if there are any ongoing matches and updates them if necessary. Subsequently, the user scores are refreshed, enabling real-time scoring.
