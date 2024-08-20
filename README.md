@@ -4,7 +4,7 @@
 ## Overview
 The website allows users to predict the outcome of Bundesliga, DFB-Pokal and UEFA Conference League matches from the Club 1. FC Heidenheim 1846. The users get points based on how correct their prediction was. In the "Rangliste"-Route they can view their current ranking among all the other users. The website is built using **Flask (and Jinja)**, **Bootstrap tables** and an **API** called [**OpenLigaDB**](https://github.com/OpenLigaDB) for fetching match and team data and a **mysql** server for storing this data. The website is hosted on [**pythonanywhere**](https://salatic.pythonanywhere.com/), where an access key is needed to register.
 
-This Flask application is built upon the project "[**tippspiel**](https://github.com/1olp1/tippspiel)" I made as a final project for CS50 Course. There are some differences to that earlier version, mainly:
+This Flask application is built upon the project "[**tippspiel**](https://github.com/1olp1/fch_tippspiel_23_local_version)" I made as a final project for CS50 Course. There are some differences to that earlier version, mainly:
 - This version is **web-hosted** and in use by friends.
 - **mysql** database instead of SQLite, using SQLAlchemy for database interactions.
 - More modern **design**, including icons for the submenues.
