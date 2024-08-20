@@ -1,4 +1,5 @@
 from flask import flash, redirect, session
+from flask import current_app as app
 from sqlalchemy import func, text, desc, case, or_, and_
 from sqlalchemy.orm import joinedload
 import time
@@ -78,7 +79,10 @@ def make_image_filepath(team, img_folder):
     img_file_name = team['teamName'] + os.path.splitext(team['teamIconUrl'])[1]
     img_file_path = os.path.join(img_folder, img_file_name)
 
-    return img_file_path
+    # Make the path relative to the 'static' folder for Flask
+    relative_img_file_path = img_file_path.replace('static/', '')
+
+    return relative_img_file_path
 
 
 def get_openliga_json(url):
@@ -100,7 +104,7 @@ def insert_teams_to_db(db_session, leagueShortcut):
     print("Inserting teams to db")
     try:
         # Folder paths
-        local_folder_path = os.path.join(".", "static", leagueShortcut, leagueSeason)
+        local_folder_path = os.path.join("static", leagueShortcut, leagueSeason)
         img_folder = os.path.join(local_folder_path, "team-logos")
         teams = get_openliga_json(get_available_teams_url(leagueShortcut))
 
@@ -649,7 +653,7 @@ def update_matches_and_scores(db_session):
     print("Updating matches and user scores...")
 
     for leagueShortcut in leagueShortcut_list:
-        #insert_teams_to_db(db_session, leagueShortcut)
+        insert_teams_to_db(db_session, leagueShortcut)
         insert_or_update_matches_to_db(db_session, leagueShortcut)
 
     update_user_scores(db_session)

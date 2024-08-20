@@ -32,7 +32,7 @@ def rangliste_overview():
         with get_db_session() as db_session:
             game_rounds_list = get_game_rounds()
 
-            # Determine matchday_to_display based on session or default to closest matchday
+            # Determine game round to display based on session or default to closest in time game round
             if request.method == "GET":
                 game_round_to_display = int(request.args.get('matchday', get_current_game_round()))
                 session['matchday_to_display'] = game_round_to_display
@@ -70,11 +70,15 @@ def rangliste_overview():
             for prediction in filtered_predictions:
                 user_points_matchday[prediction.user_id] += prediction.points
 
+            # Determine top users to highlight in the html
             max_points = max(user_points_matchday.values(), default=0)
             top_users = [user_id for user_id, points in user_points_matchday.items() if points == max_points and max_points != 0]
 
+            # Get index of closest in time match to set the default match to display (esp. important for mobile view)
             match_ids = [match.id for match in filtered_matches]
             index_of_closest_in_time_match = match_ids.index(find_closest_in_time_match_from_selection(filtered_matches).id) + 1 # +1 because loop index in jinja starts at 1
+            
+            # Needed for the in-table pagination 
             no_filtered_matches = len(match_ids)
 
             end_time = time.time()
@@ -82,7 +86,7 @@ def rangliste_overview():
             print("Match to display: ", index_of_closest_in_time_match)
             print(f"Elapsed time for Rangliste: {elapsed_time:.4f} seconds")
                         
-            return render_template("apology.html",
+            return render_template("rangliste_overview.html",
                                 matches=filtered_matches,
                                 prev_matchday=prev_matchday,
                                 next_matchday=next_matchday,
@@ -110,7 +114,7 @@ def rangliste():
         with get_db_session() as db_session:
             game_rounds_list = get_game_rounds()
 
-            # Determine matchday_to_display based on session or default to closest matchday
+            # Determine game round to display based on session or default to closest in time game round
             if request.method == "GET":
                 game_round_to_display = int(request.args.get('matchday', get_current_game_round()))
                 session['matchday_to_display'] = game_round_to_display
@@ -148,11 +152,15 @@ def rangliste():
             for prediction in filtered_predictions:
                 user_points_matchday[prediction.user_id] += prediction.points
 
+            # Determine top users to highlight in the html
             max_points = max(user_points_matchday.values(), default=0)
             top_users = [user_id for user_id, points in user_points_matchday.items() if points == max_points and max_points != 0]
 
+            # Get index of closest in time match to set the default match to display (esp. important for mobile view)
             match_ids = [match.id for match in filtered_matches]
             index_of_closest_in_time_match = match_ids.index(find_closest_in_time_match_from_selection(filtered_matches).id) + 1 # +1 because loop index in jinja starts at 1
+            
+            # Needed for the in-table pagination 
             no_filtered_matches = len(match_ids)
 
             end_time = time.time()
@@ -200,7 +208,7 @@ def tippen():
             else:
                 game_round_to_display = session.get('matchday_to_display')
 
-            print(game_round_to_display)
+            print("Game round to display (tippen route): ", game_round_to_display)
 
             # Filter matches by matchday parameter or default to closest matchday
             #filtered_matches = [match for match in matches if match.matchday == match_to_display] # needed for pagination

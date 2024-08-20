@@ -4,7 +4,7 @@
     Rangliste
 {% endblock %}
 {% block header %}
-    <a href="{{ url_for('rangliste') }}" class="header-link text-black text-decoration-none">
+    <a href="{{ url_for('rangliste') }}" class="header-link text-white text-decoration-none">
         Rangliste
     </a>
 {% endblock %}
@@ -43,7 +43,7 @@
 
 <div class="text-center">
     <div class="table-responsive">
-        <table class="table rounded-4 overflow-hidden">
+        <table class="table overflow-hidden">
             <tbody>
                 <tr>
                     <td colspan="2" style="text-align: right;padding-right: 20px;">
@@ -56,7 +56,7 @@
                             {{ match.matchDateTime.strftime('%d.%m.') }} <br>
                             {{ match.time }} <br>
                             {% if match.team1.shortName == 'Heidenheim' %}
-                                <span>H </span><img src="{{  match.team2.teamIconPath  }}" alt="{{  match.team2_shortName  }}-logo" class="team-logo-small">
+                                <span>H </span><img src="{{ url_for('static', filename=match.team2.teamIconPath)  }}" alt="{{  match.team2_shortName  }}-logo" class="team-logo-small">
                             {% else %}
                                 <span>A </span><img src="{{  match.team1.teamIconPath  }}" alt="{{  match.team1_shortName  }}-logo" class="team-logo-small">
                             {% endif %}
@@ -163,7 +163,7 @@
         // Function to handle screen size changes
         function handleScreenSizeChange(e) {
             if (e.matches) {
-                if (screenWidth < 360){
+                if (screenWidth < 370){
                     no_columns_to_display = 1;
                 }
                 updateTableDisplay();
