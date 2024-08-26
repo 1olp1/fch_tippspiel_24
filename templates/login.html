@@ -11,14 +11,18 @@
 {% endblock %}
 
 {% block main %}
-<form action="/login" method="post">
-    <div class="mb-3">
-        <input autocomplete="off" autofocus class="form-control w-auto" name="username" placeholder="Benutzername" type="text">
-    </div>
-    <div class="mb-3">
-        <input class="form-control w-auto" name="password" placeholder="Passwort" type="password">
-    </div>
-    <button class="btn btn-primary" type="submit">Log In</button>
-    <a href="/register" class="btn btn-primary" style="margin-left: 1rem">Registrieren</a>
-</form>
+<div class="form-container">
+    <form action="/login" method="post" class="form-wrapper">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control w-100" name="username" placeholder="Benutzername" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control w-100" name="password" placeholder="Passwort" type="password">
+        </div>
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-primary" type="submit">Log In</button>
+            <a href="/register" class="btn btn-primary">Registrieren</a>
+        </div>
+    </form>
+</div>
 {% endblock %}

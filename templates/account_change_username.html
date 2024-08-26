@@ -1,27 +1,30 @@
 {% extends "account_layout.html" %}
 
 {% block card %}
-<div class="list-group" style="width: 20rem;">
-    <a href="{{ url_for('account') }}" class="list-group-item list-group-item-action d-flex align-items-center">
-        <i class="fa-solid fa-caret-left me-2"></i> Benutzername ändern
-    </a>
-    <div class="list-group-item">
-        <form id="change-username-form" action="{{ url_for('change_username') }}" method="post">
-            <div class="mb-3">
-                <p> Aktueller Benutzername: <strong>{{ session.username }}</strong> </p>
-            </div>
-            <div class="mb-3">
-                <label for="new_username" class="form-label">Neuer Benutzername <br> (max. 15 Zeichen)</label>
-                <input type="text" id="new_username" name="new_username" class="form-control w-auto" placeholder="Neuer Benutzername" required aria-label="New Username">
-            </div>
-            <div class="mb-3">
-                <label for="password_confirmation" class="form-label">Mit Passwort bestätigen</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control w-auto" placeholder="Passwort" required autocomplete="current-password" aria-label="Password Confirmation">
-            </div>
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Benutzername ändern</button>
-            </div>
-        </form>
+<div class="form-container">
+    <div class="list-group">
+        <a href="{{ url_for('account') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+            <i class="fa-solid fa-caret-left me-2"></i> Benutzername ändern
+        </a>
+        <div class="list-group-item">
+            <form id="change-username-form" action="{{ url_for('change_username') }}" method="post">
+                <div class="mb-3">
+                    <p> Aktueller Benutzername: <strong>{{ session.username }}</strong> </p>
+                </div>
+                <div class="mb-3">
+                    <label for="new_username" class="form-label">Neuer Benutzername <br> (max. 15 Zeichen)</label>
+                    <input type="text" id="new_username" name="new_username" class="form-control w-auto" placeholder="Neuer Benutzername" required aria-label="New Username">
+                </div>
+                <div class="mb-3">
+                    <label for="password_confirmation" class="form-label">Mit Passwort bestätigen</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control w-auto" placeholder="Passwort" required autocomplete="current-password" aria-label="Password Confirmation">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Benutzername ändern</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
 {% endblock %}

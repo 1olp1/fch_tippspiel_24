@@ -12,95 +12,6 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans">
 
-    <!-- Inline Critical CSS -->
-    <style>
-        .header {
-            background-color: #003297;
-            border-bottom: 3px solid #c40000;
-            width: 100%;
-            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 250px;
-            z-index: 1020;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #242424;
-            color: white;
-            position: fixed;
-            height: 100%;
-            z-index: 1030; /* Ensure sidebar is on top of content */
-            transition: transform 0.3s ease;
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            display: block;
-        }
-
-        .content {
-            margin-left: 250px;
-            margin-top: 60px;
-            padding: 20px;
-            max-width: 700px;
-            min-width: 300px;
-            overflow-y: auto;
-            transition: margin-left 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 100%;
-        }
-        .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-        }
-        .flash-message {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                top: 60px;
-
-            }
-            table {
-                margin: 0;
-                width: 100%;
-            }
-
-            .sidebar.active {
-                transform: translateX(0);
-            }
-
-            .content {
-                margin-left: 0;
-                width: 100%;
-            }
-            .header {
-                left: 0;
-                text-align: center;
-            }
-
-        .toggle-sidebar-btn {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        z-index: 1040;
-    }
-        }
-    </style>
-
-
     <!-- Custom CSS -->
     <link href="/static/styles.css" rel="stylesheet">
 
@@ -158,7 +69,7 @@
 
     <button class="btn btn-primary toggle-sidebar-btn d-md-none" onclick="toggleSidebar()">☰</button>
       <main class="d-flex flex-nowrap">
-        <div class="sidebar d-flex flex-column flex-shrink-0 p-3">
+        <div id="sidebar" class="sidebar d-flex flex-column flex-shrink-0 p-3">
           <a href="/" class="d-flex align-items-center mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="fs-4">OLP'S TIPPKISTE</span>
           </a>
@@ -249,40 +160,42 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/40b747e390.js" crossorigin="anonymous"></script>
     <script>
-                    function toggleSidebar() {
-                document.querySelector('.sidebar').classList.toggle('active');
-                document.querySelector('.content').classList.toggle('active');
-        }
-        document.addEventListener('DOMContentLoaded', function () {
-
-            // Handling Active Classes on Sidebar Links
-            const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
-            const currentPath = window.location.pathname;
-        
-            sidebarLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPath) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        
-            // Managing Flash Messages
-            const alerts = document.querySelectorAll('.alert');
-            
-            if (alerts) {
-                setTimeout(() => {
-                    alerts.forEach(alert => {
-                        alert.style.transition = 'opacity 0.5s';
-                        alert.style.opacity = '0';
-                        setTimeout(() => {
-                            alert.remove();
-                        }, 500);  // Match this timeout with the transition duration
-                    });
-                }, 5000);  // Display time before auto-dismissing the alert
+            function toggleSidebar() {
+                    document.querySelector('.sidebar').classList.toggle('active');
+                    document.querySelector('.content').classList.toggle('active');
             }
+            
+            const sidebar = document.getElementById('sidebar');
+
+            document.addEventListener('DOMContentLoaded', function () {
+                // Handling Active Classes on Sidebar Links
+                const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
+                const currentPath = window.location.pathname;
+            
+                sidebarLinks.forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            
+                // Managing Flash Messages
+                const alerts = document.querySelectorAll('.alert');
+                
+                if (alerts) {
+                    setTimeout(() => {
+                        alerts.forEach(alert => {
+                            alert.style.transition = 'opacity 0.5s';
+                            alert.style.opacity = '0';
+                            setTimeout(() => {
+                                alert.remove();
+                            }, 500);  // Match this timeout with the transition duration
+                        });
+                    }, 5000);  // Display time before auto-dismissing the alert
+                }
         });
-        </script>
+    </script>
                
 </body>
 </html>

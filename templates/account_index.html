@@ -2,7 +2,8 @@
 
 {% block main %}
 
-<div class="card shadow-sm p-3 mb-4" style="width: 20rem;">
+<div class="form-container">
+    <div class="form-wrapper" style="max-width: 400px;">
         <p class="">Hier kannst du deinen Account anpassen.</p>
         <div class="list-group">
             <a href="{{ url_for('change_password') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
@@ -25,5 +26,7 @@
             </a>
         </div>
     </div>
+</div>
+
 
 {% endblock %}

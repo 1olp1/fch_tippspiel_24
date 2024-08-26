@@ -11,8 +11,8 @@
 
 {% block main %}
 
-<div class="card" style="width: 20rem;">
-  <div class="card-body">
+<div class="form-container">
+  <div class="form-wrapper" style="max-width: 350px;">
     <h4 class="card-title" style="text-align: center;"> Hallo {{ insights.username }}! </h4>
     <div class="stats"> Deine Platzierung: <span>{{ insights.rank }}. von {{ insights.no_users }}</span></div>
     <div class="stats"> Gesamtpunkte <span>{{ insights.total_points }}</span> </div>
@@ -29,8 +29,8 @@
     </div>
 </div>
 <div class="row">
-  <div class="col-12 d-sm-none justify-content-between">
-    <a href="{{ url_for('tippen') }}" class="btn btn-primary mt-3 ml-sm-2" style="margin-right: 10px;">Tippen</a>
+  <div class="col-12 d-sm-none justify-content-between text-center">
+    <a href="{{ url_for('tippen') }}" class="btn btn-primary mt-3 ml-sm-2" style="margin-right: 20px;">Tippen</a>
     <a href="{{ url_for('rangliste') }}" class="btn btn-primary mt-3">Zur Rangliste</a>
   </div>
 </div>

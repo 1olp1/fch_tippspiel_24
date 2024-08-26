@@ -80,9 +80,9 @@ def make_image_filepath(team, img_folder):
     img_file_path = os.path.join(img_folder, img_file_name)
 
     # Make the path relative to the 'static' folder for Flask
-    relative_img_file_path = img_file_path.replace('static/', '')
+    #relative_img_file_path = img_file_path.replace('static/', '')
 
-    return relative_img_file_path
+    return img_file_path
 
 
 def get_openliga_json(url):
@@ -653,7 +653,7 @@ def update_matches_and_scores(db_session):
     print("Updating matches and user scores...")
 
     for leagueShortcut in leagueShortcut_list:
-        insert_teams_to_db(db_session, leagueShortcut)
+        #insert_teams_to_db(db_session, leagueShortcut)
         insert_or_update_matches_to_db(db_session, leagueShortcut)
 
     update_user_scores(db_session)
@@ -674,6 +674,7 @@ def update_live_matches_and_scores(db_session):
         match_data = get_matchdata_openliga(match.id)
         if match_data:
             update_match_score_for_live_scores(db_session, match_data)
+            update_user_scores(db_session)
             if match_data["matchIsFinished"] == 1:
                 update_matches_and_scores(db_session)       # In order to also update other matchups that may depend
                                                             # on the live match that has ended, like in a tournament

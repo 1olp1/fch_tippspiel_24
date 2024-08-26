@@ -124,6 +124,8 @@ nav .navbar-brand .blue {
     height: 50px; /* Set a consistent height */
     vertical-align: middle; /* Align vertically in the middle of the cell */
     margin: 0 auto; /* Center horizontally */
+    margin-bottom: 5px;
+    margin-top: 5px;
     display: block; /* Ensure it's treated as a block-level element */
     object-fit: contain;
 }
@@ -190,12 +192,7 @@ nav .navbar-brand .blue {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .table-responsive-desktop {
-        display: none; /* Hide desktop table on small screens */
-    }
-    .table-responsive-mobile {
-        display: block; /* Show mobile table on small screens */
-    }
+    
 }
 
 @media (min-width: 768px) {
@@ -225,19 +222,123 @@ nav .navbar-brand .blue {
     display: none;
 }
 
-/* Show the button when screen width is below 768px */
-@media (max-width: 768px) {
-    .navigationButton {
-        display: inline-block; /* or display: block; */
-    }
-}
-
 /* Card Formatting */
 .card-body {
     text-align: left; /* Ensure the card body text is left-aligned */
     padding: 1.5rem; /* Adjust padding as needed */
 }
 
+.card-title {
+    color: rgb(22, 104, 255); /* Example text color */
+    font-size: 1.5rem; /* Example font size */
+}
+.header {
+    background-color: #003297;
+    border-bottom: 3px solid #c40000;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(255, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 250px;
+    z-index: 1020;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar {
+    width: 250px;
+    background-color: #242424;
+    color: white;
+    position: fixed;
+    height: 100%;
+    z-index: 1030; /* Ensure sidebar is on top of content */
+    transition: transform 0.3s ease;
+}
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+.content {
+    margin-left: 250px;
+    margin-top: 60px;
+    padding: 20px;
+    max-width: 700px;
+    min-width: 300px;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+.flash-message {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        top: 60px;
+
+    }
+    table {
+        margin: 0;
+        width: 100%;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .header {
+        left: 0;
+        text-align: center;
+    }
+    .navigationButton {
+        display: inline-block; /* or display: block; */
+    }
+    .form-container {
+        display: flex;
+        justify-content: center;
+    }    
+
+    .toggle-sidebar-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1040;
+    }
+
+    .table-responsive-desktop {
+        display: none; /* Hide desktop table on small screens */
+    }
+    .table-responsive-mobile {
+        display: block; /* Show mobile table on small screens */
+    }
+}
+
+.form-wrapper {
+    background: white; /* Background color for the form */
+    padding: 2rem; /* Padding around the form */
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for better visibility */
+    max-width: 300px; /* Max width for the form */
+    width: 100%; /* Full width up to the max-width */
+}
 .stats {
     display: flex;
     justify-content: space-between; /* Distribute space between the text and the span */
@@ -246,11 +347,6 @@ nav .navbar-brand .blue {
 .stats span {
     text-align: right; /* Right-align text inside the span */
     margin-left: auto; /* Push the span to the right */
-}
-
-.card-title {
-    color: rgb(22, 104, 255); /* Example text color */
-    font-size: 1.5rem; /* Example font size */
 }
 
 ul.list-unstyled {
@@ -270,26 +366,9 @@ ul.list-unstyled li:before {
     margin-left: -0.5em; /* Adjust position for bullet */
 }
 
-/* List Group Item */
-.list-group-item {
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 0.25rem; /* Rounded corners for items */
-    padding: 0.75rem 1.25rem; /* Padding */
-    font-size: 1rem; /* Font size */
-    color: #333; /* Text color */
-}
-
-/* Active Item */
-.list-group-item-action.active {
-    background-color: #007bff; /* Highlight color for active items */
-    color: #fff; /* Text color for active items */
-    cursor: pointer; /* Pointer cursor */
-    transition: background-color 0.3s; /* Smooth transition */
-}
-
-/* List Group Item Hover */
-.list-group-item-action:hover {
-    background-color: #f8f9fa; /* Light background on hover */
+.list-group{
+    max-width: 400px;
+    width: 100%;
 }
 
 /* Icon Styling */

@@ -86,7 +86,7 @@ def rangliste_overview():
             print("Match to display: ", index_of_closest_in_time_match)
             print(f"Elapsed time for Rangliste: {elapsed_time:.4f} seconds")
                         
-            return render_template("rangliste_overview.html",
+            return render_template("apology.html",
                                 matches=filtered_matches,
                                 prev_matchday=prev_matchday,
                                 next_matchday=next_matchday,
