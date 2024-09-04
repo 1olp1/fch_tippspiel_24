@@ -55,7 +55,7 @@
                         <td name="match-column{{ loop.index }}"> 
                             {{ match.matchDateTime.strftime('%d.%m.') }} <br>
                             {{ match.time }} <br>
-                            {% if match.team1.shortName == 'Heidenheim' %}
+                            {% if match.team1.id == 199 %}
                                 <span>H </span><img src="{{  match.team2.teamIconPath  }}" alt="{{  match.team2_shortName  }}-logo" class="team-logo-small">
                             {% else %}
                                 <span>A </span><img src="{{  match.team1.teamIconPath  }}" alt="{{  match.team1_shortName  }}-logo" class="team-logo-small">
