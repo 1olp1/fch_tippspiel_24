@@ -84,7 +84,7 @@
                 <tr>
                     <td class="text-center">
                         <img src="{{ match.team1.teamIconPath }}" alt="{{ match.team1.teamName }}-logo" class="team-logo-big">
-                        <div style="font-size: 0.9em;"> {{ match.team1.shortName }} </div>
+                        <div style="font-size: 0.85em;"> {{ match.team1.shortName }} </div>
                     </td>
                     <td class="text-center">
                         <input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="mobile_team1Score_{{ match.id }}" name="team1Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team1_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
@@ -93,7 +93,7 @@
                     </td>
                     <td class="text-center">
                         <img src="{{ match.team2.teamIconPath }}" alt="{{ match.team2.teamName }}-logo" class="team-logo-big">
-                        <div style="font-size: 0.9rem;"> {{ match.team2.shortName }} </div>
+                        <div style="font-size: 0.85rem;"> {{ match.team2.shortName }} </div>
                     </td>
                 </tr>
                 {% endfor %}

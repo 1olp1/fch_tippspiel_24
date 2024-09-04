@@ -116,10 +116,10 @@ def insert_teams_to_db(db_session, leagueShortcut):
                 
                 if existing_team:
                     # Update the existing team record
-                    existing_team.teamName = team_data["teamName"]
-                    existing_team.shortName = team_data["shortName"]
-                    existing_team.teamIconUrl = team_data["teamIconUrl"]
-                    existing_team.teamIconPath = make_image_filepath(team_data, img_folder)
+                    #existing_team.teamName = team_data["teamName"]
+                    #existing_team.shortName = team_data["shortName"]
+                    #existing_team.teamIconUrl = team_data["teamIconUrl"]
+                    #existing_team.teamIconPath = make_image_filepath(team_data, img_folder)
                     existing_team.teamGroupName = team_data["teamGroupName"]
                 else:
                     # Add new team if it doesn't exist

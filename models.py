@@ -48,6 +48,8 @@ class Match(Base):
             return "BL"
         elif leagueShortcut == "uefaconf2024_quali":
             return "Conf.-Leauge-Quali"
+        elif leagueShortcut == "uefaconf2024":
+            return "Conf.-League"
 
     @property
     def formatted_matchDate(self):
