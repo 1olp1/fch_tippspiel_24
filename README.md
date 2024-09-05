@@ -56,7 +56,7 @@ Here's a screenshot of routes that are still in development:
     ![Screenshot_Home](/static/images_readme/construction.png)
 
 ## Database
-The sqlite database used for this website consists of four tables:
+The database on the MySQL-Server used for this website consists of four tables (that are initiated using SQLAlchemy):
 - users
 - teams
 - predictions
