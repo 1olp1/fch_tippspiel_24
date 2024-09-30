@@ -983,6 +983,11 @@ def get_current_game_round():
 
     for index, round in enumerate(round_list):
         start_time, end_time = round
+        print("index:", index)
+        print(f"Start-time: {start_time}, end-time: {end_time}")
+        print("current time: ", current_time)
+        print()
+
 
         if start_time <= current_time <= end_time:
             return index + 1
@@ -993,9 +998,9 @@ def get_current_game_round():
 
 def get_game_rounds():
     return [
-        (datetime(2024, 8, 1), datetime(2024, 9, 30)),
-        (datetime(2024, 10, 1), datetime(2024, 11, 30)),
-        (datetime(2024, 12, 1), datetime(2025, 1, 31)),
-        (datetime(2025, 2, 1), datetime(2025, 3, 31)),
-        (datetime(2025, 4, 1), datetime(2025, 5, 31))
+        (datetime(2024, 8, 1), datetime(2024, 9, 30) + timedelta(days=1)),
+        (datetime(2024, 10, 1), datetime(2024, 11, 30) + timedelta(days=1)),
+        (datetime(2024, 12, 1), datetime(2025, 1, 31) + timedelta(days=1)),
+        (datetime(2025, 2, 1), datetime(2025, 3, 31) + timedelta(days=1)),
+        (datetime(2025, 4, 1), datetime(2025, 5, 31) + timedelta(days=1))
     ]
