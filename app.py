@@ -5,9 +5,11 @@ from sqlalchemy import func, desc
 from sqlalchemy.orm import joinedload
 from sqlalchemy.exc import OperationalError
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import login_required, get_league_table, get_valid_matches, convert_iso_datetime_to_human_readable, get_insights, group_matches_by_date, process_predictions, find_closest_in_time_match_by_matchday, update_live_matches_and_scores, find_closest_in_time_match, update_matches_and_scores, find_matchday_to_display_tippen, delete_user_and_predictions, get_filtered_matches_by_date, get_game_rounds, get_current_game_round, get_filtered_predictions_by_date, find_closest_in_time_match_from_selection
-from models import User, Prediction, Match
+from helpers import login_required, get_league_table, get_valid_matches, convert_iso_datetime_to_human_readable, get_insights, process_predictions, update_live_matches_and_scores, find_closest_in_time_match, update_matches_and_scores, find_matchday_to_display_tippen, delete_user_and_predictions, get_filtered_matches_by_date, get_game_rounds, get_current_game_round, get_filtered_predictions_by_date, find_closest_in_time_match_from_selection, get_vote_counts
+from models import User, Prediction, Match, UserVote
 from config import app, get_db_session
+import csv
+
 
 
 @app.after_request
@@ -23,6 +25,50 @@ def after_request(response):
 @login_required
 def archive():
     return render_template("apology.html")
+
+@app.route("/", methods=["GET", "POST"])
+@login_required
+def home():
+    user_id = session.get("user_id")  # Get the user ID from the session or request
+    poll_id = '14_10'  # ID for this specific poll (can be dynamic)
+    user_voted = False
+        
+    try: 
+        with get_db_session() as db_session:
+            # Get votes for poll
+            votes = get_vote_counts(db_session, poll_id)
+
+            try:
+                # Check if vote exists for the user
+                existing_vote = db_session.query(UserVote).filter_by(user_id=session["user_id"], poll_id=poll_id).first()
+                if existing_vote:
+                    user_voted = True
+            except Exception as e:
+                app.logger.error(f"Error getting vote for poll {poll_id} and user {user_id}: {e}")
+
+            # Handle form submission if user hasn't voted yet
+            if request.method == "POST" and not user_voted:
+                selected_vote = request.form.get("vote")
+                
+                if selected_vote == "1":
+                    votes[0] += 1  # Increment the "Ja" votes
+                elif selected_vote == "0":
+                    votes[1] += 1  # Increment the "Nein" votes               
+
+                # Record the vote in the database
+                new_vote = UserVote(user_id=user_id, poll_id=poll_id, vote=int(selected_vote))
+                db_session.add(new_vote)
+                db_session.commit()
+
+                user_voted = True  # Mark the user as voted
+
+            insights = get_insights(db_session)
+        
+        return render_template("home.html", insights=insights, votes=votes, user_voted=user_voted)
+
+    except OperationalError as e:
+        app.logger.error(f"Database connection error: {e}")
+        return "Database connection error, please try again later.", 500
 
 @app.route("/rangliste/overview", methods=["GET", "POST"])
 @login_required
@@ -285,12 +331,12 @@ def regeln():
     return render_template("regeln.html")
 
 
-@app.route("/")
+@app.route("/statistik")
 @login_required
-def index():
+def statistik():
     try:
         with get_db_session() as db_session:
-            return render_template("index.html", insights=get_insights(db_session))
+            return render_template("statistik.html", insights=get_insights(db_session))
         
     except OperationalError as e:
         app.logger.error(f"Database connection error: {e}")

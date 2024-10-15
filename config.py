@@ -5,6 +5,8 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.pool import QueuePool
 from datetime import timedelta
 import os
+from models import Base
+
 
 app = Flask(__name__)
 
@@ -37,5 +39,15 @@ engine = create_engine(
 SessionFactory = sessionmaker(bind=engine)
 session_db = scoped_session(SessionFactory)
 
+# To create all tables
+engine = create_engine(SQLALCHEMY_DATABASE_URI)
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# Create all tables
+Base.metadata.create_all(engine)
+
 def get_db_session():
     return session_db()
+
+

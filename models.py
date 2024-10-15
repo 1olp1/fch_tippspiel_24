@@ -148,3 +148,15 @@ class Prediction(Base):
     prediction_date = Column(DateTime)
     points = Column(Integer, default=0)
     user = relationship("User", back_populates="predictions")
+
+
+class UserVote(Base):
+    __tablename__ = 'user_votes'
+    
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)  # Unique identifier for the user (e.g., username, email)
+    poll_id = Column(String(255), nullable=False)  # Identifies which poll this is (e.g., '14_10')
+    vote = Column(Integer, nullable=False)  # 1: 'yes' or 0: 'no'
+
+    def __repr__(self):
+        return f"<UserVote(user_id={self.user_id}, poll_id={self.poll_id}, vote={self.vote})>"

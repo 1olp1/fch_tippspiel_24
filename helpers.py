@@ -9,7 +9,7 @@ import uuid
 import os
 from PIL import Image
 from datetime import datetime, timedelta
-from models import User, Match, Team, Prediction
+from models import User, Match, Team, Prediction, UserVote
 from collections import defaultdict
 import json
 #import logging
@@ -452,7 +452,7 @@ def download_and_resize_logos(teams, img_folder):
 
 
 def get_insights(db_session):
-    user_id = session["user_id"]
+    user_id = session.get("user_id")
 
     # Predictions rated
     predictions_rated = db_session.query(func.count(Prediction.id).label('predictions_rated'))\
@@ -472,6 +472,9 @@ def get_insights(db_session):
 
     # Total points of the user
     total_points_user = db_session.query(User.total_points).filter(User.id == user_id).scalar()
+
+    # Leader
+    leader = db_session.query(User.username).order_by(desc(User.total_points)).first()[0]
 
     # User rank
     subquery = db_session.query(
@@ -514,6 +517,7 @@ def get_insights(db_session):
     insights["corr_goal_diff"] = base_stats.correct_goal_diff
     insights["corr_tendency"] = base_stats.correct_tendency
     insights["wrong_predictions"] = insights["predictions_rated"] - insights["corr_result"] - insights["corr_goal_diff"] - insights["corr_tendency"]
+    insights["leader"] = leader
 
     # Differentiate if predictions have been rated to avoid dividing by 0 for the percentage
     if insights["predictions_rated"] != 0:
@@ -939,7 +943,9 @@ def get_filtered_matches_by_date(db_session, index):
     start_date, end_date = round_list[index]
 
     # Adjust the end_date to include the entire last day
-    end_date = end_date + timedelta(days=1)
+    end_date = end_date
+
+    print(f"from {start_date} to {end_date}")
     
     # Query to filter matches between the start_date and end_date
     matches = db_session.query(Match).filter(
@@ -962,7 +968,7 @@ def get_filtered_predictions_by_date(db_session, index):
     start_date, end_date = round_list[index]
 
     # Adjust the end_date to include the entire last day
-    end_date = end_date + timedelta(days=1)
+    end_date = end_date
 
     predictions = db_session.query(Prediction).select_from(Prediction).join(
         Match, Prediction.match_id == Match.id
@@ -1004,3 +1010,14 @@ def get_game_rounds():
         (datetime(2025, 2, 1), datetime(2025, 3, 31) + timedelta(days=1)),
         (datetime(2025, 4, 1), datetime(2025, 5, 31) + timedelta(days=1))
     ]
+
+
+def get_vote_counts(db_session, poll_id):
+    """Helper function to get vote counts for a poll."""
+    try:
+        yes_votes = db_session.query(func.count(UserVote.id)).filter_by(poll_id=poll_id, vote=1).scalar()
+        no_votes = db_session.query(func.count(UserVote.id)).filter_by(poll_id=poll_id, vote=0).scalar()
+        return [yes_votes, no_votes]
+    except Exception as e:
+        app.logger.error(f"Error counting votes for poll {poll_id}: {e}")
+        return [0, 0]
