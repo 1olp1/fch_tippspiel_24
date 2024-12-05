@@ -49,14 +49,12 @@ nav .navbar-brand .blue {
     width: 100%;
 }
 
-.table-responsive-desktop,
 .table-responsive-mobile {
     overflow-y: auto;
 }
 
-.table-responsive-desktop {
-    max-height: 620px; /* Adjust as needed */
-}
+
+
 
 .table-bordered td, .table-bordered th {
     border: 1px solid #455769;
@@ -190,20 +188,24 @@ nav .navbar-brand .blue {
     font-weight: bold; /* Make team names bold */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    
-}
 
+/* Responsive Design */
 @media (min-width: 768px) {
     .table-responsive-desktop {
         display: block; /* Show desktop table on large screens */
+        max-width:fit-content;
+        max-height: 620px;
+        overflow-y: auto;
     }
     .table-responsive-mobile {
         display: none; /* Hide mobile table on large screens */
     }
+    .table-responsive {
+        max-width: fit-content;   
+    }
 }
 
+  
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(22, 104, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
@@ -266,7 +268,6 @@ nav .navbar-brand .blue {
     margin-left: 250px;
     margin-top: 60px;
     padding: 14px;
-    max-width:fit-content;
     min-width: 250px;
     overflow-y: auto;
     transition: margin-left 0.3s ease-in-out;
@@ -275,6 +276,7 @@ nav .navbar-brand .blue {
     justify-content: center;
     width: 100%;
 }
+
 .bi {
     vertical-align: -.125em;
     fill: currentColor;

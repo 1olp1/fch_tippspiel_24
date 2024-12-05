@@ -1,0 +1,25 @@
+<!-- Radio Buttons for Voting -->
+      <form action="/" method="post" class="mt-3">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="vote" value="1" id="radioYes">
+          <label class="form-check-label" for="radioYes">
+            Bin dabei:
+          </label>
+          <span class="ms-3">{{ votes[0] }} Stimme(n)</span> <!-- Display the Yes vote count -->
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="vote" value="0" id="radioNo">
+          <label class="form-check-label" for="radioNo">
+            Nein:
+          </label>
+          <span class="ms-3">{{ votes[1] }} Stimme(n)</span> <!-- Display the No vote count -->
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn btn-primary" type="submit" {% if user_voted %}disabled{% endif %}>Abschicken</button>
+        <br>
+        {% if user_voted %}
+          <span style="font-size: small;"> (Du hast bereits abgestimmt)</span>
+        {% endif %}
+      </form>
