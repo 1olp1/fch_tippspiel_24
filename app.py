@@ -247,7 +247,7 @@ def tippen():
 
             game_rounds_list = get_game_rounds()
 
-            # Determine matchday_to_display based on session or default to next_matchday
+            # Determine matchday_to_display based on session or default to current matchday
             if request.method == "GET":
                 game_round_to_display = int(request.args.get('matchday', get_current_game_round()))
                 session['matchday_to_display'] = game_round_to_display
@@ -263,16 +263,13 @@ def tippen():
             # Group matches by date
             #filtered_matches_by_date = group_matches_by_date(filtered_matches)  # Only needed if multiple games are on one day
             
-            # Get list of matchdays and formatted matchdays for display
-            #matchday
-
             # Determine next and previous matchdays
             current_matchday = game_round_to_display
             next_matchday = game_round_to_display + 1 if current_matchday + 1 <= len(game_rounds_list) else None
             prev_matchday = game_round_to_display - 1 if current_matchday > 0 else None
 
             if request.method == "POST":
-                process_predictions(valid_matches, session, db_session, request)
+                process_predictions(filtered_matches, session, db_session, request)
 
             # Fetch all predictions for the current user
             predictions = db_session.query(Prediction).filter_by(user_id=session["user_id"]).all()

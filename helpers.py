@@ -360,6 +360,7 @@ def process_predictions(valid_matches, session, db_session, request):
                 prediction.winner = winner
                 prediction.prediction_date = get_current_datetime_as_object()
                 prediction_added = True
+                print("Prediction changed")
         else:
             # Create new prediction if none exists
             new_prediction = Prediction(
@@ -989,10 +990,10 @@ def get_current_game_round():
 
     for index, round in enumerate(round_list):
         start_time, end_time = round
-        print("index:", index)
-        print(f"Start-time: {start_time}, end-time: {end_time}")
-        print("current time: ", current_time)
-        print()
+        #print("index:", index)
+        #print(f"Start-time: {start_time}, end-time: {end_time}")
+        #print("current time: ", current_time)
+        #print()
 
 
         if start_time <= current_time <= end_time:
