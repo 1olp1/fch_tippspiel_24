@@ -2,6 +2,7 @@ from flask import flash, redirect, session
 from flask import current_app as app
 from sqlalchemy import func, text, desc, case, or_, and_
 from sqlalchemy.orm import joinedload
+from config import get_db_session  # Updated to use correct database session
 import time
 from functools import wraps
 import requests
@@ -11,6 +12,7 @@ from PIL import Image
 from datetime import datetime, timedelta
 from models import User, Match, Team, Prediction, UserVote
 from collections import defaultdict
+from sqlalchemy.exc import SQLAlchemyError
 import json
 #import logging
 
@@ -313,6 +315,31 @@ def award_users(db_session):
 def get_valid_matches(matches):
     return [match for match in matches
             if match.matchIsFinished == 0 and get_current_datetime_as_object() < match.matchDateTime]
+
+def update_user_predictions(predictions, user_id):
+    db = get_db_session()  # Use the correct session provider
+    try:
+        with db.begin():
+            for match_id, prediction in predictions.items():
+                if validate_prediction(prediction):
+                    existing_prediction = db.query(Prediction).filter_by(user_id=user_id, match_id=match_id).first()
+                    if existing_prediction:
+                        existing_prediction.prediction = prediction
+                    else:
+                        new_prediction = Prediction(user_id=user_id, match_id=match_id, prediction=prediction)
+                        db.add(new_prediction)
+                else:
+                    raise ValueError(f"Invalid prediction for match {match_id}")
+    except SQLAlchemyError as e:
+        db.rollback()
+        raise e
+
+def validate_prediction(prediction):
+    try:
+        int(prediction)
+        return True
+    except ValueError:
+        return False
 
 
 def process_predictions(valid_matches, session, db_session, request):
@@ -935,7 +962,7 @@ def get_available_teams_url(leagueShortcut):
     return f"https://api.openligadb.de/getavailableteams/{leagueShortcut}/{leagueSeason}"
 
 
-def get_filtered_matches_by_date(db_session, index):
+def get_matches_by_gameround(db_session, index):
     round_list = get_game_rounds()
 
     if index < 0 or index >= len(round_list):           # Chatgpt

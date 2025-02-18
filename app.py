@@ -5,7 +5,7 @@ from sqlalchemy import func, desc
 from sqlalchemy.orm import joinedload
 from sqlalchemy.exc import OperationalError
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import login_required, get_league_table, get_valid_matches, convert_iso_datetime_to_human_readable, get_insights, process_predictions, update_live_matches_and_scores, find_closest_in_time_match, update_matches_and_scores, find_matchday_to_display_tippen, delete_user_and_predictions, get_filtered_matches_by_date, get_game_rounds, get_current_game_round, get_filtered_predictions_by_date, find_closest_in_time_match_from_selection, get_vote_counts
+from helpers import login_required, get_league_table, get_valid_matches, convert_iso_datetime_to_human_readable, get_insights, process_predictions, update_live_matches_and_scores, find_closest_in_time_match, update_matches_and_scores, find_matchday_to_display_tippen, delete_user_and_predictions, get_matches_by_gameround, get_game_rounds, get_current_game_round, get_filtered_predictions_by_date, find_closest_in_time_match_from_selection, get_vote_counts
 from models import User, Prediction, Match, UserVote
 from config import app, get_db_session
 import csv
@@ -108,7 +108,7 @@ def rangliste_overview():
             ).all()
 
             # Fetch matches and predictions for the current matchday
-            filtered_matches = get_filtered_matches_by_date(db_session, game_round_to_display - 1)
+            filtered_matches = get_matches_by_gameround(db_session, game_round_to_display - 1)
             filtered_predictions = get_filtered_predictions_by_date(db_session, game_round_to_display - 1)
 
             # Calculate user points for the matchday
@@ -190,7 +190,7 @@ def rangliste():
             ).all()
 
             # Fetch matches and predictions for the current matchday
-            filtered_matches = get_filtered_matches_by_date(db_session, game_round_to_display - 1)
+            filtered_matches = get_matches_by_gameround(db_session, game_round_to_display - 1)
             filtered_predictions = get_filtered_predictions_by_date(db_session, game_round_to_display - 1)
 
             # Calculate user points for the matchday
@@ -239,14 +239,6 @@ def rangliste():
 def tippen():
     try:
         with get_db_session() as db_session:
-            # Fetch all matches
-            matches = db_session.query(Match).all()
-
-            # Filter valid matches for predictions
-            valid_matches = get_valid_matches(matches)
-
-            game_rounds_list = get_game_rounds()
-
             # Determine matchday_to_display based on session or default to current matchday
             if request.method == "GET":
                 game_round_to_display = int(request.args.get('matchday', get_current_game_round()))
@@ -254,22 +246,20 @@ def tippen():
             else:
                 game_round_to_display = session.get('matchday_to_display')
 
-            print("Game round to display (tippen route): ", game_round_to_display)
+            # Get matches for the gameround that should be displayed
+            matches_game_round = get_matches_by_gameround(db_session, game_round_to_display - 1)
 
-            # Filter matches by matchday parameter or default to closest matchday
-            #filtered_matches = [match for match in matches if match.matchday == match_to_display] # needed for pagination
-            filtered_matches = get_filtered_matches_by_date(db_session, game_round_to_display - 1)
-
-            # Group matches by date
-            #filtered_matches_by_date = group_matches_by_date(filtered_matches)  # Only needed if multiple games are on one day
+            # Filter valid matches for predictions
+            valid_matches = get_valid_matches(matches_game_round)
             
             # Determine next and previous matchdays
+            game_rounds_list = get_game_rounds()
             current_matchday = game_round_to_display
             next_matchday = game_round_to_display + 1 if current_matchday + 1 <= len(game_rounds_list) else None
             prev_matchday = game_round_to_display - 1 if current_matchday > 0 else None
 
             if request.method == "POST":
-                process_predictions(filtered_matches, session, db_session, request)
+                process_predictions(valid_matches, session, db_session, request)
 
             # Fetch all predictions for the current user
             predictions = db_session.query(Prediction).filter_by(user_id=session["user_id"]).all()
@@ -281,7 +271,7 @@ def tippen():
             if last_update:
                 last_update = convert_iso_datetime_to_human_readable(last_update)
 
-            return render_template('tippen.html', matches=filtered_matches, matchdays=[1,2,3,4,5], current_matchday=current_matchday,
+            return render_template('tippen.html', matches=matches_game_round, matchdays=[1,2,3,4,5], current_matchday=current_matchday,
                                 next_matchday=next_matchday, prev_matchday=prev_matchday, last_update=last_update,
                                 predictions=predictions, valid_matches=valid_matches, matches_by_date=None)
         
