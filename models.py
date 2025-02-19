@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Index
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
@@ -9,28 +9,32 @@ class User(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    username = Column(String(255), unique=True, nullable=False)
+    username = Column(String(255), unique=True, nullable=False, index=True)
     hash = Column(String(255), nullable=False)
     total_points = Column(Integer, default=0)
     correct_result = Column(Integer, default=0)
     correct_goal_diff = Column(Integer, default=0)
     correct_tendency = Column(Integer, default=0)
-    predictions = relationship("Prediction", back_populates="user")
+
+    predictions = relationship("Prediction", back_populates="user", cascade="all, delete-orphan")
+
+    def __repr__(self):
+        return f"<User(id={self.id}, username={self.username})>"
 
 class Match(Base):
     __tablename__ = 'matches'
 
     id = Column(Integer, primary_key=True)
     matchday = Column(Integer)
-    team1_id = Column(Integer, ForeignKey('teams.id'), nullable=False)
-    team2_id = Column(Integer, ForeignKey('teams.id'), nullable=False)
+    team1_id = Column(Integer, ForeignKey('teams.id', ondelete="CASCADE"), nullable=False, index=True)
+    team2_id = Column(Integer, ForeignKey('teams.id', ondelete="CASCADE"), nullable=False, index=True)
     team1_score = Column(Integer)
     team2_score = Column(Integer)
     matchDateTime = Column(DateTime)
-    matchIsFinished = Column(Integer)
+    matchIsFinished = Column(Integer, nullable=False, server_default='0')
     location = Column(String(255))
     lastUpdateDateTime = Column(DateTime)
-    predictions_evaluated = Column(Integer, default=0)
+    predictions_evaluated = Column(Integer, nullable=False, server_default='0')
     evaluation_Date = Column(DateTime)
     leagueShortcut = Column(String(255))
     groupName = Column(String(255))
@@ -38,6 +42,9 @@ class Match(Base):
     # Define explicit relationship names
     team1 = relationship("Team", foreign_keys=[team1_id], backref="matches_as_team1")
     team2 = relationship("Team", foreign_keys=[team2_id], backref="matches_as_team2")
+
+    def __repr__(self):
+        return f"<Match(id={self.id}, matchday={self.matchday})>"
 
     @property
     def formatted_leagueShortcut(self):
@@ -118,8 +125,8 @@ class Team(Base):
     __tablename__ = 'teams'
 
     id = Column(Integer, primary_key=True)
-    teamName = Column(String(255))
-    shortName = Column(String(255))
+    teamName = Column(String(255), nullable=False, unique=True)
+    shortName = Column(String(255), nullable=False)
     teamIconUrl = Column(String(255))
     teamIconPath = Column(String(255))
     teamGroupName = Column(String(255), default='None')
@@ -134,13 +141,16 @@ class Team(Base):
     teamRank = Column(Integer)
     lastUpdateTime = Column(DateTime)
 
+    def __repr__(self):
+        return f"<Team(id={self.id}, name={self.teamName})>"
+
 class Prediction(Base):
     __tablename__ = 'predictions'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id', ondelete="CASCADE"), nullable=False)
     matchday = Column(Integer, nullable=False)
-    match_id = Column(Integer, nullable=False)
+    match_id = Column(Integer, ForeignKey('matches.id', ondelete="CASCADE"), nullable=False)
     team1_score = Column(Integer, nullable=False)
     team2_score = Column(Integer, nullable=False)
     goal_diff = Column(Integer, nullable=False)
@@ -149,14 +159,23 @@ class Prediction(Base):
     points = Column(Integer, default=0)
     user = relationship("User", back_populates="predictions")
 
+    def __repr__(self):
+        return f"<Prediction(id={self.id}, user_id={self.user_id}, match_id={self.match_id})>"
+
 
 class UserVote(Base):
     __tablename__ = 'user_votes'
     
     id = Column(Integer, primary_key=True, autoincrement=True)
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)  # Unique identifier for the user (e.g., username, email)
+    user_id = Column(Integer, ForeignKey('users.id', ondelete="CASCADE"), nullable=False)  # Unique identifier for the user (e.g., username, email)
     poll_id = Column(String(255), nullable=False)  # Identifies which poll this is (e.g., '14_10')
     vote = Column(Integer, nullable=False)  # 1: 'yes' or 0: 'no'
 
     def __repr__(self):
         return f"<UserVote(user_id={self.user_id}, poll_id={self.poll_id}, vote={self.vote})>"
+    
+
+# Indexes for performance
+Index('ix_user_username', User.username)
+Index('ix_match_team1_id', Match.team1_id)
+Index('ix_match_team2_id', Match.team2_id)
