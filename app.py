@@ -69,88 +69,69 @@ def home():
     except OperationalError as e:
         app.logger.error(f"Database connection error: {e}")
         return "Database connection error, please try again later.", 500
-
-@app.route("/rangliste/overview", methods=["GET", "POST"])
+    
+@app.route("/rangliste/gesamt", methods=["GET"])
 @login_required
-def rangliste_overview():
-    start_time = time.time()
+def rangliste_gesamt():
     try:
         with get_db_session() as db_session:
-            game_rounds_list = get_game_rounds()
+            # Hole die Spielrunden (angenommen 5 Runden à ca. 2 Monate)
+            game_rounds = get_game_rounds()  # Liefert eine Liste von 5 Tupeln
+            num_rounds = len(game_rounds)
 
-            # Determine game round to display based on session or default to closest in time game round
-            if request.method == "GET":
-                game_round_to_display = int(request.args.get('matchday', get_current_game_round()))
-                session['matchday_to_display'] = game_round_to_display
-            else:
-                game_round_to_display = session.get('matchday_to_display')
-                    
-            # Determine next and previous matchdays
-            current_matchday = game_round_to_display
-            next_matchday = game_round_to_display + 1 if current_matchday + 1 <= len(game_rounds_list) else None
-            prev_matchday = game_round_to_display - 1 if current_matchday > 0 else None
+            # Dictionaries zur Speicherung der Punkte:
+            # round_points: { Runde (1-indexed): { user_id: Punkte in dieser Runde } }
+            # total_points: { user_id: Summe aller Punkte über alle Runden }
+            round_points = {}
+            total_points = {}
 
-            # Get last update time for display
+            # Für jede Spielrunde (Index 0 bis num_rounds-1)
+            for round_index in range(num_rounds):
+                # Hole alle Vorhersagen für diese Runde
+                predictions = get_filtered_predictions_by_date(db_session, round_index)
+                points_this_round = {}
+                for pred in predictions:
+                    points_this_round[pred.user_id] = points_this_round.get(pred.user_id, 0) + pred.points
+                # Runde als 1-indexierte Zahl speichern
+                round_points[round_index + 1] = points_this_round
+
+                # Addiere zu den Gesamtpunkten
+                for user_id, pts in points_this_round.items():
+                    total_points[user_id] = total_points.get(user_id, 0) + pts
+
+            # Hole alle Nutzer (alternativ nur die, die in mindestens einer Runde getippt haben)
+            users = db_session.query(User).all()
+            # Sortiere die Nutzer absteigend nach ihren Gesamtpunkten (default 0, wenn kein Tipp)
+            sorted_users = sorted(users, key=lambda u: total_points.get(u.id, 0), reverse=True)
+
+            # Für jede Runde: Ermittle den Höchstwert, um diesen im Template hervorzuheben
+            max_round_scores = {}
+            for round_num, points_dict in round_points.items():
+                if points_dict:
+                    max_round_scores[round_num] = max(points_dict.values())
+                else:
+                    max_round_scores[round_num] = 0
+
+            # Optional: Gesamthöchste Punktzahl (kann zur Hervorhebung der Gesamtspitze genutzt werden)
+            overall_top = max(total_points.values(), default=0)
+
+            # Letzter Update-Zeitpunkt der Matches (optional)
             last_update = db_session.query(func.max(Match.evaluation_Date)).scalar()
             last_update = convert_iso_datetime_to_human_readable(last_update) if last_update else None
 
-            # Update live matches for live scoring
-            update_live_matches_and_scores(db_session)
-            
-            # Fetch all users sorted by multiple criteria
-            users = db_session.query(User).options(
-                joinedload(User.predictions)  # Ensures predictions are loaded with users
-            ).order_by(
-                desc(User.total_points),
-                desc(User.correct_result),
-                desc(User.correct_goal_diff),
-                desc(User.correct_tendency)
-            ).all()
-
-            # Fetch matches and predictions for the current matchday
-            filtered_matches = get_matches_by_gameround(db_session, game_round_to_display - 1)
-            filtered_predictions = get_filtered_predictions_by_date(db_session, game_round_to_display - 1)
-
-            # Calculate user points for the matchday
-            user_points_matchday = {user.id: 0 for user in users}
-            for prediction in filtered_predictions:
-                user_points_matchday[prediction.user_id] += prediction.points
-
-            # Determine top users to highlight in the html
-            max_points = max(user_points_matchday.values(), default=0)
-            top_users = [user_id for user_id, points in user_points_matchday.items() if points == max_points and max_points != 0]
-
-            # Get index of closest in time match to set the default match to display (esp. important for mobile view)
-            match_ids = [match.id for match in filtered_matches]
-            index_of_closest_in_time_match = match_ids.index(find_closest_in_time_match_from_selection(filtered_matches).id) + 1 # +1 because loop index in jinja starts at 1
-            
-            # Needed for the in-table pagination 
-            no_filtered_matches = len(match_ids)
-
-            end_time = time.time()
-            elapsed_time = end_time - start_time
-            print("Match to display: ", index_of_closest_in_time_match)
-            print(f"Elapsed time for Rangliste: {elapsed_time:.4f} seconds")
-                        
-            return render_template("apology.html",
-                                matches=filtered_matches,
-                                prev_matchday=prev_matchday,
-                                next_matchday=next_matchday,
-                                current_matchday=current_matchday,
-                                matchdays=[1,2,3,4,5],
-                                users=users,
-                                user_id=session["user_id"],
-                                last_update=last_update,
-                                top_users=top_users,
-                                user_points_matchday=user_points_matchday,
-                                index_of_closest_in_time_match=index_of_closest_in_time_match,
-                                no_matches=no_filtered_matches
-                                )
-        
+            return render_template("rangliste_gesamt.html",
+                                   users=sorted_users,
+                                   round_points=round_points,
+                                   total_points=total_points,
+                                   max_round_scores=max_round_scores,
+                                   overall_top=overall_top,
+                                   num_rounds=num_rounds,
+                                   user_id=session["user_id"],
+                                   last_update=last_update)
     except OperationalError as e:
         app.logger.error(f"Database connection error: {e}")
         return "Database connection error, please try again later.", 500
-        
+
 
 @app.route("/rangliste", methods=["GET", "POST"])
 @login_required
