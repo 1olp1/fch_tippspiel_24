@@ -19,11 +19,9 @@
               <td colspan="{{ num_rounds }}" class="text-center">Runde</td>
               <th rowspan="2">G</th>
             </tr>
-            <tr>
-              {% for round in range(1, num_rounds + 1) %}
-                <th>{{ round }}</th>
-              {% endfor %}
-            </tr>
+            {% for round in range(1, num_rounds + 1) %}
+                    <th {% if round == current_round %}style="color: red;"{% endif %}>{{ round }}</th>
+                {% endfor %}
           </thead>
     <tbody>
         {% for user in users %}
@@ -31,11 +29,15 @@
             <td>{{ loop.index }}.</td>
             <td>{{ user.username }}</td>
             {% for round in range(1, num_rounds + 1) %}
-                {% set user_round_points = round_points.get(round, {}).get(user.id, 0) %}
-                <td {% if user_round_points == max_round_scores.get(round) and user_round_points != 0 %}style="color: blue;"{% endif %}>
-                    {{ user_round_points }}
-                </td>
-            {% endfor %}
+                    {% set user_round_points = round_points.get(round, {}).get(user.id, 0) %}
+                    {% if round > current_round %}
+                        <td>-</td>
+                    {% else %}
+                        <td {% if user_round_points == max_round_scores.get(round) and user_round_points != 0 %}style="color: blue;"{% endif %}>
+                            {{ user_round_points }}
+                        </td>
+                    {% endif %}
+                {% endfor %}
             <td>{{ total_points.get(user.id, 0) }}</td>
         </tr>
         {% endfor %}

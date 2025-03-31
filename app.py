@@ -115,6 +115,9 @@ def rangliste_gesamt():
             # Optional: Gesamthöchste Punktzahl (kann zur Hervorhebung der Gesamtspitze genutzt werden)
             overall_top = max(total_points.values(), default=0)
 
+            # Current round
+            current_round = get_current_game_round()
+
             # Letzter Update-Zeitpunkt der Matches (optional)
             last_update = db_session.query(func.max(Match.evaluation_Date)).scalar()
             last_update = convert_iso_datetime_to_human_readable(last_update) if last_update else None
@@ -127,6 +130,7 @@ def rangliste_gesamt():
                                    overall_top=overall_top,
                                    num_rounds=num_rounds,
                                    user_id=session["user_id"],
+                                   current_round=current_round,
                                    last_update=last_update)
     except OperationalError as e:
         app.logger.error(f"Database connection error: {e}")
