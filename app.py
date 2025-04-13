@@ -75,7 +75,7 @@ def home():
 def rangliste_gesamt():
     try:
         with get_db_session() as db_session:
-            # Hole die Spielrunden (angenommen 5 Runden à ca. 2 Monate)
+            # Hole die Spielrunden
             game_rounds = get_game_rounds()  # Liefert eine Liste von 5 Tupeln
             num_rounds = len(game_rounds)
 
@@ -579,3 +579,23 @@ def accesscode():
 def validate_accesscode(accesscode):
     # Implement your access code validation logic here
     return accesscode == os.getenv("ACCESSCODE_TIPPSPIEL")
+
+
+@app.route("/italian_brain_rot")
+@login_required
+def italian_brain_rot():
+    # Der Pfad zum Bildordner im static-Verzeichnis
+    images_folder = os.path.join(app.static_folder, "italian_brain_rot")
+    images = []
+
+    # Lese alle unterstützten Bild-Dateien (png, jpg, jpeg, gif)
+    try:
+        for filename in os.listdir(images_folder):
+            if filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
+                # Der URL-Pfad muss relativ zum static-Ordner angegeben werden
+                image_url = url_for('static', filename=f'italian_brain_rot/{filename}')
+                images.append(image_url)
+    except Exception as e:
+        app.logger.error(f"Fehler beim Auslesen der Bilder für Italian Brain Rot: {e}")
+    
+    return render_template("italian_brain_rot.html", images=images)

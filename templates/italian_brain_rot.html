@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Italian Brain Rot
+{% endblock %}
+
+{% block header %}
+    <a href="{{ url_for('italian_brain_rot') }}" class="header-link text-white text-decoration-none">
+        Italian Brain Rot
+    </a>
+{% endblock %}
+
+{% block main %}
+
+<div id="carouselItalianBrainRot" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for image in images %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <img src="{{ image }}" class="d-block w-100" alt="Bild {{ loop.index }}">
+            </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselItalianBrainRot" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Zurück</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselItalianBrainRot" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Weiter</span>
+    </button>
+</div>
+{% endblock %}
