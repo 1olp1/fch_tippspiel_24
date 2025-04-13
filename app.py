@@ -588,6 +588,18 @@ def italian_brain_rot():
     images_folder = os.path.join(app.static_folder, "italian_brain_rot")
     images = []
 
+    image_names = {
+        1: "Brr Brr Patapim",
+        2: "Trallalero Trallala",
+        3: "Bombardino Crocodilo",
+        4: "Trippi Troppi",
+        5: "Tung Tung Tung Tung Tung Sahur",
+        6: "Lirili Larila",
+        7: "Schimpansini Bananini",
+        8: "Brri Brri bigus dicus debicus dedicus",
+        9: "La vaca saturno saturnia"
+    }
+
     # Lese alle unterstützten Bild-Dateien (png, jpg, jpeg, gif)
     try:
         for filename in os.listdir(images_folder):
@@ -598,4 +610,4 @@ def italian_brain_rot():
     except Exception as e:
         app.logger.error(f"Fehler beim Auslesen der Bilder für Italian Brain Rot: {e}")
     
-    return render_template("italian_brain_rot.html", images=images)
+    return render_template("italian_brain_rot.html", images=images, image_names=image_names)

@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block main %}
-<!-- Custom CSS to adjust arrow positioning -->
+<!-- Custom CSS to adjust arrow positioning and style the image name -->
 <style>
   /* Add side padding to the carousel container to create space for the arrows */
   #carouselItalianBrainRot {
@@ -28,15 +28,12 @@
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
   }
-  /* Position the left arrow */
   .carousel-control-prev {
     left: 10px;
   }
-  /* Position the right arrow */
   .carousel-control-next {
     right: 10px;
   }
-  /* Invert arrow colors for better contrast */
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     filter: invert(1);
@@ -46,6 +43,12 @@
     width: 100%;
     height: auto;
     display: block;
+  }
+  /* Style for the image name text */
+  .image-name {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #333;
   }
   /* Style the sound button with an outline appearance */
   .sound-btn {
@@ -60,6 +63,8 @@
             <div class="carousel-item {% if loop.first %}active{% endif %}">
                 <img src="{{ image }}" alt="Bild {{ loop.index }}">
                 <div class="text-center mt-2">
+                    <!-- Zeige den Namen, der in app.py zugeordnet wurde -->
+                    <p class="image-name">{{ image_names[loop.index] }}</p>
                     <!-- Hidden audio element; source derived from image filename -->
                     <audio id="audio-{{ loop.index }}" src="{{ image.rsplit('.', 1)[0] ~ '.m4a' }}"></audio>
                     <!-- Outlined button with sound icon -->
