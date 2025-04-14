@@ -1,88 +1,115 @@
-{% extends "layout.html" %}
-
-{% block title %}
-    Italian Brain Rot
-{% endblock %}
-
-{% block header %}
-    <a href="{{ url_for('italian_brain_rot') }}" class="header-link text-white text-decoration-none">
-        Italian Brain Rot
-    </a>
-{% endblock %}
-
-{% block main %}
-<!-- Custom CSS to adjust arrow positioning and style the image name -->
-<style>
-  /* Add side padding to the carousel container to create space for the arrows */
-  #carouselItalianBrainRot {
-    position: relative;
-    padding: 0 70px;
-  }
-  /* Style the navigation arrows */
-  .carousel-control-prev,
-  .carousel-control-next {
-    width: 50px;
-    height: 50px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-  }
-  .carousel-control-prev {
-    left: 10px;
-  }
-  .carousel-control-next {
-    right: 10px;
-  }
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    filter: invert(1);
-  }
-  /* Ensure images display properly with natural height */
-  .carousel-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  /* Style for the image name text */
-  .image-name {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    color: #333;
-  }
-  /* Style the sound button with an outline appearance */
-  .sound-btn {
-    font-size: 1.5rem;
-    padding: 0.5rem 1rem;
-  }
-</style>
-
-<div id="carouselItalianBrainRot" class="carousel slide">
-    <div class="carousel-inner">
-        {% for image in images %}
-            <div class="carousel-item {% if loop.first %}active{% endif %}">
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Italian Brain Rot</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* Wrapper für den Carousel-Bereich */
+      .carousel-wrapper {
+        width: 100%;
+      }
+      @media (min-width: 992px) {
+        .carousel-wrapper {
+          max-width: 800px;  /* Maximale Breite für Desktop */
+          margin-left: 0;    /* Links ausgerichtet */
+        }
+      }
+      
+      /* Basis-Styling für das Carousel */
+      #carouselItalianBrainRot {
+        position: relative;
+        padding: 0 70px; /* Standard-Padding, vor allem im Desktop-View */
+      }
+      
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 50px;
+        height: 50px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 50%;
+      }
+      .carousel-control-prev { left: 10px; }
+      .carousel-control-next { right: 10px; }
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        filter: invert(1);
+      }
+      
+      .carousel-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      
+      .sound-btn {
+        font-size: 1.5rem;
+        padding: 0.5rem 1rem;
+      }
+      
+      /* Mobile-Anpassungen */
+      @media (max-width: 991px) {
+        #carouselItalianBrainRot {
+          padding: 0 40px;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+          width: 30px;
+          height: 30px;
+          top: 40%; /* näher am Bild */
+          transform: translateY(-50%);
+        }
+        .carousel-control-prev { left: 5px; }
+        .carousel-control-next { right: 5px; }
+      }
+      
+      /* Desktop-Anpassungen: Bildhöhe begrenzen */
+      @media (min-width: 992px) {
+        .carousel-item img {
+          max-height: 500px;
+          object-fit: contain;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-4">
+      <div class="carousel-wrapper">
+        <div id="carouselItalianBrainRot" class="carousel slide">
+          <div class="carousel-inner">
+            {% for image in images %}
+              <div class="carousel-item {% if loop.first %}active{% endif %}">
                 <img src="{{ image }}" alt="Bild {{ loop.index }}">
                 <div class="text-center mt-2">
-                    <!-- Zeige den Namen, der in app.py zugeordnet wurde -->
-                    <p class="image-name">{{ image_names[loop.index] }}</p>
-                    <!-- Hidden audio element; source derived from image filename -->
-                    <audio id="audio-{{ loop.index }}" src="{{ image.rsplit('.', 1)[0] ~ '.m4a' }}"></audio>
-                    <!-- Outlined button with sound icon -->
-                    <button type="button" class="btn btn-outline-secondary sound-btn" title="Play Sound" onclick="document.getElementById('audio-{{ loop.index }}').play()">
-                        <i class="fa-solid fa-volume-up"></i>
-                    </button>
+                  <!-- Hidden Audio-Element: Quelle wird aus dem Bildpfad generiert -->
+                  <audio id="audio-{{ loop.index }}" src="{{ image.rsplit('.', 1)[0] ~ '.m4a' }}"></audio>
+                  <!-- Outlined Sound-Button mit Icon -->
+                  <button type="button" class="btn btn-outline-secondary sound-btn" title="Play Sound" onclick="document.getElementById('audio-{{ loop.index }}').play()">
+                    <i class="fa-solid fa-volume-up"></i>
+                  </button>
                 </div>
-            </div>
-        {% endfor %}
+              </div>
+            {% endfor %}
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselItalianBrainRot" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Zurück</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselItalianBrainRot" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Weiter</span>
+          </button>
+        </div>
+      </div>
     </div>
-    <!-- Navigation arrows positioned outside the image area -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselItalianBrainRot" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Zurück</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselItalianBrainRot" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Weiter</span>
-    </button>
-</div>
-{% endblock %}
+    
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

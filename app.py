@@ -582,7 +582,6 @@ def validate_accesscode(accesscode):
 
 
 @app.route("/italian_brain_rot")
-@login_required
 def italian_brain_rot():
     # Der Pfad zum Bildordner im static-Verzeichnis
     images_folder = os.path.join(app.static_folder, "italian_brain_rot")
