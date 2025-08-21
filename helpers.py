@@ -26,7 +26,7 @@ import json
 # Prepare API requests
 leagueShortcut_list = ["bl1", "dfb"] # bl1 for bundesliga 1
 
-leagueSeason = "2024"     # 2023 for 2023/2024 season
+leagueSeason = "2025"     # 2023 for 2023/2024 season
 teamFilterString = "Heidenheim"
 
 
@@ -112,11 +112,12 @@ def insert_teams_to_db(db_session, leagueShortcut):
 
         if teams:
             for team_data in teams:
-                #print(f"inserting or updating team {team_data["teamName"]}")
+                print(f"inserting or updating team {team_data["teamName"]}")
                 # Check if the team already exists in the database
                 existing_team = db_session.query(Team).filter_by(id=team_data["teamId"]).first()
                 
                 if existing_team:
+                    print(f"\t...is existing team")
                     # Update the existing team record
                     #existing_team.teamName = team_data["teamName"]
                     #existing_team.shortName = team_data["shortName"]
@@ -124,12 +125,13 @@ def insert_teams_to_db(db_session, leagueShortcut):
                     #existing_team.teamIconPath = make_image_filepath(team_data, img_folder)
                     existing_team.teamGroupName = team_data["teamGroupName"]
                 else:
+                    print(f"...is new team")
                     # Add new team if it doesn't exist
                     new_team = Team(
                         id=team_data["teamId"],
                         teamName=team_data["teamName"],
                         shortName=team_data["shortName"],
-                        teamIconUrl=team_data["teamIconUrl"],
+                        teamIconUrl=team_data["teamIconUrl"] if len(team_data["teamIconUrl"]) < 255 else None,  # max length 
                         teamIconPath=make_image_filepath(team_data, img_folder),
                         teamGroupName=team_data["teamGroupName"]
                     )
@@ -161,6 +163,48 @@ def insert_teams_to_db(db_session, leagueShortcut):
     except Exception as e:
         print(f"Updating or inserting teams failed: {e}")
         db_session.rollback()  # Rollback in case of error
+
+
+def download_and_resize_logos(teams, img_folder):
+    # TODO only download if there is no team icon image already
+    os.makedirs(img_folder, exist_ok=True)
+
+    if not os.listdir(img_folder):
+        for index, team in enumerate(teams):
+            try:
+                img_url = team.get('teamIconUrl')
+                
+                if not img_url or len(img_url) > 255:
+                    #logging.error(f"No image URL found for team at index {index}: {team}")
+                    continue
+                    
+                #logging.info(f"Downloading image for team {team['teamName']} from {img_url}")
+                print(f"Downloading image for team {team['teamName']} from {img_url}")
+
+                response = requests.get(
+                    img_url,
+                    cookies={"session": str(uuid.uuid4())},
+                    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36",
+                             "Referer": "https://www.google.com/",
+                             "Accept-Language": "en-US,en;q=0.9",
+                             "Cache-Control": "no-cache",
+                             "Upgrade-Insecure-Requests": "1",},
+                )       ### Header from chatGPT to mimic a real computer
+                response.raise_for_status()
+
+                img_file_path = make_image_filepath(team, img_folder)
+
+                with open(img_file_path, 'wb') as f:
+                    f.write(response.content)
+
+                #logging.info(f"Image saved for team {team['teamName']} at {img_file_path}")
+
+                resize_image(img_file_path)
+                #logging.info(f"Image resized for team {team['teamName']}")
+            except (KeyError, IndexError, requests.RequestException, ValueError) as e:
+                #logging.error(f"Failed to download or process image for team {team['teamName']} at index {index}. Error: {e}")
+                print(f"Failed to download or process image for team {team['teamName']} at index {index}. Error: {e}")                
+                continue
 
 
 def update_league_table(db_session):
@@ -441,44 +485,6 @@ def update_match_score_for_live_scores(db_session, match_API):
     db_session.commit()
 
 
-def download_and_resize_logos(teams, img_folder):
-    os.makedirs(img_folder, exist_ok=True)
-
-    if not os.listdir(img_folder):
-        for index, team in enumerate(teams):
-            try:
-                img_url = team.get('teamIconUrl')
-                if not img_url:
-                    #logging.error(f"No image URL found for team at index {index}: {team}")
-                    continue
-                    
-                #logging.info(f"Downloading image for team {team['teamName']} from {img_url}")
-
-                response = requests.get(
-                    img_url,
-                    cookies={"session": str(uuid.uuid4())},
-                    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36",
-                             "Referer": "https://www.google.com/",
-                             "Accept-Language": "en-US,en;q=0.9",
-                             "Cache-Control": "no-cache",
-                             "Upgrade-Insecure-Requests": "1",},
-                )       ### Header from chatGPT to mimic a real computer
-                response.raise_for_status()
-
-                img_file_path = make_image_filepath(team, img_folder)
-
-                with open(img_file_path, 'wb') as f:
-                    f.write(response.content)
-
-                #logging.info(f"Image saved for team {team['teamName']} at {img_file_path}")
-
-                resize_image(img_file_path)
-                #logging.info(f"Image resized for team {team['teamName']}")
-            except (KeyError, IndexError, requests.RequestException, ValueError) as e:
-                #logging.error(f"Failed to download or process image for team {team['teamName']} at index {index}. Error: {e}")                
-                continue
-
-
 def get_insights(db_session):
     user_id = session.get("user_id")
 
@@ -685,7 +691,7 @@ def update_matches_and_scores(db_session):
     print("Updating matches and user scores...")
 
     for leagueShortcut in leagueShortcut_list:
-        #insert_teams_to_db(db_session, leagueShortcut)
+        insert_teams_to_db(db_session, leagueShortcut)
         insert_or_update_matches_to_db(db_session, leagueShortcut)
 
     update_user_scores(db_session)
@@ -1017,26 +1023,27 @@ def get_current_game_round():
 
     for index, round in enumerate(round_list):
         start_time, end_time = round
-        #print("index:", index)
-        #print(f"Start-time: {start_time}, end-time: {end_time}")
-        #print("current time: ", current_time)
-        #print()
+        print("index:", index)
+        print(f"Start-time: {start_time}, end-time: {end_time}")
+        print("current time: ", current_time)
+        print()
 
 
         if start_time <= current_time <= end_time:
             return index + 1
         
-     # If no round is found, handle the case
-    return None
+    # If we are outside the time window for the rounds, return the last index
+    return index + 1
         
 
 def get_game_rounds():
+    current_season = int(leagueSeason)   # is the year of the beginning of the season. e.g. season 24/25 current_season is 2024
     return [
-        (datetime(2024, 8, 1), datetime(2024, 9, 30) + timedelta(days=1)),
-        (datetime(2024, 10, 1), datetime(2024, 11, 30) + timedelta(days=1)),
-        (datetime(2024, 12, 1), datetime(2025, 1, 31) + timedelta(days=1)),
-        (datetime(2025, 2, 1), datetime(2025, 3, 31) + timedelta(days=1)),
-        (datetime(2025, 4, 1), datetime(2025, 5, 31) + timedelta(days=1))
+        (datetime(current_season, 8, 1), datetime(current_season, 9, 30) + timedelta(days=1)),
+        (datetime(current_season, 10, 1), datetime(current_season, 11, 30) + timedelta(days=1)),
+        (datetime(current_season, 12, 1), datetime(current_season + 1, 1, 31) + timedelta(days=1)),
+        (datetime(current_season + 1, 2, 1), datetime(current_season + 1, 3, 31) + timedelta(days=1)),
+        (datetime(current_season + 1, 4, 1), datetime(current_season + 1, 5, 31) + timedelta(days=1))
     ]
 
 
