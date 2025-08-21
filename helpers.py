@@ -112,7 +112,7 @@ def insert_teams_to_db(db_session, leagueShortcut):
 
         if teams:
             for team_data in teams:
-                print(f"inserting or updating team {team_data["teamName"]}")
+                print(f"inserting or updating team {team_data['teamName']}")
                 # Check if the team already exists in the database
                 existing_team = db_session.query(Team).filter_by(id=team_data["teamId"]).first()
                 
