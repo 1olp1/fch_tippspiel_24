@@ -397,3 +397,19 @@ ul.list-unstyled li:before {
 
 
 
+
+
+.match-head-cell {
+    font-size: 0.85rem;
+    line-height: 1.2;
+    min-width: 78px;
+}
+
+.opponent-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 2px;
+    font-weight: 600;
+}
