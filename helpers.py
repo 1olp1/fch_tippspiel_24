@@ -466,23 +466,32 @@ def delete_user_and_predictions(user_id, db_session):
 
 
 def update_match_score_for_live_scores(db_session, match_API):
+    """Update one live match in-memory and return whether anything changed."""
     match = match_API
 
     print("live match to update: ", match["matchID"])
 
     team1_score, team2_score = get_scores(match)
+    last_update = match["lastUpdateDateTime"]
 
     print("Live scores: ", team1_score, ":", team2_score)
-    match_entry = Match(
-        id=match["matchID"],
-        team1_score=team1_score,
-        team2_score=team2_score,
-        lastUpdateDateTime=match["lastUpdateDateTime"]
-    )
-    
-    db_session.merge(match_entry)  # Use merge to insert or update
 
-    db_session.commit()
+    existing_match = db_session.query(Match).filter_by(id=match["matchID"]).first()
+    if not existing_match:
+        return False
+
+    changed = (
+        existing_match.team1_score != team1_score
+        or existing_match.team2_score != team2_score
+        or str(existing_match.lastUpdateDateTime) != str(last_update)
+    )
+
+    if changed:
+        existing_match.team1_score = team1_score
+        existing_match.team2_score = team2_score
+        existing_match.lastUpdateDateTime = last_update
+
+    return changed
 
 
 def get_insights(db_session):
@@ -704,19 +713,33 @@ def update_live_matches_and_scores(db_session):
     print("Updating live matches and user scores...")
 
     live_matches = find_live_matches(db_session)
+    any_live_match_changed = False
+    any_live_match_finished = False
 
     for match in live_matches:
         # Don't try to update manually added games (indicated by negative match id's)
         if match.id < 0:
             continue
+
         match_data = get_matchdata_openliga(match.id)
-        if match_data:
-            update_match_score_for_live_scores(db_session, match_data)
-            update_user_scores(db_session)
-            if match_data["matchIsFinished"] == 1:
-                update_matches_and_scores(db_session)       # In order to also update other matchups that may depend
-                                                            # on the live match that has ended, like in a tournament
-                                                            # TODO add routine for league table
+        if not match_data:
+            continue
+
+        if update_match_score_for_live_scores(db_session, match_data):
+            any_live_match_changed = True
+
+        if match_data["matchIsFinished"] == 1:
+            any_live_match_finished = True
+
+    if any_live_match_changed:
+        db_session.commit()
+        update_user_scores(db_session)
+
+    if any_live_match_finished:
+        update_matches_and_scores(db_session)       # In order to also update other matchups that may depend
+                                                    # on the live match that has ended, like in a tournament
+                                                    # TODO add routine for league table
+
     print("Updating live matches and user scores finished.")
 
 
