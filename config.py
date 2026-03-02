@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_session import Session
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.pool import QueuePool
 from datetime import timedelta
@@ -47,6 +47,23 @@ session = Session()
 
 # Create all tables
 Base.metadata.create_all(engine)
+
+
+def ensure_users_email_column(engine):
+    inspector = inspect(engine)
+    columns = {column["name"] for column in inspector.get_columns("users")}
+
+    with engine.begin() as connection:
+        if "email" not in columns:
+            connection.execute(text("ALTER TABLE users ADD COLUMN email VARCHAR(255) NULL"))
+
+    inspector = inspect(engine)
+    indexes = {index["name"] for index in inspector.get_indexes("users")}
+    if "ix_user_email" not in indexes:
+        with engine.begin() as connection:
+            connection.execute(text("CREATE UNIQUE INDEX ix_user_email ON users (email)"))
+
+ensure_users_email_column(engine)
 
 def get_db_session():
     return session_db()
