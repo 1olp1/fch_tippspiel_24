@@ -1,6 +1,8 @@
 from flask import flash, redirect, render_template, request, session, url_for
 import time
 import os
+from concurrent.futures import ThreadPoolExecutor
+from threading import Lock
 from sqlalchemy import func, desc, or_
 from sqlalchemy.orm import joinedload
 from sqlalchemy.exc import OperationalError
@@ -15,6 +17,48 @@ import re
 def is_valid_email(email):
     email_pattern = r"^[^\s@]+@[^\s@]+\.[^\s@]+$"
     return bool(re.match(email_pattern, email))
+
+
+UPDATE_EXECUTOR = ThreadPoolExecutor(max_workers=1)
+UPDATE_LOCK = Lock()
+UPDATE_STATE_LOCK = Lock()
+UPDATE_MIN_INTERVAL_SECONDS = 120
+LAST_UPDATE_QUEUE_TIME = 0.0
+
+
+def _run_full_update_in_background():
+    try:
+        with app.app_context():
+            with get_db_session() as background_db_session:
+                update_matches_and_scores(background_db_session)
+    except Exception as e:
+        app.logger.error(f"Background update failed: {e}")
+
+
+def queue_background_update(min_interval_seconds=UPDATE_MIN_INTERVAL_SECONDS):
+    """Queue a background refresh at most once per interval.
+
+    Returns True if an update was queued, otherwise False.
+    """
+    global LAST_UPDATE_QUEUE_TIME
+
+    with UPDATE_STATE_LOCK:
+        now = time.time()
+        if now - LAST_UPDATE_QUEUE_TIME < min_interval_seconds:
+            return False
+
+        if not UPDATE_LOCK.acquire(blocking=False):
+            return False
+
+        LAST_UPDATE_QUEUE_TIME = now
+
+    future = UPDATE_EXECUTOR.submit(_run_full_update_in_background)
+
+    def _release_lock(_future):
+        UPDATE_LOCK.release()
+
+    future.add_done_callback(_release_lock)
+    return True
 
 
 @app.after_request
@@ -357,7 +401,8 @@ def login():
                 
                 session.permanent = True  # Make the session permanent (user can stay logged in for longer times)
 
-                update_matches_and_scores(db_session)   # TODO updating tables?
+                if queue_background_update():
+                    app.logger.info("Queued background refresh after login.")
 
                 # Redirect user to home page
                 return redirect("/")
