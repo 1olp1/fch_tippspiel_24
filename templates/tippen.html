@@ -11,8 +11,9 @@
 {% endblock %}
 {% block main %}
 
-<div class="pagination">
-    <ul class="pagination">
+<section class="tippen-page">
+<div class="tippen-toolbar">
+    <ul class="pagination tippen-pagination">
         {% if prev_matchday %}
             <li class="page-item">
                 <a class="page-link" href="{{ url_for('tippen', matchday=prev_matchday) }}"><i class="fa-solid fa-caret-left"></i></a>
@@ -44,8 +45,8 @@
 
 <form id="tippenForm" action="/tippen" method="post">
     <!-- Desktop/Tablet View -->
-    <div class="table-responsive-desktop">
-        <table class="table">
+    <div class="table-responsive-desktop tippen-table-container">
+        <table class="table tippen-table">
             <tbody>
                 {% for match in matches %}
                 <tr>
@@ -71,8 +72,8 @@
     </div>
 
     <!-- Mobile View -->
-    <div id="mobileTableContainer" class="table-responsive-mobile">
-        <table class="table">
+    <div id="mobileTableContainer" class="table-responsive-mobile tippen-table-container">
+        <table class="table tippen-table">
             <tbody>
                 {% for match in matches %}
                 <tr>
@@ -102,14 +103,14 @@
     </div>
     
 
-    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+    <div class="tippen-actions">
         <button type="submit" class="btn btn-primary btn-container">Speichern</button>
-        <p class="last-update" style="margin-top: 5px;">Stand: {{ last_update }}</p>
+        <p class="last-update">Stand: {{ last_update }}</p>
     </div>
     
 </form>
 
-</div>
+</section>
 <script>
     document.getElementById('tippenForm').addEventListener('submit', function(event) {
         // Get the current screen

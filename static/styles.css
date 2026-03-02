@@ -397,3 +397,78 @@ ul.list-unstyled li:before {
 
 
 
+
+
+.tippen-page {
+    background: linear-gradient(180deg, #f5f7fb 0%, #eef2f9 100%);
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 22, 66, 0.08);
+}
+
+.tippen-toolbar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.8rem;
+}
+
+.tippen-pagination .page-link {
+    border-radius: 8px;
+    margin: 0 2px;
+}
+
+.tippen-table-container {
+    background: #ffffff;
+    border: 1px solid #dbe2ee;
+    border-radius: 12px;
+    padding: 0.25rem;
+}
+
+.tippen-table tr:nth-child(4n+2),
+.tippen-table tr:nth-child(4n+3) {
+    background-color: #fafcff;
+}
+
+.tippen-table .table-date-header {
+    background: #edf2fb;
+    color: #112a4a;
+    border-top: 1px solid #dbe2ee;
+}
+
+.tippen-actions {
+    position: sticky;
+    bottom: 0;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: rgba(245, 247, 251, 0.95);
+    padding: 0.5rem 0.75rem;
+    border-radius: 10px;
+    border: 1px solid #dbe2ee;
+    backdrop-filter: blur(2px);
+}
+
+.score-input {
+    border-color: #bac7de;
+    font-weight: 700;
+}
+
+.score-input:focus {
+    border-color: #3f66d0;
+    box-shadow: 0 0 0 0.2rem rgba(63, 102, 208, 0.2);
+}
+
+@media (max-width: 768px) {
+    .tippen-page {
+        padding: 0.65rem;
+    }
+
+    .tippen-actions {
+        align-items: stretch;
+    }
+
+    .tippen-actions .btn {
+        width: 100%;
+    }
+}
