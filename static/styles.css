@@ -395,5 +395,20 @@ ul.list-unstyled li:before {
     margin-bottom: 20px;
 }
 
+/* Tippen route (light, consistent with global UI) */
+.tippen-toolbar {
+    display: flex;
+    justify-content: center;
+}
 
+.tippen-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
+@media (max-width: 768px) {
+    .tippen-actions .btn {
+        width: 100%;
+    }
+}
