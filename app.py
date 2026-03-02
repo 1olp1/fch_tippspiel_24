@@ -455,6 +455,7 @@ def change_password():
 
 
 @app.route("/account/change_username", methods=["GET", "POST"])
+@login_required
 def change_username():
     try:
         with get_db_session() as db_session:

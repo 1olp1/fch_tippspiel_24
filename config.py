@@ -9,13 +9,14 @@ from models import Base
 
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-change-me")
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=30)  # Keep users logged in for 30 days
 app.config["SESSION_FILE_THRESHOLD"] = 100  # Limits the number of session files before they are pruned
-app.config["DEBUG"] = True
+app.config["DEBUG"] = os.getenv("FLASK_DEBUG", "0") == "1"
 Session(app)
 
 # SQLAlchemy database URI
@@ -49,5 +50,4 @@ Base.metadata.create_all(engine)
 
 def get_db_session():
     return session_db()
-
 
