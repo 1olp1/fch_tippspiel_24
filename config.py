@@ -9,12 +9,6 @@ from models import Base
 
 
 app = Flask(__name__)
-app.config["DEBUG"] = os.getenv("FLASK_DEBUG", "0") == "1"
-
-secret_key = os.getenv("SECRET_KEY")
-if not secret_key and not app.config["DEBUG"]:
-    raise RuntimeError("SECRET_KEY environment variable must be set when FLASK_DEBUG is not enabled")
-app.config["SECRET_KEY"] = secret_key or "dev-only-secret-key"
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-change-me")
 
 # Configure session to use filesystem (instead of signed cookies)

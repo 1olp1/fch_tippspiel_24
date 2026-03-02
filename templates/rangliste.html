@@ -52,19 +52,13 @@
                         </button>
                     </td>
                     {% for match in matches %}
-                        <td name="match-column{{ loop.index }}" class="match-head-cell"> 
-                            <div>{{ match.matchDateTime.strftime('%d.%m.') }}</div>
-                            <div>{{ match.time }}</div>
+                        <td name="match-column{{ loop.index }}"> 
+                            {{ match.matchDateTime.strftime('%d.%m.') }} <br>
+                            {{ match.time }} <br>
                             {% if match.team1.id == 199 %}
-                                <div class="opponent-label">
-                                    <img src="{{ match.team2.teamIconPath }}" alt="{{ match.team2.shortName }}-logo" class="team-logo-small">
-                                    <span>{{ match.team2.shortName }}</span>
-                                </div>
+                                <span>H </span><img src="{{  match.team2.teamIconPath  }}" alt="{{  match.team2_shortName  }}-logo" class="team-logo-small">
                             {% else %}
-                                <div class="opponent-label">
-                                    <img src="{{ match.team1.teamIconPath }}" alt="{{ match.team1.shortName }}-logo" class="team-logo-small">
-                                    <span>{{ match.team1.shortName }}</span>
-                                </div>
+                                <span>A </span><img src="{{  match.team1.teamIconPath  }}" alt="{{  match.team1_shortName  }}-logo" class="team-logo-small">
                             {% endif %}
                         </td>
                     {% endfor %}
