@@ -459,6 +459,13 @@ ul.list-unstyled li:before {
     box-shadow: 0 0 0 0.2rem rgba(63, 102, 208, 0.2);
 }
 
+.match-result-badge {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #18407a;
+}
+
 @media (max-width: 768px) {
     .tippen-page {
         padding: 0.65rem;
