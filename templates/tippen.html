@@ -62,6 +62,9 @@
                                 <input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="desktop_team1Score_{{ match.id }}" name="team1Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team1_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
                                 <strong>:</strong>
                                 <input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="desktop_team2Score_{{ match.id }}" name="team2Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team2_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
+                                {% if match.team1_score is not none and match.team2_score is not none %}
+                                    <div class="match-result-badge">Ergebnis: {{ match.team1_score }} : {{ match.team2_score }}</div>
+                                {% endif %}
                             </td>
                             <td><img src="{{ match.team2.teamIconPath }}" alt="{{ match.team2.teamName }}-logo" class="team-logo"></td>
                             <td class="text-left">{{ match.team2.teamName }}</td>
@@ -91,6 +94,9 @@
                         <input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="mobile_team1Score_{{ match.id }}" name="team1Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team1_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
                         <strong>:</strong>
                         <input type="text" autocomplete="off" class="form-control score-input" placeholder="-" id="mobile_team2Score_{{ match.id }}" name="team2Score_{{ match.id }}" min="0" max="99" maxlength="2" value="{% for prediction in predictions %}{% if prediction.match_id == match.id %}{{ prediction.team2_score }}{% endif %}{% endfor %}" {% if match not in valid_matches %} disabled {% endif %}>
+                        {% if match.team1_score is not none and match.team2_score is not none %}
+                            <div class="match-result-badge">Ergebnis: {{ match.team1_score }} : {{ match.team2_score }}</div>
+                        {% endif %}
                     </td>
                     <td class="text-center">
                         <img src="{{ match.team2.teamIconPath }}" alt="{{ match.team2.teamName }}-logo" class="team-logo-big">
