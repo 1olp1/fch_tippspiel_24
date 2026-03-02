@@ -9,18 +9,14 @@ from models import Base
 
 
 app = Flask(__name__)
-app.config["DEBUG"] = os.getenv("FLASK_DEBUG", "0") == "1"
-
-secret_key = os.getenv("SECRET_KEY")
-if not secret_key and not app.config["DEBUG"]:
-    raise RuntimeError("SECRET_KEY environment variable must be set when FLASK_DEBUG is not enabled")
-app.config["SECRET_KEY"] = secret_key or "dev-only-secret-key"
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-change-me")
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=30)  # Keep users logged in for 30 days
 app.config["SESSION_FILE_THRESHOLD"] = 100  # Limits the number of session files before they are pruned
+app.config["DEBUG"] = os.getenv("FLASK_DEBUG", "0") == "1"
 Session(app)
 
 # SQLAlchemy database URI
