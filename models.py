@@ -10,6 +10,7 @@ class User(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(String(255), unique=True, nullable=False, index=True)
+    email = Column(String(255), unique=True, nullable=True, index=True)
     hash = Column(String(255), nullable=False)
     total_points = Column(Integer, default=0)
     correct_result = Column(Integer, default=0)
@@ -177,5 +178,6 @@ class UserVote(Base):
 
 # Indexes for performance
 Index('ix_user_username', User.username)
+Index('ix_user_email', User.email)
 Index('ix_match_team1_id', Match.team1_id)
 Index('ix_match_team2_id', Match.team2_id)

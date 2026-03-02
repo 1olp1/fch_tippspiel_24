@@ -1,7 +1,7 @@
 from flask import flash, redirect, render_template, request, session, url_for
 import time
 import os
-from sqlalchemy import func, desc
+from sqlalchemy import func, desc, or_
 from sqlalchemy.orm import joinedload
 from sqlalchemy.exc import OperationalError
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -9,7 +9,12 @@ from helpers import login_required, get_league_table, get_valid_matches, convert
 from models import User, Prediction, Match, UserVote
 from config import app, get_db_session
 import csv
+import re
 
+
+def is_valid_email(email):
+    email_pattern = r"^[^\s@]+@[^\s@]+\.[^\s@]+$"
+    return bool(re.match(email_pattern, email))
 
 
 @app.after_request
@@ -322,19 +327,23 @@ def login():
         with get_db_session() as db_session:
             # User reached route via POST (as by submitting a form via POST)
             if request.method == "POST":
-                username = request.form.get("username")
+                login_identifier = request.form.get("username")
                 password = request.form.get("password")
 
-                # Ensure username and password were submitted
-                if not username or not password:
-                    flash("Benutzername/Passwort fehlt", "error")
+                # Ensure login and password were submitted
+                if not login_identifier or not password:
+                    flash("Benutzername/E-Mail oder Passwort fehlt", "error")
                     return redirect("/login")
-                
+
+                login_identifier = login_identifier.strip()
+
                 # Forget any user_id
                 session.clear()
 
-                # Query database for username
-                user = db_session.query(User).filter_by(username=username).first()
+                # Query database for username or email
+                user = db_session.query(User).filter(
+                    or_(User.username == login_identifier, User.email == login_identifier.lower())
+                ).first()
 
                 # Check if user exists and password is correct
                 if not user or not check_password_hash(user.hash, password):
@@ -344,6 +353,7 @@ def login():
                 # Remember which user has logged in
                 session["user_id"] = user.id
                 session["username"] = user.username
+                session["user_email"] = user.email
                 
                 session.permanent = True  # Make the session permanent (user can stay logged in for longer times)
 
@@ -455,6 +465,7 @@ def change_password():
 
 
 @app.route("/account/change_username", methods=["GET", "POST"])
+@login_required
 def change_username():
     try:
         with get_db_session() as db_session:
@@ -508,18 +519,78 @@ def change_username():
         return "Database connection error, please try again later.", 500
 
 
+@app.route("/account/change_email", methods=["GET", "POST"])
+@login_required
+def change_email():
+    try:
+        with get_db_session() as db_session:
+            if request.method == "POST":
+                new_email = request.form.get("new_email")
+                password_confirmation = request.form.get("password_confirmation")
+
+                if not new_email or not password_confirmation:
+                    flash("Feld(er) leer", "error")
+                    return redirect("/account/change_email")
+
+                new_email = new_email.strip().lower()
+                if not is_valid_email(new_email):
+                    flash("E-Mail ist ungültig", 'error')
+                    return redirect("/account/change_email")
+
+                user = db_session.query(User).filter_by(id=session["user_id"]).first()
+
+                if not user or not check_password_hash(user.hash, password_confirmation):
+                    flash("Ungültiges Passwort", 'error')
+                    return redirect("/account/change_email")
+
+                if user.email == new_email:
+                    flash("E-Mail ist unverändert", 'error')
+                    return redirect("/account/change_email")
+
+                existing_user = db_session.query(User).filter_by(email=new_email).first()
+                if existing_user and existing_user.id != user.id:
+                    flash("E-Mail bereits vergeben", 'error')
+                    return redirect("/account/change_email")
+
+                user.email = new_email
+                db_session.commit()
+                session["user_email"] = new_email
+
+                flash('E-Mail erfolgreich geändert.', 'success')
+                return redirect("/account")
+
+            else:
+                user = db_session.query(User).filter_by(id=session["user_id"]).first()
+                current_email = user.email if user else None
+                return render_template("account_change_email.html", current_email=current_email)
+
+    except OperationalError as e:
+        app.logger.error(f"Database connection error: {e}")
+        return "Database connection error, please try again later.", 500
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     try:
         with get_db_session() as db_session:
             if request.method == "POST":
                 username = request.form.get("username")
+                email = request.form.get("email")
                 password = request.form.get("password")
                 password_repetition = request.form.get("confirmation")
                 access_code = request.form.get("accesscode")
 
                 if not username:
                     flash("Kein Benutzername angegeben", 'error')
+                    return redirect("/register")
+
+                if not email:
+                    flash("Keine E-Mail angegeben", 'error')
+                    return redirect("/register")
+
+                email = email.strip().lower()
+                if not is_valid_email(email):
+                    flash("E-Mail ist ungültig", 'error')
                     return redirect("/register")
 
                 if not access_code or access_code != os.getenv('ACCESSCODE_TIPPSPIEL'):
@@ -530,6 +601,11 @@ def register():
                 existing_user = db_session.query(User).filter_by(username=username).first()
                 if existing_user:
                     flash("Benutzername bereits vergeben", 'error')
+                    return redirect("/register")
+
+                existing_email = db_session.query(User).filter_by(email=email).first()
+                if existing_email:
+                    flash("E-Mail bereits vergeben", 'error')
                     return redirect("/register")
 
                 # Check if passwords are entered and if they match
@@ -545,7 +621,7 @@ def register():
                 hashed_pw = generate_password_hash(password)
 
                 # Create a new User object
-                new_user = User(username=username, hash=hashed_pw)
+                new_user = User(username=username, email=email, hash=hashed_pw)
 
                 # Add new user to session and commit to database
                 db_session.add(new_user)
