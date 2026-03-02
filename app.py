@@ -353,6 +353,7 @@ def login():
                 # Remember which user has logged in
                 session["user_id"] = user.id
                 session["username"] = user.username
+                session["user_email"] = user.email
                 
                 session.permanent = True  # Make the session permanent (user can stay logged in for longer times)
 
@@ -513,6 +514,56 @@ def change_username():
             else:
                 return render_template("account_change_username.html")
                 
+    except OperationalError as e:
+        app.logger.error(f"Database connection error: {e}")
+        return "Database connection error, please try again later.", 500
+
+
+@app.route("/account/change_email", methods=["GET", "POST"])
+@login_required
+def change_email():
+    try:
+        with get_db_session() as db_session:
+            if request.method == "POST":
+                new_email = request.form.get("new_email")
+                password_confirmation = request.form.get("password_confirmation")
+
+                if not new_email or not password_confirmation:
+                    flash("Feld(er) leer", "error")
+                    return redirect("/account/change_email")
+
+                new_email = new_email.strip().lower()
+                if not is_valid_email(new_email):
+                    flash("E-Mail ist ungültig", 'error')
+                    return redirect("/account/change_email")
+
+                user = db_session.query(User).filter_by(id=session["user_id"]).first()
+
+                if not user or not check_password_hash(user.hash, password_confirmation):
+                    flash("Ungültiges Passwort", 'error')
+                    return redirect("/account/change_email")
+
+                if user.email == new_email:
+                    flash("E-Mail ist unverändert", 'error')
+                    return redirect("/account/change_email")
+
+                existing_user = db_session.query(User).filter_by(email=new_email).first()
+                if existing_user and existing_user.id != user.id:
+                    flash("E-Mail bereits vergeben", 'error')
+                    return redirect("/account/change_email")
+
+                user.email = new_email
+                db_session.commit()
+                session["user_email"] = new_email
+
+                flash('E-Mail erfolgreich geändert.', 'success')
+                return redirect("/account")
+
+            else:
+                user = db_session.query(User).filter_by(id=session["user_id"]).first()
+                current_email = user.email if user else None
+                return render_template("account_change_email.html", current_email=current_email)
+
     except OperationalError as e:
         app.logger.error(f"Database connection error: {e}")
         return "Database connection error, please try again later.", 500
