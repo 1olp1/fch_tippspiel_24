@@ -1,7 +1,7 @@
 from flask import flash, redirect, render_template, request, session, url_for
 import time
 import os
-from sqlalchemy import func, desc
+from sqlalchemy import func, desc, or_
 from sqlalchemy.orm import joinedload
 from sqlalchemy.exc import OperationalError
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -9,7 +9,12 @@ from helpers import login_required, get_league_table, get_valid_matches, convert
 from models import User, Prediction, Match, UserVote
 from config import app, get_db_session
 import csv
+import re
 
+
+def is_valid_email(email):
+    email_pattern = r"^[^\s@]+@[^\s@]+\.[^\s@]+$"
+    return bool(re.match(email_pattern, email))
 
 
 @app.after_request
@@ -322,19 +327,23 @@ def login():
         with get_db_session() as db_session:
             # User reached route via POST (as by submitting a form via POST)
             if request.method == "POST":
-                username = request.form.get("username")
+                login_identifier = request.form.get("username")
                 password = request.form.get("password")
 
-                # Ensure username and password were submitted
-                if not username or not password:
-                    flash("Benutzername/Passwort fehlt", "error")
+                # Ensure login and password were submitted
+                if not login_identifier or not password:
+                    flash("Benutzername/E-Mail oder Passwort fehlt", "error")
                     return redirect("/login")
-                
+
+                login_identifier = login_identifier.strip()
+
                 # Forget any user_id
                 session.clear()
 
-                # Query database for username
-                user = db_session.query(User).filter_by(username=username).first()
+                # Query database for username or email
+                user = db_session.query(User).filter(
+                    or_(User.username == login_identifier, User.email == login_identifier.lower())
+                ).first()
 
                 # Check if user exists and password is correct
                 if not user or not check_password_hash(user.hash, password):
@@ -455,6 +464,7 @@ def change_password():
 
 
 @app.route("/account/change_username", methods=["GET", "POST"])
+@login_required
 def change_username():
     try:
         with get_db_session() as db_session:
@@ -514,12 +524,22 @@ def register():
         with get_db_session() as db_session:
             if request.method == "POST":
                 username = request.form.get("username")
+                email = request.form.get("email")
                 password = request.form.get("password")
                 password_repetition = request.form.get("confirmation")
                 access_code = request.form.get("accesscode")
 
                 if not username:
                     flash("Kein Benutzername angegeben", 'error')
+                    return redirect("/register")
+
+                if not email:
+                    flash("Keine E-Mail angegeben", 'error')
+                    return redirect("/register")
+
+                email = email.strip().lower()
+                if not is_valid_email(email):
+                    flash("E-Mail ist ungültig", 'error')
                     return redirect("/register")
 
                 if not access_code or access_code != os.getenv('ACCESSCODE_TIPPSPIEL'):
@@ -530,6 +550,11 @@ def register():
                 existing_user = db_session.query(User).filter_by(username=username).first()
                 if existing_user:
                     flash("Benutzername bereits vergeben", 'error')
+                    return redirect("/register")
+
+                existing_email = db_session.query(User).filter_by(email=email).first()
+                if existing_email:
+                    flash("E-Mail bereits vergeben", 'error')
                     return redirect("/register")
 
                 # Check if passwords are entered and if they match
@@ -545,7 +570,7 @@ def register():
                 hashed_pw = generate_password_hash(password)
 
                 # Create a new User object
-                new_user = User(username=username, hash=hashed_pw)
+                new_user = User(username=username, email=email, hash=hashed_pw)
 
                 # Add new user to session and commit to database
                 db_session.add(new_user)
